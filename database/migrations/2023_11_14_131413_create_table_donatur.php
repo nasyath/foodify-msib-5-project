@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tb_donatur', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->string('username');
-            $table->string('password');
-            $table->enum ('role', ['Admin', 'Donatur', 'Penerima'])->default('Donatur');
+            $table->string('nama_donatur');
+            $table->string('alamat');
+            $table->string('no_hp');
+            $table->string('deskripsi');
+            $table->string('foto');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tb_donatur');
     }
 };

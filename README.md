@@ -6,8 +6,8 @@
 - Jalankan perintah `composer install`
 - Copy file `.env.example` menjadi `.env`
 - Jalankan perintah `php artisan key:generate`
-- Buat database baru (not yet configured)
-- Sesuaikan konfigurasi database pada file `.env` (not yet configured)
-- Jalankan perintah `php artisan migrate --seed` (not yet configured)
+- Buat database baru
+- Sesuaikan konfigurasi database pada file `.env`
+- Jalankan perintah `php artisan migrate --seed` (Seeder hanya baru untuk user `admin` dan passwordnya adalah `admin`)
 - Jalankan perintah `php artisan serve`
 - Buka browser dan akses `http://localhost:8000`
