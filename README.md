@@ -1,4 +1,4 @@
-<p align="center"><img src="public\backend\assets\images\foodify-light-logo.png" width="400" alt="Foodify Logo">></p>
+<p align="center"><img src="public\backend\assets\images\foodify-light-logo.png" width="400" alt="Foodify Logo"></p>
 
 ## Cara Penggunaan
 
