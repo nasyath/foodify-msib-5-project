@@ -4,20 +4,19 @@
     <div class="navbar-brand-box">
         <a href="{{ route('dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('backend/assets/images/logo-dark.png') }}" alt="" height="22">
+                <img src="{{ asset('backend/assets/images/foodify-logo.png') }}" alt="" height="28">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('backend/assets/images/logo-dark-sm.png') }}" alt="" height="22">
+                <img src="{{ asset('backend/assets/images/foodify-dark-logo.png') }}" alt="" height="56">
             </span>
         </a>
 
         <a href="{{ route('dashboard') }}" class="logo logo-light">
-            <span class="logo-lg">
-                <img src="{{ asset('backend/assets/images/logo-light.png') }}" alt="" height="22">
+        <span class="logo-sm">
+                <img src="{{ asset('backend/assets/images/foodify-logo.png') }}" alt="" height="28">
             </span>
-            <span class="logo-sm">
-                <img src="{{ asset('backend/assets/images/logo-light-sm.png') }}" alt="" height="22">
-                {{-- <h3 class="text-white fw-bold">SI DO MA</h3> --}}
+            <span class="logo-lg">
+                <img src="{{ asset('backend/assets/images/foodify-light-logo.png') }}" alt="" height="56">
             </span>
         </a>
     </div>
