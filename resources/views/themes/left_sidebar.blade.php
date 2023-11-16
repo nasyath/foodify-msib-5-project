@@ -37,20 +37,31 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
-                <li class="@if (Route::currentRouteName() == '/') active @endif">
+                <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="javascript: void(0);">
                         <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboards</span>
-                        <span class="badge rounded-pill bg-primary">3</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="@if (Route::currentRouteName() == '/') active @endif"
-                                data-key="t-ecommerce">Admin</a></li>
+                        <li><a href="{{ route('dashboard') }}" data-key="t-ecommerce">Admin</a></li>
                         <li><a href="dashboard-saas.html" data-key="t-saas">Donatur</a></li>
                         <li><a href="dashboard-crypto.html" data-key="t-crypto">Penerima</a></li>
                     </ul>
                 </li>
+
+                <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
+                    <a href="javascript: void(0);">
+                        <i class="icon nav-icon" data-eva="people-outline"></i>
+                        <span class="menu-item" data-key="t-dashboards">Donatur</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('eksplor') }}" data-key="t-ecommerce">Eksplor Penerima</a></li>
+                        <li><a href="{{ route('form_donasi') }}" data-key="t-saas">Form Donasi</a></li>
+                        <li><a href="{{ route('proses_donasi') }}" data-key="t-crypto">Proses Donasi</a></li>
+                    </ul>
+                </li>
             </ul>
+
         </div>
         <!-- Sidebar -->
 
