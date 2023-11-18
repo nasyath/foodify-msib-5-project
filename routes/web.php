@@ -17,15 +17,15 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/proses_donasi', function () {
-    return view('proses_donasi');
-})->name('proses_donasi');
-
 // ==========================================
 // ADMIN
 Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
+
+Route::get('/admin-kelola-makanan', function () {
+    return view('admin.kelola_makanan');
+})->name('kelola_makanan');
 
 // ==========================================
 // DONATUR
@@ -33,17 +33,21 @@ Route::get('/donatur-dashboard', function () {
     return view('donatur.dashboard');
 })->name('donatur.dashboard');
 
-Route::get('/eksplor', function () {
+Route::get('/donatur-eksplor', function () {
     return view('donatur.eksplor');
 })->name('eksplor');
 
-Route::get('/detail_penerima', function () {
+Route::get('/donatur-detail_penerima', function () {
     return view('donatur.detail_penerima');
 })->name('detail_penerima');
 
-Route::get('/form_donasi', function () {
+Route::get('/donatur-form_donasi', function () {
     return view('donatur.form_donasi');
 })->name('form_donasi');
+
+Route::get('/donatur-proses_donasi', function () {
+    return view('donatur.proses_donasi');
+})->name('proses_donasi');
 
 // ==========================================
 // PENERIMA

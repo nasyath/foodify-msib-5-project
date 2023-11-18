@@ -12,12 +12,16 @@
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+    <!-- data tables -->
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="{{ asset('backend/assets/css/startbootstrap/styles.css ') }}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -46,7 +50,7 @@
             @yield('content')
             @include('themes.footer')
         </div>
-       
+
         {{-- MAIN CONTENT END HERE --}}
 
     </div>
@@ -82,8 +86,18 @@
     <script src="{{ asset('backend/assets/js/pages/apexcharts-line.init.js') }}"></script>
 
     <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/pages/dashboard-crypto.init.js') }}"></script>
+
+    <!-- gridjs js -->
+    <script src="{{ asset('backend/assets/libs/gridjs/gridjs.umd.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/pages/gridjs.init.js') }}"></script>
 
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+    <!-- data tables || startbootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('backend/assets/js/datatables-simple-demo.js') }}"></script>
 
 </body>
 

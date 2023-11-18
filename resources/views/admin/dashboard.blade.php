@@ -71,6 +71,19 @@
             <!-- end col -->
         </div>
 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Line with Data Labels</h4>
+                    </div><!-- end card header -->
+                    <div class="card-body">
+                        <div id="line_chart_datalabel" data-colors='["#57c9eb","#f56e6e","yellow"]' class="apex-charts" dir="ltr"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection

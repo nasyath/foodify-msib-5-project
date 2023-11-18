@@ -60,6 +60,16 @@
                         <li><a href="{{ route('proses_donasi') }}" data-key="t-crypto">Proses Donasi</a></li>
                     </ul>
                 </li>
+
+                <li class="@if (Route::currentRouteName() == 'kelola_makanan') active @endif">
+                    <a href="javascript: void(0);">
+                        <i class="icon nav-icon" data-eva="people-outline"></i>
+                        <span class="menu-item" data-key="t-dashboards">Admin</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('kelola_makanan') }}" data-key="t-ecommerce">Kelola Jenis Makanan</a></li>
+                    </ul>
+                </li>
             </ul>
 
         </div>
