@@ -42,7 +42,11 @@
         {{-- TopBar Horizontal Header Section --}}
 
         {{-- MAIN CONTENT START HERE --}}
-        @yield('content')
+        <div class="main-content">
+            @yield('content')
+            @include('themes.footer')
+        </div>
+       
         {{-- MAIN CONTENT END HERE --}}
 
     </div>
@@ -75,6 +79,7 @@
 
     <!-- apexcharts -->
     <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/pages/apexcharts-line.init.js') }}"></script>
 
     <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script>
 

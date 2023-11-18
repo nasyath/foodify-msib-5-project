@@ -2,7 +2,7 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="{{ route('dashboard') }}" class="logo logo-dark">
+        <a href="#" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ asset('backend/assets/images/foodify-logo.png') }}" alt="" height="28">
             </span>
@@ -11,7 +11,7 @@
             </span>
         </a>
 
-        <a href="{{ route('dashboard') }}" class="logo logo-light">
+        <a href="#" class="logo logo-light">
         <span class="logo-sm">
                 <img src="{{ asset('backend/assets/images/foodify-logo.png') }}" alt="" height="28">
             </span>
@@ -38,14 +38,14 @@
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
-                    <a href="javascript: void(0);">
+                    <a href="{{ route('dashboard') }}">
                         <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboards</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('dashboard') }}" data-key="t-ecommerce">Admin</a></li>
-                        <li><a href="dashboard-saas.html" data-key="t-saas">Donatur</a></li>
-                        <li><a href="dashboard-crypto.html" data-key="t-crypto">Penerima</a></li>
+                        <li><a href="{{ route('admin.dashboard') }}" data-key="t-ecommerce">Admin</a></li>
+                        <li><a href="{{ route('donatur.dashboard') }}" data-key="t-saas">Donatur</a></li>
+                        <li><a href="{{ route('penerima.dashboard') }}" data-key="t-crypto">Penerima</a></li>
                     </ul>
                 </li>
 
