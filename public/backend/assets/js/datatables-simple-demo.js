@@ -6,4 +6,10 @@ window.addEventListener('DOMContentLoaded', event => {
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
     }
+
+    
+});
+
+$(document).ready(function(){
+    $('#tabel-data').DataTable();
 });

@@ -1749,6 +1749,8 @@ progress {
   --bs-table-hover-color: var(--bs-body-color);
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
+  font-size: 16px;
+  text-align: center;
   margin-bottom: 1rem;
   color: var(--bs-table-color);
   vertical-align: top;
@@ -1765,6 +1767,7 @@ progress {
 }
 .table > thead, .datatable-table > thead {
   vertical-align: bottom;
+  text-align: center;
 }
 
 .table-group-divider {
@@ -11168,7 +11171,7 @@ body {
 
 .datatable-table > thead > tr > th {
   vertical-align: bottom;
-  text-align: left;
+  text-align: center;
   border-bottom: none;
 }
 

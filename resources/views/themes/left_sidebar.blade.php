@@ -12,7 +12,7 @@
         </a>
 
         <a href="#" class="logo logo-light">
-        <span class="logo-sm">
+            <span class="logo-sm">
                 <img src="{{ asset('backend/assets/images/foodify-logo.png') }}" alt="" height="28">
             </span>
             <span class="logo-lg">
@@ -37,17 +37,30 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
+                <!-- dashboard admin  -->
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
-                    <a href="{{ route('dashboard') }}">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>
-                        <span class="menu-item" data-key="t-dashboards">Dashboards</span>
+                    <a href="{{ route('admin.dashboard') }}" data-key="t-ecommerce">
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.dashboard') }}" data-key="t-ecommerce">Admin</a></li>
-                        <li><a href="{{ route('donatur.dashboard') }}" data-key="t-saas">Donatur</a></li>
-                        <li><a href="{{ route('penerima.dashboard') }}" data-key="t-crypto">Penerima</a></li>
-                    </ul>
                 </li>
+
+                <!-- dashboard donatur  -->
+                <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
+                    <a href="{{ route('donatur.dashboard') }}" data-key="t-ecommerce">
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- dashboard penerima  -->
+                <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
+                    <a href="{{ route('penerima.dashboard') }}" data-key="t-ecommerce">
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
+                    </a>
+                </li>
+
 
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
                     <a href="javascript: void(0);">
@@ -67,7 +80,7 @@
                         <span class="menu-item" data-key="t-dashboards">Admin</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('kelola_makanan') }}" data-key="t-ecommerce">Kelola Jenis Makanan</a></li>
+                        <li><a href="{{ url('/kelola_jmakanan') }}" data-key="t-ecommerce">Kelola Jenis Makanan</a></li>
                     </ul>
                 </li>
             </ul>

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DonasiController;
+use App\Http\Controllers\JMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +24,6 @@ Route::get('/', function () {
 Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
-
-Route::get('/admin-kelola-makanan', function () {
-    return view('admin.kelola_makanan');
-})->name('kelola_makanan');
 
 // ==========================================
 // DONATUR
@@ -55,5 +53,8 @@ Route::get('/penerima-dashboard', function () {
     return view('penerima.dashboard');
 })->name('penerima.dashboard');
 
+// ==========================================
+Route :: resource('/kelola_jmakanan',JMakananController::class);
 
+Route :: resource('/donasi',DonasiController::class);
 
