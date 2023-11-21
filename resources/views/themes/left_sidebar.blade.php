@@ -74,15 +74,29 @@
                     </ul>
                 </li>
 
-                <li class="@if (Route::currentRouteName() == 'kelola_makanan') active @endif">
-                    <a href="javascript: void(0);">
-                        <i class="icon nav-icon" data-eva="people-outline"></i>
-                        <span class="menu-item" data-key="t-dashboards">Admin</span>
+                <!-- menu untuk admin  -->
+                <li class="@if (Route::currentRouteName() == 'kelola_jmakanan') active @endif">
+                    <a href="{{ url('/kelola_jmakanan') }}" data-key="t-ecommerce">
+                        <i class="fas fa-utensils" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-ecommerce">Jenis Makanan</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ url('/kelola_jmakanan') }}" data-key="t-ecommerce">Kelola Jenis Makanan</a></li>
-                    </ul>
                 </li>
+
+                <li class="@if (Route::currentRouteName() == 'kelola_users') active @endif">
+                    <a href="#" data-key="t-ecommerce">
+                        <i class="fas fa-users-cog" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-ecommerce">Kelola Users</span>
+                    </a>
+                </li>
+
+                <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
+                    <a href="#" data-key="t-ecommerce">
+                        <i class="fas fa-folder-open" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
+                    </a>
+                </li>
+
+
             </ul>
 
         </div>
