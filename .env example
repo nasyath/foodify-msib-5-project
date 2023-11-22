@@ -1,6 +1,6 @@
 APP_NAME=Foodify
 APP_ENV=local
-APP_KEY=base64:3xydHC9h/WNUlpXRIcl5y1FiRgiYR0H/d46zN4MAlhE=
+APP_KEY=base64:LRCjD25NuYVMF+NU4Bbix3OVLO6Y9NcUfnZNkcwrSo0=
 APP_DEBUG=true
 APP_URL=http://localhost:8000
 

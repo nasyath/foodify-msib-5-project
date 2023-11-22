@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DonasiController;
+use App\Http\Controllers\JMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +19,42 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/eksplor', function () {
-    return view('eksplor');
+// ==========================================
+// ADMIN
+Route::get('/admin-dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
+
+// ==========================================
+// DONATUR
+Route::get('/donatur-dashboard', function () {
+    return view('donatur.dashboard');
+})->name('donatur.dashboard');
+
+Route::get('/donatur-eksplor', function () {
+    return view('donatur.eksplor');
 })->name('eksplor');
-Route::get('/detail_penerima', function () {
-    return view('detail_penerima');
+
+Route::get('/donatur-detail_penerima', function () {
+    return view('donatur.detail_penerima');
 })->name('detail_penerima');
-Route::get('/form_donasi', function () {
-    return view('form_donasi');
+
+Route::get('/donatur-form_donasi', function () {
+    return view('donatur.form_donasi');
 })->name('form_donasi');
-Route::get('/proses_donasi', function () {
-    return view('proses_donasi');
+
+Route::get('/donatur-proses_donasi', function () {
+    return view('donatur.proses_donasi');
 })->name('proses_donasi');
+
+// ==========================================
+// PENERIMA
+Route::get('/penerima-dashboard', function () {
+    return view('penerima.dashboard');
+})->name('penerima.dashboard');
+
+// ==========================================
+Route :: resource('/kelola_jmakanan',JMakananController::class);
+
+Route :: resource('/donasi',DonasiController::class);
+

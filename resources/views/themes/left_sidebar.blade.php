@@ -2,7 +2,7 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="{{ route('dashboard') }}" class="logo logo-dark">
+        <a href="#" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ asset('backend/assets/images/foodify-logo.png') }}" alt="" height="28">
             </span>
@@ -11,8 +11,8 @@
             </span>
         </a>
 
-        <a href="{{ route('dashboard') }}" class="logo logo-light">
-        <span class="logo-sm">
+        <a href="#" class="logo logo-light">
+            <span class="logo-sm">
                 <img src="{{ asset('backend/assets/images/foodify-logo.png') }}" alt="" height="28">
             </span>
             <span class="logo-lg">
@@ -37,17 +37,30 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
+                <!-- dashboard admin  -->
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
-                    <a href="javascript: void(0);">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>
-                        <span class="menu-item" data-key="t-dashboards">Dashboards</span>
+                    <a href="{{ route('admin.dashboard') }}" data-key="t-ecommerce">
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('dashboard') }}" data-key="t-ecommerce">Admin</a></li>
-                        <li><a href="dashboard-saas.html" data-key="t-saas">Donatur</a></li>
-                        <li><a href="dashboard-crypto.html" data-key="t-crypto">Penerima</a></li>
-                    </ul>
                 </li>
+
+                <!-- dashboard donatur  -->
+                <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
+                    <a href="{{ route('donatur.dashboard') }}" data-key="t-ecommerce">
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- dashboard penerima  -->
+                <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
+                    <a href="{{ route('penerima.dashboard') }}" data-key="t-ecommerce">
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
+                    </a>
+                </li>
+
 
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
                     <a href="javascript: void(0);">
@@ -60,6 +73,30 @@
                         <li><a href="{{ route('proses_donasi') }}" data-key="t-crypto">Proses Donasi</a></li>
                     </ul>
                 </li>
+
+                <!-- menu untuk admin  -->
+                <li class="@if (Route::currentRouteName() == 'kelola_jmakanan') active @endif">
+                    <a href="{{ url('/kelola_jmakanan') }}" data-key="t-ecommerce">
+                        <i class="fas fa-utensils" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-ecommerce">Jenis Makanan</span>
+                    </a>
+                </li>
+
+                <li class="@if (Route::currentRouteName() == 'kelola_users') active @endif">
+                    <a href="#" data-key="t-ecommerce">
+                        <i class="fas fa-users-cog" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-ecommerce">Kelola Users</span>
+                    </a>
+                </li>
+
+                <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
+                    <a href="#" data-key="t-ecommerce">
+                        <i class="fas fa-folder-open" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
+                    </a>
+                </li>
+
+
             </ul>
 
         </div>
