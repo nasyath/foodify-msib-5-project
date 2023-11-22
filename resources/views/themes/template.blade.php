@@ -48,6 +48,16 @@
 
         {{-- MAIN CONTENT START HERE --}}
         <div class="main-content">
+            @if($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
+            @if($message = Session::get('error'))
+            <div class="alert alert-danger">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
             @yield('content')
             @include('themes.footer')
         </div>
