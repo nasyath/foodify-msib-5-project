@@ -25,6 +25,14 @@ Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
+Route::get('/admin-tambah-jenis-makanan', function () {
+    return view('admin.form_tambahJM');
+})->name('admin.tambah-jenis-makanan');
+
+Route::get('/admin-edit-jenis-makanan', function () {
+    return view('admin.form_editJM');
+})->name('admin.edit-jenis-makanan');
+
 // ==========================================
 // DONATUR
 Route::get('/donatur-dashboard', function () {

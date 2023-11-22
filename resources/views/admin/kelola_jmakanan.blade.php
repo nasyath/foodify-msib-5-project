@@ -10,11 +10,11 @@ $no = 1;
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">
                 <i class="fas fa-home"></i>
-                <a href="index.html">Dashboard</a>
+                <a href="{{ route('admin.dashboard') }}">Dashboard</a>
             </li>
             <li class="breadcrumb-item active">Kelola Jenis Makanan</li>
         </ol>
-        <a href="#" class="btn btn-primary" title="Tambah Data" 
+        <a href="{{ route('admin.tambah-jenis-makanan') }}" class="btn btn-primary" title="Tambah Data" 
             style="margin-bottom: 10px;">
             Tambah
         </a>
@@ -41,7 +41,7 @@ $no = 1;
                                 <a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">
                                     <i class="far fa-file-alt" style="width:16px;height:16px"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm" href="#" title="Ubah Jenis Makanan">
+                                <a class="btn btn-warning btn-sm" href="{{ route('admin.edit-jenis-makanan') }}" title="Ubah Jenis Makanan">
                                     <i class="fas fa-pen" style="width:16px;height:16px"></i>
                                 </a>
                                 <button type="submit" class="btn btn-danger btn-sm" title="Hapus Jenis Makanan">

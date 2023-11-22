@@ -11,12 +11,12 @@
             <li class="breadcrumb-item">
                 <a href="{{ url('/kelola_jmakanan') }}">Kelola Jenis Makanan</a>
             </li>
-            <li class="breadcrumb-item active">Tambah Jenis Makanan</li>
+            <li class="breadcrumb-item active">Edit Jenis Makanan</li>
         </ol>
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Form tambah jenis makanan</h4>
+                    <h4 class="card-title">Form edit jenis makanan</h4>
                 </div>
                 <div class="card-body">
 
@@ -37,7 +37,8 @@
                         <div class="row justify-content-end">
                             <div class="col-sm-9">
                                 <div>
-                                    <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-danger">Batal</button>
                                 </div>
                             </div>
                         </div>
