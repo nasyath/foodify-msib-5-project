@@ -14,11 +14,10 @@ $no = 1;
             </li>
             <li class="breadcrumb-item active">Kelola Jenis Makanan</li>
         </ol>
-        <a href="#" class="btn btn-primary" title="Tambah Data" 
-            style="margin-bottom: 10px;">
+        <a href="{{ route('kelola_jenis.create') }}" class="btn btn-primary" title="Tambah Data" style="margin-bottom: 10px;">
             Tambah
         </a>
-        <div class="card mb-4" style="width:50%">
+        <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
                 <b>Data Jenis Makanan</b>
@@ -38,15 +37,20 @@ $no = 1;
                             <td>{{ $no++ }}</td>
                             <td>{{ $jm->nama_jenis }}</td>
                             <td>
-                                <a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">
+                                <form method="POST" action="{{ route('kelola_jenis.destroy', $jm->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a class="btn btn-warning btn-sm" href="{{ route('kelola_jenis.edit', $jm->id) }}" title="Ubah Jenis Makanan">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger btn-sm show-alert-delete-box" title="Hapus Jenis Makanan">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                                <!--a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">
                                     <i class="far fa-file-alt" style="width:16px;height:16px"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm" href="#" title="Ubah Jenis Makanan">
-                                    <i class="fas fa-pen" style="width:16px;height:16px"></i>
-                                </a>
-                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus Jenis Makanan">
-                                    <i class="fas fa-trash" style="width:16px;height:16px"></i>
-                                </button>
+                                </a-->
+
                             </td>
                         </tr>
                         @endforeach
