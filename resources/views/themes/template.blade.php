@@ -94,6 +94,8 @@
     <script src="{{ asset('backend/assets/js/pages/gridjs.init.js') }}"></script>
 
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+    
+    
 
     <!-- data tables || startbootstrap -->
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
