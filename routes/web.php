@@ -57,11 +57,12 @@ Route::get('/penerima-dashboard', function () {
 
 // ==========================================
 Route :: resource('/kelola_jenis',JMakananController::class);
+
 Route :: resource('/donasi',DonasiController::class);
 
 Route :: resource('/donatur',DonaturController::class);
 
-Route :: resource('/penerima',DonasiController::class);
+Route :: resource('/penerima',PenerimaController::class);
 
 
 
