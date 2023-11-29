@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
-                <div class="card" style="width: 50%; margin-left:50px">
+                <div class="card" style="width: 92%; margin-left:50px">
                     <div class="card-header">
                         <h4 class="card-title">Form Donasi</h4>
                     </div>
@@ -12,7 +12,7 @@
                         <form>
                             <div class="mb-3">
                                 <label for="formrow-firstname-input" class="form-label">Nama Donatur</label>
-                                <input type="text" class="form-control" placeholder="First Name" id="formrow-firstname-input">
+                                <input type="text" class="form-control" placeholder="Nama" id="formrow-firstname-input">
                             </div>
                             <div class="mb-3">
                                 <label for="formrow-firstname-input" class="form-label">Makanan</label>
