@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penerima;
 use Illuminate\Http\Request;
 
 class PenerimaController extends Controller
@@ -11,7 +12,7 @@ class PenerimaController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -35,8 +36,11 @@ class PenerimaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $penerimaDonasi = Penerima::findOrFail($id);
+    
+        return view('donatur.detail_penerima', compact('penerimaDonasi'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -60,5 +64,14 @@ class PenerimaController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function eksplorasi()
+    {
+        $penerimaDonasi = Penerima::where('status', 'Open')->get();
+        $totalPenerima = count($penerimaDonasi);
+    
+        return view('donatur.eksplor', compact('penerimaDonasi', 'totalPenerima'));
+    
     }
 }

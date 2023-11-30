@@ -6,47 +6,49 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="mb-3">
-                    <h5 class="card-title">List Penerima<span class="text-muted fw-normal ms-2">(834)</span></h5>
+                <h5 class="card-title">List Penerima<span class="text-muted fw-normal ms-2">({{ $totalPenerima }})</span></h5>
                 </div>
             </div>
         </div>
         <!-- end row -->
 
         <div class="row">
+            @foreach($penerimaDonasi as $penerima)
             <div class="col-xl-3 col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div>
-                                <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-md rounded-circle img-thumbnail">
+                                @if ($penerima->foto)
+                                <img src="{{ asset('backend/assets/images/users' . $penerima->foto) }}" alt="{{ $penerima->nama }}" class="avatar-md rounded-circle img-thumbnail">
+                                @else
+                                <img src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="Default Image" class="avatar-md rounded-circle img-thumbnail">
+                                @endif
                             </div>
                             <div class="flex-1 ms-3">
-                                <h5 class="font-size-16 mb-1"><a href="#" class="text-body">Phyllis Gatlin</a></h5>
+                                <h5 class="font-size-16 mb-1"><a href="#" class="text-body">{{ $penerima->nama_penerima }}</a></h5>
                                 <span class="badge bg-success-subtle text-success mb-0">Menerima Donasi</span>
                             </div>
                         </div>
                         <div class="mt-3 pt-1">
                             <p class="text-muted mb-0"><i class="mdi mdi-phone font-size-15 align-middle pe-2 text-primary"></i>
-                                070 2860 5375</p>
-                            <p class="text-muted mb-0 mt-2"><i class="mdi mdi-email font-size-15 align-middle pe-2 text-primary"></i>
-                                PhyllisGatlin@spy.com</p>
+                                {{ $penerima->no_hp }}
+                            </p>
                             <p class="text-muted mb-0 mt-2"><i class="mdi mdi-google-maps font-size-15 align-middle pe-2 text-primary"></i>
-                                52 Ilchester MYBSTER 9WX</p>
+                                {{ $penerima->alamat }}
+                            </p>
                         </div>
 
                         <div class="d-flex gap-2 pt-4">
-                            <a href="{{ route('detail_penerima') }}" type="button" class="btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i> Profile</a>
-                            <button type="button" class="btn btn-primary btn-sm w-50"><i class="bx bx-check-square me-1"></i> Terima</button>
+                            <a href="{{ route('detail_penerima', $penerima->id) }}" type="button" class="btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i> Profile</a>
+                            <a href="{{ route('form_donasi') }}" type="button" class="btn btn-primary btn-sm w-50"><i class="bx bx-check-square me-1"></i> Bantu</a>
                         </div>
-
-
                     </div>
                 </div>
                 <!-- end card -->
             </div>
             <!-- end col -->
-
-
+            @endforeach
         </div>
         <!-- end row -->
 
