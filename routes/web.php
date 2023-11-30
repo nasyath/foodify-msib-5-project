@@ -27,6 +27,10 @@ Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
+Route::get('/kelola-donatur', function () {
+    return view('admin.kelola_donatur');
+})->name('kelola_donatur');
+
 // ==========================================
 // DONATUR
 Route::get('/donatur-dashboard', function () {
@@ -52,9 +56,15 @@ Route::get('/penerima-dashboard', function () {
     return view('penerima.dashboard');
 })->name('penerima.dashboard');
 
+
+Route::get('/profil-penerima', function () {
+    return view('penerima.profil_penerima');
+})->name('profil_penerima');
+
 Route::get('/eksplorasi-penerima', [PenerimaController::class, 'eksplorasi'])->name('eksplorasi_penerima');
 
 Route::get('/detail-penerima/{id}', [PenerimaController::class, 'show'])->name('detail_penerima');
+
 
 // ==========================================
 Route :: resource('/kelola_jenis',JMakananController::class);
