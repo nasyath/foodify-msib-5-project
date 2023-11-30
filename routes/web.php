@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\JMakananController;
+use App\Http\Controllers\DonaturController;
+use App\Http\Controllers\PenerimaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +37,6 @@ Route::get('/donatur-eksplor', function () {
     return view('donatur.eksplor');
 })->name('eksplor');
 
-Route::get('/donatur-detail_penerima', function () {
-    return view('donatur.detail_penerima');
-})->name('detail_penerima');
 
 Route::get('/donatur-form_donasi', function () {
     return view('donatur.form_donasi');
@@ -53,8 +52,18 @@ Route::get('/penerima-dashboard', function () {
     return view('penerima.dashboard');
 })->name('penerima.dashboard');
 
+Route::get('/eksplorasi-penerima', [PenerimaController::class, 'eksplorasi'])->name('eksplorasi_penerima');
+
+Route::get('/detail-penerima/{id}', [PenerimaController::class, 'show'])->name('detail_penerima');
+
 // ==========================================
-Route :: resource('/kelola_jmakanan',JMakananController::class);
+Route :: resource('/kelola_jenis',JMakananController::class);
 
 Route :: resource('/donasi',DonasiController::class);
+
+Route :: resource('/donatur',DonaturController::class);
+
+Route :: resource('/penerima',PenerimaController::class);
+
+
 
