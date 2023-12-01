@@ -57,10 +57,10 @@
                             </li>
                             <li id="menu-item-79"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">
-                                <a href="">Register</a>
+                                <a href="{{ route('register') }}">Register</a>
                             </li>
                             <li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page">
-                                <a href="">Login</a>
+                                <a href="{{ route('login') }}">Login</a>
                             </li>
                         </ul>
                     </div>
