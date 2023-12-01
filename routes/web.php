@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\JMakananController;
 use App\Http\Controllers\DonaturController;
@@ -20,7 +21,11 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::get('/', function () {
+
+// Route get '/' to LandingController@index
+Route::get('/', [LandingController::class, 'index'])->name('landingpage');
+
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
 
