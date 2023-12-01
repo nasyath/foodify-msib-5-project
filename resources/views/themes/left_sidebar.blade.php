@@ -83,7 +83,7 @@
                 </li>
 
                 <li class="@if (Route::currentRouteName() == 'kelola_users') active @endif">
-                    <a href="#" data-key="t-ecommerce">
+                    <a href="{{ route('admin.kelola_users') }}" data-key="t-ecommerce">
                         <i class="fas fa-users-cog" data-eva="grid-outline"></i>    
                         <span class="menu-item" data-key="t-ecommerce">Kelola Users</span>
                     </a>

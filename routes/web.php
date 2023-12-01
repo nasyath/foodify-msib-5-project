@@ -25,7 +25,9 @@ Route::get('/', function () {
 Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
-
+Route::get('/kelola_users', function () {
+    return view('admin.kelola_users.index');
+})->name('admin.kelola_users');
 
 // ==========================================
 // DONATUR
@@ -57,6 +59,7 @@ Route::get('/penerima-dashboard', function () {
 
 // ==========================================
 Route :: resource('/jenis_makanan',JMakananController::class);
+// Route :: resource('/kelola_users',UsersController::class);
 
 Route :: resource('/donasi',DonasiController::class);
 // Auth::routes();
