@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\JMakananController;
 use App\Http\Controllers\DonaturController;
@@ -17,9 +18,12 @@ use App\Http\Controllers\PenerimaController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+// Route get '/' to LandingController@index
+Route::get('/', [LandingController::class, 'index'])->name('landingpage');
 
 Route::get('/profil', function () {
     return view('themes.profil');
