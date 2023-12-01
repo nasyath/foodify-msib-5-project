@@ -25,12 +25,41 @@ $no = 1;
             <p>{{ $message }}</p>
         </div>
         @endif
-        @yield('content')
-        @include('themes.footer')
         <!-- ---------------------------------------- -->
-        <a href="{{ route('admin.tambah-jenis-makanan') }}" class="btn btn-primary" title="Tambah Data" style="margin-bottom: 10px;">
+        <button type="button" class="btn btn-primary mb-2 waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#tambahData" title="Tambah">
             Tambah
-        </a>
+        </button>
+
+        <!-- Modal Tambah Data -->
+        <div class="modal fade" id="tambahData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="tambahDataLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tambahDataLabel">Tambah Jenis Makanan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <label for="horizontal-firstname-input" class="col-sm-2 col-form-label">Nama</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control @error('nama') is-invalid @else is-valid @enderror" placeholder="Enter Nama Jenis Makanan" id="horizontal-firstname-input" name="nama" value="{{ old('nama') }}">
+                                    @error('nama')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------------------------------------------------------------------------ -->
+
         <div class="card mb-4" style="width:50%">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -57,9 +86,31 @@ $no = 1;
                                     <a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">
                                         <i class="far fa-file-alt" style="width:16px;height:16px"></i>
                                     </a>
-                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.edit-jenis-makanan') }}" title="Ubah Jenis Makanan">
+
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editData" title="Edit">
                                         <i class="fas fa-pen" style="width:16px;height:16px"></i>
-                                    </a>
+                                    </button>
+
+                                    <!-- Modal Tambah Data -->
+                                    <div class="modal fade" id="editData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editDataLabel">Tambah Jenis Makanan</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    sdfghj
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <button type="submit" class="btn btn-danger btn-sm" title="Hapus Jenis Makanan">
                                         <i class="fas fa-trash" style="width:16px;height:16px"></i>
                                     </button>
