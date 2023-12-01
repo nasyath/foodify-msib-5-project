@@ -19,7 +19,7 @@
                                     <img src="{{ asset('backend/assets/images/users' . ($penerimaDonasi->foto ? $penerimaDonasi->foto : '/nofoto.png')) }}" alt="{{ $penerimaDonasi->nama }}" class="avatar-xl rounded-circle img-thumbnail">
 
                                     <div class="mt-3">
-                                        <h5 class="mb-1">{{ $penerimaDonasi->nama }}</h5>
+                                        <h5 class="mb-1">{{ $penerimaDonasi->nama_penerima }}</h5>
                                         <div>
                                             <a href="#" class="badge bg-success-subtle text-success m-1">Menerima Donasi</a>
                                         </div>
@@ -27,7 +27,7 @@
                                             <a href="https://wa.me/{{ $penerimaDonasi->no_hp }}" target="_blank" class="btn btn-success waves-effect waves-light btn-sm">
                                                 <i class="bx bx-send me-1 align-middle"></i> Kirim Pesan
                                             </a>
-                                            <a href="#" target="_blank" class="btn btn-primary waves-effect waves-light btn-sm">
+                                            <a href="{{ route('form_donasi') }}" class="btn btn-primary waves-effect waves-light btn-sm">
                                                 <i class="bx bx-check-square me-1 align-middle"></i> Bantu
                                             </a>
                                         </div>

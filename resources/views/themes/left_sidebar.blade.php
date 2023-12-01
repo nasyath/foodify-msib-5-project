@@ -38,28 +38,34 @@
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <!-- dashboard admin  -->
+                @if( Auth::user()->role == 'Admin')
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('admin.dashboard') }}" data-key="t-ecommerce">
                         <i class="icon nav-icon" data-eva="grid-outline"></i>    
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+                @endif
 
                 <!-- dashboard donatur  -->
+                @if( Auth::user()->role == 'Donatur')
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('donatur.dashboard') }}" data-key="t-ecommerce">
                         <i class="icon nav-icon" data-eva="grid-outline"></i>    
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+                @endif
 
                 <!-- dashboard penerima  -->
+                @if( Auth::user()->role == 'Penerima')
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('penerima.dashboard') }}" data-key="t-ecommerce">
                         <i class="icon nav-icon" data-eva="grid-outline"></i>    
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+                @endif
 
 
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
@@ -69,7 +75,6 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('eksplorasi_penerima') }}" data-key="t-ecommerce">Eksplor Penerima</a></li>
-                        <li><a href="{{ route('form_donasi') }}" data-key="t-saas">Form Donasi</a></li>
                         <li><a href="{{ route('proses_donasi') }}" data-key="t-crypto">Proses Donasi</a></li>
                     </ul>
                 </li>
