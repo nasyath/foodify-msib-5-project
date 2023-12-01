@@ -22,15 +22,13 @@
 
                     <form>
                         <div class="row mb-4">
-                            <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">id</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="id jenis makanan" id="horizontal-firstname-input">
-                            </div>
-                        </div>
-                        <div class="row mb-4">
                             <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nama</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Enter Nama Jenis Makanan" id="horizontal-firstname-input">
+                                <input type="text" class="form-control @error('nama') is-invalid @else is-valid @enderror" placeholder="Enter Nama Jenis Makanan" id="horizontal-firstname-input"
+                                name="nama" value="{{ old('nama') }}">
+                                @error('nama')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 

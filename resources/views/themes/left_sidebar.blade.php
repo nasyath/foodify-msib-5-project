@@ -75,8 +75,8 @@
                 </li>
 
                 <!-- menu untuk admin  -->
-                <li class="@if (Route::currentRouteName() == 'kelola_jmakanan') active @endif">
-                    <a href="{{ url('/kelola_jmakanan') }}" data-key="t-ecommerce">
+                <li class="@if (Route::currentRouteName() == 'jenis_makanan') active @endif">
+                    <a href="{{ url('/jenis_makanan') }}" data-key="t-ecommerce">
                         <i class="fas fa-utensils" data-eva="grid-outline"></i>    
                         <span class="menu-item" data-key="t-ecommerce">Jenis Makanan</span>
                     </a>

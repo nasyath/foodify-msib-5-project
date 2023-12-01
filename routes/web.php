@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Tabuna\Breadcrumbs\Trail;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\JMakananController;
 
@@ -33,6 +34,7 @@ Route::get('/admin-edit-jenis-makanan', function () {
     return view('admin.form_editJM');
 })->name('admin.edit-jenis-makanan');
 
+
 // ==========================================
 // DONATUR
 Route::get('/donatur-dashboard', function () {
@@ -62,7 +64,9 @@ Route::get('/penerima-dashboard', function () {
 })->name('penerima.dashboard');
 
 // ==========================================
-Route :: resource('/kelola_jmakanan',JMakananController::class);
+Route :: resource('/jenis_makanan',JMakananController::class);
+// Route::delete('jenis_makanan/{id}', [JMakananController::class, 'delete'])->name('jenis_makanan.delete');
 
 Route :: resource('/donasi',DonasiController::class);
-
+// Auth::routes();
+ 

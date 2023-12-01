@@ -17,7 +17,7 @@ class JMakananController extends Controller
     {
         //$ar_jmakanan = JMakanan::all();//eloquent
         $ar_jmakanan = JMakanan::orderBy('id', 'desc')->get();
-        return view('admin.kelola_jmakanan', compact('ar_jmakanan'));
+        return view('admin.jenis_makanan.index', compact('ar_jmakanan'));
     }
 
     /**
@@ -25,7 +25,8 @@ class JMakananController extends Controller
      */
     public function create()
     {
-        //
+        // $ar_kondisi = ['Baik','Sedang','Rusak'];
+        // return view('admin.form_tambahJM', compact('ar_kategori','ar_kondisi'));
     }
 
     /**
@@ -65,6 +66,11 @@ class JMakananController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //elequent
+        JMakanan::find($id)->delete();
+        return redirect()->route('jenis_makanan.index')
+            ->with('success','Data Jenis Makanan Berhasil Dihapus');
     }
 }
+// Asset => JMakanan
+// ar_asset => ar_jmakanan
