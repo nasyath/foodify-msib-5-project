@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/profil', function () {
+    return view('themes.profil');
+})->name('profil');
+
 // ==========================================
 // ADMIN
 Route::get('/admin-dashboard', function () {
@@ -55,11 +59,6 @@ Route::get('/donatur-proses_donasi', function () {
 Route::get('/penerima-dashboard', function () {
     return view('penerima.dashboard');
 })->name('penerima.dashboard');
-
-
-Route::get('/profil-penerima', function () {
-    return view('penerima.profil_penerima');
-})->name('profil_penerima');
 
 Route::get('/eksplorasi-penerima', [PenerimaController::class, 'eksplorasi'])->name('eksplorasi_penerima');
 
