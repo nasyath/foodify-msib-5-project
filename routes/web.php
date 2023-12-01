@@ -7,7 +7,7 @@ use App\Http\Controllers\JMakananController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\PenerimaController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\RegisterController; 
+use App\Http\Controllers\Auth\RegisterController;
 
 
 /*
