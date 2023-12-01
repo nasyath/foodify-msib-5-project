@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('keterangan');
             $table->foreignId('id_donatur')->constrained('tb_donatur');
             $table->foreignId('id_penerima')->constrained('tb_penerima');
-            $table->foreignId('id_makanan')->constrained('tb_jenis_makanan');
+            $table->foreignId('id_makanan')->constrained('tb_jenis_makanan')->onDelete('restrict');
             $table->timestamps();
         });
     }

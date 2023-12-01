@@ -35,6 +35,12 @@ class JMakananController extends Controller
     public function store(Request $request)
     {
         //
+        // JMakanan::create($request->all());
+        // return redirect()->route('jenis_makanan.index')
+        //     ->with('success','Data Jenis Makanan Berhasil Ditambahkan');
+        DB::table('tb_jenis_makanan')->insert(['nama_jenis' => $request->nama_jenis]);
+        return redirect()->route('jenis_makanan.index')
+            ->with('success','Data Jenis Makanan Berhasil Ditambahkan');
     }
 
     /**

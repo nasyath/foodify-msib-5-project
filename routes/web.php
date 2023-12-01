@@ -26,14 +26,6 @@ Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
-Route::get('/admin-tambah-jenis-makanan', function () {
-    return view('admin.form_tambahJM');
-})->name('admin.tambah-jenis-makanan');
-
-Route::get('/admin-edit-jenis-makanan', function () {
-    return view('admin.form_editJM');
-})->name('admin.edit-jenis-makanan');
-
 
 // ==========================================
 // DONATUR
@@ -65,7 +57,6 @@ Route::get('/penerima-dashboard', function () {
 
 // ==========================================
 Route :: resource('/jenis_makanan',JMakananController::class);
-// Route::delete('jenis_makanan/{id}', [JMakananController::class, 'delete'])->name('jenis_makanan.delete');
 
 Route :: resource('/donasi',DonasiController::class);
 // Auth::routes();
