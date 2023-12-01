@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +20,9 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
-        'role'
+        'role',
+        'donatur_id', // tambahkan field untuk id donatur
+        'penerima_id', // tambahkan field untuk id penerima
     ];
 
     /**
@@ -43,4 +44,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Definisikan relasi dengan Donatur
+    public function donatur()
+    {
+        return $this->belongsTo(Donatur::class, 'donatur_id');
+    }
+
+    // Definisikan relasi dengan Penerima
+    public function penerima()
+    {
+        return $this->belongsTo(Penerima::class, 'penerima_id');
+    }
 }

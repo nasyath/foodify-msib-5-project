@@ -5,6 +5,9 @@ use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\JMakananController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\PenerimaController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\RegisterController; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +22,7 @@ use App\Http\Controllers\PenerimaController;
 
 Route::get('/', function () {
     return view('dashboard');
-})->name('dashboard');
+})->middleware('auth');
 
 Route::get('/profil', function () {
     return view('themes.profil');
@@ -66,13 +69,17 @@ Route::get('/detail-penerima/{id}', [PenerimaController::class, 'show'])->name('
 
 
 // ==========================================
-Route :: resource('/kelola_jenis',JMakananController::class);
+Route :: resource('/kelola_jenis',JMakananController::class)->middleware('auth');
 
-Route :: resource('/donasi',DonasiController::class);
+Route :: resource('/donasi',DonasiController::class)->middleware('auth');
 
-Route :: resource('/donatur',DonaturController::class);
+Route :: resource('/donatur',DonaturController::class)->middleware('auth');
 
-Route :: resource('/penerima',PenerimaController::class);
+Route :: resource('/penerima',PenerimaController::class)->middleware('auth');
 
+// web.php
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
