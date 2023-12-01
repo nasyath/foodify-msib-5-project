@@ -37,30 +37,49 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
-                <!-- dashboard admin  -->
+                <!-- Admin  -->
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('admin.dashboard') }}" data-key="t-ecommerce">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+                <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
+                    <a href="javascript: void(0);">
+                        <i class="icon nav-icon" data-eva="people-outline"></i>
+                        <span class="menu-item" data-key="t-dashboards">Admin</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li class="@if (Route::currentRouteName() == 'jenis_makanan') active @endif">
+                            <a href="{{ url('/jenis_makanan') }}" data-key="t-ecommerce">
+                                <i class="fas fa-utensils" data-eva="grid-outline"></i>
+                                <span class="menu-item" data-key="t-ecommerce">Jenis Makanan</span>
+                            </a>
+                        </li>
 
-                <!-- dashboard donatur  -->
+                        <li class="@if (Route::currentRouteName() == 'kelola_users') active @endif">
+                            <a href="{{ route('admin.kelola_users') }}" data-key="t-ecommerce">
+                                <i class="fas fa-users-cog" data-eva="grid-outline"></i>
+                                <span class="menu-item" data-key="t-ecommerce">Kelola Users</span>
+                            </a>
+                        </li>
+
+                        <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
+                            <a href="{{ route('admin.history_donasi') }}" data-key="t-ecommerce">
+                                <i class="fas fa-folder-open" data-eva="grid-outline"></i>
+                                <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Donatur  -->
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('donatur.dashboard') }}" data-key="t-ecommerce">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
-
-                <!-- dashboard penerima  -->
-                <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
-                    <a href="{{ route('penerima.dashboard') }}" data-key="t-ecommerce">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
-                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
-                    </a>
-                </li>
-
 
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
                     <a href="javascript: void(0);">
@@ -74,27 +93,29 @@
                     </ul>
                 </li>
 
+                <!-- Penerima  -->
+                <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
+                    <a href="{{ route('penerima.dashboard') }}" data-key="t-ecommerce">
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>
+                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
+                    </a>
+                </li>
+
+
+                <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
+                    <a href="javascript: void(0);">
+                        <i class="icon nav-icon" data-eva="people-outline"></i>
+                        <span class="menu-item" data-key="t-dashboards">Penerima</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#" data-key="t-ecommerce">Donasi</a></li>
+                        <li><a href="#" data-key="t-crypto">History</a></li>
+                        <li><a href="#" data-key="t-saas">Profile Organisasi</a></li>
+                    </ul>
+                </li>
+
                 <!-- menu untuk admin  -->
-                <li class="@if (Route::currentRouteName() == 'jenis_makanan') active @endif">
-                    <a href="{{ url('/jenis_makanan') }}" data-key="t-ecommerce">
-                        <i class="fas fa-utensils" data-eva="grid-outline"></i>    
-                        <span class="menu-item" data-key="t-ecommerce">Jenis Makanan</span>
-                    </a>
-                </li>
 
-                <li class="@if (Route::currentRouteName() == 'kelola_users') active @endif">
-                    <a href="{{ route('admin.kelola_users') }}" data-key="t-ecommerce">
-                        <i class="fas fa-users-cog" data-eva="grid-outline"></i>    
-                        <span class="menu-item" data-key="t-ecommerce">Kelola Users</span>
-                    </a>
-                </li>
-
-                <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
-                    <a href="#" data-key="t-ecommerce">
-                        <i class="fas fa-folder-open" data-eva="grid-outline"></i>    
-                        <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
-                    </a>
-                </li>
 
 
             </ul>

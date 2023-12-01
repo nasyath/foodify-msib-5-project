@@ -6,7 +6,7 @@ $no = 1;
 @endphp
 <div class="page-content" align="left">
     <div class="container-fluid" style="padding:0px 50px 0px 50px">
-        <h3>Kelola User</h3>
+        <h3>Kelola Users</h3>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">
                 <i class="fas fa-home"></i>

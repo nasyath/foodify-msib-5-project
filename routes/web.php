@@ -25,9 +25,14 @@ Route::get('/', function () {
 Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
+
 Route::get('/kelola_users', function () {
-    return view('admin.kelola_users.index');
+    return view('admin.kelola_users');
 })->name('admin.kelola_users');
+
+Route::get('/history_donasi', function () {
+    return view('admin.history_donasi');
+})->name('admin.history_donasi');
 
 // ==========================================
 // DONATUR
