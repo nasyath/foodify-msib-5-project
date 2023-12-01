@@ -85,11 +85,19 @@
                         <span class="menu-item" data-key="t-dashboards">Admin</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('kelola_jenis.index') }}" data-key="t-ecommerce">Jenis Makanan</a></li> </ul>
+                        <li><a href="{{ route('kelola_jenis.index') }}" data-key="t-ecommerce">Jenis Makanan</a></li>
+                        <li><a href="{{ route('kelola_donatur') }}" data-key="t-ecommerce">Kelola Data Donatur</a></li>
+                    </ul>
                 </li>
 
                 <!-- menu untuk admin  -->
- 
+
+                <!-- <li class="@if (Route::currentRouteName() == '//') active @endif">
+                    
+                        <i class="fas fa-users-cog" data-eva="grid-outline"></i>    
+                        <span class="menu-item" data-key="t-ecommerce">Kelola Data Donatur</span>
+                    </a>
+                </li> -->
 
                 <li class="@if (Route::currentRouteName() == 'kelola_user') active @endif">
                     <a href="#" data-key="t-ecommerce">
