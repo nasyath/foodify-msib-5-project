@@ -8,28 +8,28 @@
             if (t) {
                 switch (a) {
                     case "eng":
-                        t.src = "assets/images/flags/us.jpg";
+                        t.src = "backend/assets/images/flags/us.jpg";
                         break;
                     case "sp":
-                        t.src = "assets/images/flags/spain.jpg";
+                        t.src = "backend/assets/images/flags/spain.jpg";
                         break;
                     case "gr":
-                        t.src = "assets/images/flags/germany.jpg";
+                        t.src = "backend/assets/images/flags/germany.jpg";
                         break;
                     case "it":
-                        t.src = "assets/images/flags/italy.jpg";
+                        t.src = "backend/assets/images/flags/italy.jpg";
                         break;
                     case "ru":
-                        t.src = "assets/images/flags/russia.jpg";
+                        t.src = "backend/assets/images/flags/russia.jpg";
                         break;
                     default:
-                        t.src = "assets/images/flags/us.jpg";
+                        t.src = "backend/assets/images/flags/us.jpg";
                 }
                 localStorage.setItem("language", a),
                     null == (s = localStorage.getItem("language")) && o(n),
                     (e = new XMLHttpRequest()).open(
                         "GET",
-                        "/assets/lang/" + s + ".json"
+                        "backend/assets/lang/" + s + ".json"
                     ),
                     (e.onreadystatechange = function () {
                         var a;
