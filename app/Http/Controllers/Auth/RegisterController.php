@@ -80,9 +80,9 @@ public function register(Request $request)
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:8|confirmed',
         'role' => 'required|string|in:donatur,penerima',
-        'alamat' => 'required_if:role,penerima|string|max:255',
+        'alamat' => 'required|string|max:255',
         'no_hp' => 'required|string|max:255',
-        'deskripsi' => 'required_if:role,donatur|string|max:255',
+        'deskripsi' => 'required|string|max:255',
         'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
     ]);
 
