@@ -96,7 +96,8 @@ public function register(Request $request)
     if ($request->hasFile('foto')) {
         try {
             // Store the file and get the path
-            $path = $request->file('foto')->store('backend/assets/images/users', 'public');
+            $path = 'backend/assets/images/users/' . $request->file('foto')->getClientOriginalName();
+            $request->file('foto')->move(public_path('backend/assets/images/users'), $path);
         } catch (\Exception $e) {
             return back()->withErrors(['foto' => $e->getMessage()])->withInput();
         }
