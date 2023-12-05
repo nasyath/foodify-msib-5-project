@@ -69,3 +69,6 @@ Route :: resource('/jenis_makanan',JMakananController::class);
 Route :: resource('/donasi',DonasiController::class);
 // Auth::routes();
  
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
