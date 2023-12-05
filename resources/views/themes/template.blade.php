@@ -21,7 +21,7 @@
     <!-- data tables -->
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="{{ asset('backend/assets/css/startbootstrap/styles.css ') }}" rel="stylesheet" />
+    <link href="{{ asset('backend/assets/css/startbootstrap/styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 </head>
@@ -94,6 +94,11 @@
     <script src="{{ asset('backend/assets/js/pages/gridjs.init.js') }}"></script>
 
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- data tables || startbootstrap -->
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>

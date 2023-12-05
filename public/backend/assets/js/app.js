@@ -8,28 +8,28 @@
             if (t) {
                 switch (a) {
                     case "eng":
-                        t.src = "assets/images/flags/us.jpg";
+                        t.src = "backend/assets/images/flags/us.jpg";
                         break;
                     case "sp":
-                        t.src = "assets/images/flags/spain.jpg";
+                        t.src = "backend/assets/images/flags/spain.jpg";
                         break;
                     case "gr":
-                        t.src = "assets/images/flags/germany.jpg";
+                        t.src = "backend/assets/images/flags/germany.jpg";
                         break;
                     case "it":
-                        t.src = "assets/images/flags/italy.jpg";
+                        t.src = "backend/assets/images/flags/italy.jpg";
                         break;
                     case "ru":
-                        t.src = "assets/images/flags/russia.jpg";
+                        t.src = "backend/assets/images/flags/russia.jpg";
                         break;
                     default:
-                        t.src = "assets/images/flags/us.jpg";
+                        t.src = "backend/assets/images/flags/us.jpg";
                 }
                 localStorage.setItem("language", a),
                     null == (s = localStorage.getItem("language")) && o(n),
                     (e = new XMLHttpRequest()).open(
                         "GET",
-                        "/assets/lang/" + s + ".json"
+                        "backend/assets/lang/" + s + ".json"
                     ),
                     (e.onreadystatechange = function () {
                         var a;
@@ -129,13 +129,13 @@
                                 .getElementById("bootstrap-style")
                                 .setAttribute(
                                     "href",
-                                    "backend/assets/css/bootstrap.min.css"
+                                    "/backend/assets/css/bootstrap.min.css"
                                 ),
                             document
                                 .getElementById("app-style")
                                 .setAttribute(
                                     "href",
-                                    "backend/assets/css/app.min.css"
+                                    "/backend/assets/css/app.min.css"
                                 ),
                             sessionStorage.setItem(
                                 "is_visited",
@@ -152,13 +152,13 @@
                                 .getElementById("bootstrap-style")
                                 .setAttribute(
                                     "href",
-                                    "assets/css/bootstrap-rtl.min.css"
+                                    "backend/assets/css/bootstrap-rtl.min.css"
                                 ),
                             document
                                 .getElementById("app-style")
                                 .setAttribute(
                                     "href",
-                                    "assets/css/app-rtl.min.css"
+                                    "backend/assets/css/app-rtl.min.css"
                                 ),
                             document
                                 .getElementsByTagName("html")[0]
@@ -574,13 +574,13 @@
                                   .getElementById("bootstrap-style")
                                   .setAttribute(
                                       "href",
-                                      "assets/css/bootstrap.min.css"
+                                      "backend/assets/css/bootstrap.min.css"
                                   ),
                               document
                                   .getElementById("app-style")
                                   .setAttribute(
                                       "href",
-                                      "assets/css/app.min.css"
+                                      "backend/assets/css/app.min.css"
                                   ),
                               sessionStorage.setItem(
                                   "is_visited",
@@ -590,13 +590,13 @@
                                   .getElementById("bootstrap-style")
                                   .setAttribute(
                                       "href",
-                                      "assets/css/bootstrap-rtl.min.css"
+                                      "backend/assets/css/bootstrap-rtl.min.css"
                                   ),
                               document
                                   .getElementById("app-style")
                                   .setAttribute(
                                       "href",
-                                      "assets/css/app-rtl.min.css"
+                                      "backend/assets/css/app-rtl.min.css"
                                   ),
                               document
                                   .getElementsByTagName("html")[0]

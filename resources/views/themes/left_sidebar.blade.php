@@ -80,6 +80,7 @@
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+                @endif
 
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
                     <a href="javascript: void(0);">
@@ -87,8 +88,7 @@
                         <span class="menu-item" data-key="t-dashboards">Donatur</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('eksplor') }}" data-key="t-ecommerce">Eksplor Penerima</a></li>
-                        <li><a href="{{ route('form_donasi') }}" data-key="t-saas">Form Donasi</a></li>
+                        <li><a href="{{ route('eksplorasi_penerima') }}" data-key="t-ecommerce">Eksplor Penerima</a></li>
                         <li><a href="{{ route('proses_donasi') }}" data-key="t-crypto">Proses Donasi</a></li>
                     </ul>
                 </li>

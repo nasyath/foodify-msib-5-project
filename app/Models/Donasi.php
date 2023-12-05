@@ -20,4 +20,12 @@ class Donasi extends Model
     {
         return $this->belongsTo(JMakanan::class);
     }
+    public function donatur(): BelongsTo
+    {
+        return $this->belongsTo(Donatur::class);
+    }
+    public function penerima(): BelongsTo
+    {
+        return $this->belongsTo(Penerima::class);
+    }
 }

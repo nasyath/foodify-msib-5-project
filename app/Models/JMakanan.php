@@ -12,8 +12,8 @@ class JMakanan extends Model
     protected $table = 'tb_jenis_makanan';
     protected $fillable = ['nama_jenis'];
 
-    // public function tb_donasi(): HasMany
-    // {
-    //     return $this->hasMany(Donasi::class);
-    // }
+    public function tb_donasi(): HasMany
+    {
+        return $this->hasMany(Donasi::class);
+     }
 }

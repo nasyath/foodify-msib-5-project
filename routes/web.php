@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Tabuna\Breadcrumbs\Trail;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\JMakananController;
+use App\Http\Controllers\DonaturController;
+use App\Http\Controllers\PenerimaController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\RegisterController;
 
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +21,17 @@ use App\Http\Controllers\JMakananController;
 |
 */
 
-Route::get('/', function () {
+
+// Route get '/' to LandingController@index
+Route::get('/', [LandingController::class, 'index'])->name('landingpage');
+
+Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->middleware('auth');
+
+Route::get('/profil', function () {
+    return view('themes.profil');
+})->name('profil');
 
 // ==========================================
 // ADMIN
@@ -33,6 +46,9 @@ Route::get('/kelola_users', function () {
 Route::get('/history_donasi', function () {
     return view('admin.history_donasi');
 })->name('admin.history_donasi');
+Route::get('/kelola-donatur', function () {
+    return view('admin.kelola_donatur');
+})->name('kelola_donatur');
 
 // ==========================================
 // DONATUR
@@ -44,9 +60,6 @@ Route::get('/donatur-eksplor', function () {
     return view('donatur.eksplor');
 })->name('eksplor');
 
-Route::get('/donatur-detail_penerima', function () {
-    return view('donatur.detail_penerima');
-})->name('detail_penerima');
 
 Route::get('/donatur-form_donasi', function () {
     return view('donatur.form_donasi');
@@ -62,13 +75,23 @@ Route::get('/penerima-dashboard', function () {
     return view('penerima.dashboard');
 })->name('penerima.dashboard');
 
-// ==========================================
-Route :: resource('/jenis_makanan',JMakananController::class);
-// Route :: resource('/kelola_users',UsersController::class);
+Route::get('/eksplorasi-penerima', [PenerimaController::class, 'eksplorasi'])->name('eksplorasi_penerima');
 
-Route :: resource('/donasi',DonasiController::class);
-// Auth::routes();
- 
+Route::get('/detail-penerima/{id}', [PenerimaController::class, 'show'])->name('detail_penerima');
+
+
+// ==========================================
+Route :: resource('/kelola_jenis',JMakananController::class)->middleware('auth');
+
+Route :: resource('/donasi',DonasiController::class)->middleware('auth');
+
+Route :: resource('/donatur',DonaturController::class)->middleware('auth');
+
+Route :: resource('/penerima',PenerimaController::class)->middleware('auth');
+
+// web.php
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

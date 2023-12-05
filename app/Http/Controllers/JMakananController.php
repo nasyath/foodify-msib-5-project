@@ -51,21 +51,29 @@ class JMakananController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $ar_jmakanan = JMakanan::find($id);
+
+        return view('admin.edit_tambahjenis', compact('ar_jmakanan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'nama_jenis' => 'required|max:255',
+            // Sesuaikan validasi lainnya sesuai kebutuhan
+        ]);
+
+        JMakanan::where('id', $id)->update([
+            'nama_jenis' => $request->nama_jenis,
+            // Sesuaikan kolom lainnya sesuai kebutuhan
+        ]);
+
+        return redirect()->route('kelola_jenis.index')
+                        ->with('success', 'Data Jenis Makanan Berhasil Diubah');
     }
+
 
     /**
      * Remove the specified resource from storage.
