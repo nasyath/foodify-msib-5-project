@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2023 at 03:33 PM
+-- Generation Time: Dec 06, 2023 at 03:54 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.2.4
 
@@ -120,8 +120,6 @@ CREATE TABLE `tb_donasi` (
 --
 
 INSERT INTO `tb_donasi` (`id`, `status`, `tgl_mulai`, `tgl_akhir`, `jumlah`, `foto`, `keterangan`, `id_donatur`, `id_penerima`, `id_makanan`, `created_at`, `updated_at`) VALUES
-(4, 'Diterima', '2023-11-18', '2023-11-20', 10, '', 'Makanan 10 paket', 1, 1, 1, NULL, NULL),
-(5, 'Ditolak', '2023-11-22', '2023-11-23', 5, '', 'makanan', 2, 3, 1, NULL, NULL),
 (6, 'Pending', '2023-11-28', '2023-11-30', 5, '', '10', NULL, NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -137,6 +135,7 @@ CREATE TABLE `tb_donatur` (
   `no_hp` varchar(255) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
   `foto` varchar(255) DEFAULT NULL,
+  `users_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -145,14 +144,12 @@ CREATE TABLE `tb_donatur` (
 -- Dumping data for table `tb_donatur`
 --
 
-INSERT INTO `tb_donatur` (`id`, `nama_donatur`, `alamat`, `no_hp`, `deskripsi`, `foto`, `created_at`, `updated_at`) VALUES
-(1, 'Irgi Rama', 'Bogor', '08989482924', 'Organisasi pembantu keluarga miskin', '', NULL, NULL),
-(2, 'PT. Aspor', 'Jakarta', '089453895833', 'Membantu anak yatim dan dhuafa', '', NULL, NULL),
-(3, 'hezkia', 'Perumahan Grand Kahuripan Cluster Merapi no:IA38 Kec.Klapanunggal', '0892839223', 'Bogor kota hebat', NULL, NULL, NULL),
-(4, 'bambang', 'Jakarta', '08928392343', 'Punya 100 makanan', NULL, NULL, NULL),
-(5, 'anggi', 'Jakarta', '0892839343', 'Menerima Santunan anak Yatim', NULL, NULL, NULL),
-(9, 'irgi sulistio', 'Perumahan Grand Kahuripan Cluster Merapi no:IA38 Kec.Klapanunggal', '08928392342', 'Memberikan makanan', 'backend/assets/images/users/yxjyMye3JjJT1eh2UZeDVK6wInF6pJJ8jMBjoWrr.jpg', NULL, NULL),
-(10, 'tio', 'Perumahan Grand Kahuripan Cluster Merapi no:IA38 Kec.Klapanunggal', '08928392342', 'Memberikan uang dan makanan', 'backend/assets/images/users/1PTvEZyYqSpHWCiFpo34qmyJeX78qnqMWi05gmId.jpg', NULL, NULL);
+INSERT INTO `tb_donatur` (`id`, `nama_donatur`, `alamat`, `no_hp`, `deskripsi`, `foto`, `users_id`, `created_at`, `updated_at`) VALUES
+(10, 'tio', 'Perumahan Grand Kahuripan Cluster Merapi no:IA38 Kec.Klapanunggal', '08928392342', 'Memberikan uang dan makanan', NULL, 14, NULL, NULL),
+(12, 'kopi1', 'kopi', '0892839234', 'kopi', 'backend/assets/images/users/xkg4824bbRCp4NpliAYTKPHwqcn3Ohcp87AHBzce.jpg', 21, NULL, NULL),
+(13, 'kopi2', 'kopi 2', '0892839223', 'kopi 2', 'backend/assets/images/users/Pb72mmXy0xf3D0yGI3oqOyiVmshulL5Nw1lLwvbk.png', 22, NULL, NULL),
+(14, 'nail', 'Bogor', '0892839223', 'Jakarta', 'backend/assets/images/users/paper-background.jpg', 27, NULL, NULL),
+(15, 'Steven', 'Jakarta', '0892839223223', 'Memberikan makanan kepada anak yatim dan dhuafa', 'backend/assets/images/users/latihan sepatu.png', 29, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -190,6 +187,7 @@ CREATE TABLE `tb_penerima` (
   `deskripsi` varchar(255) NOT NULL,
   `status` enum('Open','Close') DEFAULT 'Open',
   `foto` varchar(255) DEFAULT NULL,
+  `users_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -198,16 +196,15 @@ CREATE TABLE `tb_penerima` (
 -- Dumping data for table `tb_penerima`
 --
 
-INSERT INTO `tb_penerima` (`id`, `nama_penerima`, `alamat`, `no_hp`, `deskripsi`, `status`, `foto`, `created_at`, `updated_at`) VALUES
-(1, 'Andi', 'Bogor', '0893821732', 'Membutuhkan untuk keluarga kekurangan', 'Open', '', NULL, NULL),
-(2, 'Kucai', 'Jakarta', '0849389334', 'Keluarga membutuhkan', 'Close', '', NULL, NULL),
-(3, 'Lucy', 'Jakarta', '0983583343', 'Anak membutuhkan', 'Close', '', NULL, NULL),
-(4, 'Poby', 'Jakarta', '08968585675', 'orang fakir', 'Open', '', NULL, NULL),
-(5, 'ucok', 'Bogor', '08928392232', 'Makan butuh', 'Open', NULL, NULL, NULL),
-(6, 'heri', 'Jakarta', '08928392231', 'Menerima Makanan', 'Open', NULL, NULL, NULL),
-(7, 'arap', 'Bekasi', '08928392342', 'Menerima santunan', 'Open', NULL, NULL, NULL),
-(8, 'rama', 'Jakarta', '08928392231', 'Menerima makanan', 'Open', 'backend/assets/images/users/o7uxn5PHpRCrqioqIpeYRwuaDcPMLJwJuKdyGQJU.png', NULL, NULL),
-(9, 'amar', 'Jakarta', '08928392232', 'Menerima santunan', 'Open', 'backend/assets/images/users/aIUHb6GlzOWTwI7Bb2u7a7pGnV0eyzY45Bec9tf8.jpg', NULL, NULL);
+INSERT INTO `tb_penerima` (`id`, `nama_penerima`, `alamat`, `no_hp`, `deskripsi`, `status`, `foto`, `users_id`, `created_at`, `updated_at`) VALUES
+(7, 'arap', 'Bekasi', '08928392342', 'Menerima santunan', 'Open', NULL, 9, NULL, NULL),
+(8, 'rama', 'Jakarta', '08928392231', 'Menerima makanan', 'Open', 'backend/assets/images/users/o7uxn5PHpRCrqioqIpeYRwuaDcPMLJwJuKdyGQJU.png', 15, NULL, NULL),
+(9, 'amar', 'Jakarta', '08928392232', 'Menerima santunan', 'Open', 'backend/assets/images/users/aIUHb6GlzOWTwI7Bb2u7a7pGnV0eyzY45Bec9tf8.jpg', 16, NULL, NULL),
+(10, 'juli', 'Bogor', '0892234223', 'Penerima yang membutuhkan', 'Open', 'backend/assets/images/users/gMSuKlTFWkK7KYXg5yB2MKWExTTY8Gbza8gKqFf7.png', 17, NULL, NULL),
+(11, 'Sucipto', 'Bogor', '08928392342', 'Menerima donasi', 'Open', 'backend/assets/images/users/UOPMQ5u4DwNn3caC5Z0EdWs2fU796C9DB5fuJC8S.jpg', 23, NULL, NULL),
+(12, 'sulis', 'Bogor', '08928392342', 'Menerima makanan', 'Open', NULL, 24, NULL, NULL),
+(14, 'Huri', 'Bogor', '08928392231', 'Menerima makanan', 'Open', NULL, 26, NULL, NULL),
+(15, 'Guritno', 'Bekasi', '089283923422', 'Menerima makanan sehat', 'Open', 'backend/assets/images/users/29e522e01dbcedeaf93a820681f653df.png', 28, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -221,8 +218,6 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('Admin','Donatur','Penerima') NOT NULL DEFAULT 'Donatur',
-  `penerima_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `donatur_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -231,13 +226,21 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `password`, `role`, `penerima_id`, `donatur_id`, `created_at`, `updated_at`) VALUES
-(1, 'admin@gmail.com', 'admin', '$2y$12$lZoJtCouwek5tOmjWRKEkOGopIAxKmdVhDEFxFWihn3xESZcztfdK', 'Admin', NULL, NULL, '2023-12-01 06:24:14', '2023-12-01 06:24:14'),
-(9, 'arap@gmail.com', 'arap', '$2y$12$.9qJI9cfiWOwyaoBL1Rp.uCCuWpyqtDSwsX65V.ok3PEumn7qpude', 'Penerima', 7, NULL, '2023-12-01 06:19:37', '2023-12-01 06:19:37'),
-(13, 'irgisulistio@gmail.com', 'irgi sulistio', '$2y$12$vuxYrLhg4ykV9HFl0FDJ6u5lZuNlAIxv6Fzq758l4s7w/.ZDZ92ji', 'Donatur', NULL, 9, '2023-12-01 06:47:56', '2023-12-01 06:47:56'),
-(14, 'tio@gmail.com', 'tio', '$2y$12$VtmZa5DqLT49okectYyxJuH4aFI9dxORaHs4JAakrXV7G8Vm/dVui', 'Donatur', NULL, 10, '2023-12-01 06:55:59', '2023-12-01 06:55:59'),
-(15, 'rama@gmail.com', 'rama', '$2y$12$WhpEqwlTOsRMTTP1NdVxAes7FI5zP7x8VJ0c8AZ9RBtJH2TXa3IxK', 'Penerima', 8, NULL, '2023-12-01 07:02:11', '2023-12-01 07:02:11'),
-(16, 'amar@gmail.com', 'amar', '$2y$12$drgmotpgVMVsE99khIwBBOO/30IdE7aAAA/Kmb9Sr.RfoIy1UAuwy', 'Penerima', 9, NULL, '2023-12-01 07:05:42', '2023-12-01 07:05:42');
+INSERT INTO `users` (`id`, `email`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'admin@gmail.com', 'admin', '$2y$12$lZoJtCouwek5tOmjWRKEkOGopIAxKmdVhDEFxFWihn3xESZcztfdK', 'Admin', '2023-12-01 06:24:14', '2023-12-01 06:24:14'),
+(9, 'arap@gmail.com', 'arap', '$2y$12$.9qJI9cfiWOwyaoBL1Rp.uCCuWpyqtDSwsX65V.ok3PEumn7qpude', 'Penerima', '2023-12-01 06:19:37', '2023-12-01 06:19:37'),
+(14, 'tio@gmail.com', 'tio', '$2y$12$VtmZa5DqLT49okectYyxJuH4aFI9dxORaHs4JAakrXV7G8Vm/dVui', 'Donatur', '2023-12-01 06:55:59', '2023-12-01 06:55:59'),
+(15, 'rama@gmail.com', 'rama', '$2y$12$WhpEqwlTOsRMTTP1NdVxAes7FI5zP7x8VJ0c8AZ9RBtJH2TXa3IxK', 'Penerima', '2023-12-01 07:02:11', '2023-12-01 07:02:11'),
+(16, 'amar@gmail.com', 'amar', '$2y$12$drgmotpgVMVsE99khIwBBOO/30IdE7aAAA/Kmb9Sr.RfoIy1UAuwy', 'Penerima', '2023-12-01 07:05:42', '2023-12-01 07:05:42'),
+(17, 'juli@gmail.com', 'juli', '$2y$12$8HARzOipbFh0th4Gpu66qe4ZrxiXm26LzYeUwnXp0HxeCnsBa3.cO', 'Penerima', '2023-12-03 09:12:57', '2023-12-03 09:12:57'),
+(21, 'kopi1@gmail.com', 'kopi1', '$2y$12$mjlwRvYRorv5qimSNNXwBOCYXbutCf0LD8yNBRy3hi8ChFOQvd66C', 'Donatur', '2023-12-04 00:59:33', '2023-12-04 00:59:33'),
+(22, 'kopi2@gmail.com', 'kopi2', '$2y$12$oOfEp8he8jSv4ldzZhE4EO91328touGpPCxe8M29ZX4ozhTptv0hq', 'Donatur', '2023-12-04 01:23:22', '2023-12-04 01:23:23'),
+(23, 'sucipto@gmail.com', 'Sucipto', '$2y$12$yCaBAh0YXK7.URGTVGBD3uPOV3VqWWzMxKG01IEa/wBbBVFVWjS3a', 'Penerima', '2023-12-04 01:28:56', '2023-12-04 01:28:56'),
+(24, 'sulis@gmail.com', 'sulis', '$2y$12$Q33IynFFkJciH/Ort7yqKuExRTdNnijefDmqEolzNoyULWsXY3l2S', 'Penerima', '2023-12-04 02:17:59', '2023-12-04 02:17:59'),
+(26, 'huri@gmail.com', 'Huri', '$2y$12$O3HEXqBb1RYdH0KqifX6OuCPcvcnbmfxO0FcjXp37xRm2gzNKabSq', 'Penerima', '2023-12-04 02:35:46', '2023-12-04 02:35:46'),
+(27, 'nail@gmail.com', 'nail', '$2y$12$kpRHS9Huj5sxFAbm2NP9WOZsUbMY3TR0kkNe0nW0D/qiX/a1WFC2i', 'Donatur', '2023-12-04 02:54:46', '2023-12-04 02:54:46'),
+(28, 'guritno@gmail.com', 'Guritno', '$2y$12$zFZ5iWsy1i.6yhQ/eGtEz.KcBXNI6.r8ZE1mu.6Nj0L5lxNQQcDj.', 'Penerima', '2023-12-04 03:21:59', '2023-12-04 03:21:59'),
+(29, 'steven@gmail.com', 'Steven', '$2y$12$6rK8ywJFPFJ845nhAKANAe1q.uqVy86IcDSzA4nSnDYf0rlvEkj5O', 'Donatur', '2023-12-05 19:51:55', '2023-12-05 19:51:55');
 
 --
 -- Indexes for dumped tables
@@ -283,7 +286,8 @@ ALTER TABLE `tb_donasi`
 -- Indexes for table `tb_donatur`
 --
 ALTER TABLE `tb_donatur`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `users_id` (`users_id`);
 
 --
 -- Indexes for table `tb_jenis_makanan`
@@ -295,16 +299,15 @@ ALTER TABLE `tb_jenis_makanan`
 -- Indexes for table `tb_penerima`
 --
 ALTER TABLE `tb_penerima`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `users_id` (`users_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD KEY `donatur_id` (`donatur_id`),
-  ADD KEY `penerima_id` (`penerima_id`);
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -338,7 +341,7 @@ ALTER TABLE `tb_donasi`
 -- AUTO_INCREMENT for table `tb_donatur`
 --
 ALTER TABLE `tb_donatur`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_jenis_makanan`
@@ -350,13 +353,13 @@ ALTER TABLE `tb_jenis_makanan`
 -- AUTO_INCREMENT for table `tb_penerima`
 --
 ALTER TABLE `tb_penerima`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
@@ -371,11 +374,16 @@ ALTER TABLE `tb_donasi`
   ADD CONSTRAINT `tb_donasi_id_penerima_foreign` FOREIGN KEY (`id_penerima`) REFERENCES `tb_penerima` (`id`);
 
 --
--- Constraints for table `users`
+-- Constraints for table `tb_donatur`
 --
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`donatur_id`) REFERENCES `tb_donatur` (`id`),
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`penerima_id`) REFERENCES `tb_penerima` (`id`);
+ALTER TABLE `tb_donatur`
+  ADD CONSTRAINT `tb_donatur_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `tb_penerima`
+--
+ALTER TABLE `tb_penerima`
+  ADD CONSTRAINT `tb_penerima_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
