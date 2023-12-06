@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string'], // Sesuaikan dengan kebutuhan validasi role
+            'role' => ['required', 'string', 'in:donatur,penerima'], // Sesuaikan dengan kebutuhan validasi role
         ]);
     }
 
@@ -108,24 +108,22 @@ public function register(Request $request)
 
     if ($data['role'] === 'donatur') {
         $donatur = Donatur::create([
-            'id' => $user->id,
             'nama_donatur' => $data['name'],
             'alamat' => $data['alamat'],
             'no_hp' => $data['no_hp'],
             'deskripsi' => $data['deskripsi'],
             'foto' => $path,
+            'users_id' => $user->id,
         ]);
-        $user->donatur_id = $donatur->id;
     } elseif ($data['role'] === 'penerima') {       
         $penerima = Penerima::create([
-            'id' => $user->id,
             'nama_penerima' => $data['name'],
             'alamat' => $data['alamat'],
             'no_hp' => $data['no_hp'],
             'deskripsi' => $data['deskripsi'],
             'foto' => $path,
+            'users_id' => $user->id,
         ]);
-        $user->penerima_id = $penerima->id;
     }
 
     $user->save();
