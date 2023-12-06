@@ -65,7 +65,7 @@
                         </li>
 
                         <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
-                            <a href="#" data-key="t-ecommerce">
+                            <a href="{{ url('/history_donasi') }}" data-key="t-ecommerce">
                                 <i class="fas fa-folder-open" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
                             </a>

@@ -13,17 +13,6 @@ class KelolaUsersController extends Controller
 {
     public function index()
     {
-        // $data = DB::table('tb_penerima')
-        //     ->join('users', 'users.id', '=', 'tb_penerima.users_id')
-        //     ->select('users.email', 'users.role', 'tb_penerima.nama_penerima AS Organisasi');
-
-        // $data2 = DB::table('tb_donatur')
-        //     ->join('users', 'users.id', '=', 'tb_donatur.users_id')
-        //     ->select('users.email', 'users.role', 'tb_donatur.nama_donatur AS Organisasi')
-        //     ->union($data)
-        //     ->get();
-
-        // return view('kelola_users', ['data' => $data2]);
         $ar_penerima = Penerima::select('users.id', 'users.email', 'users.role', 'tb_penerima.nama_penerima AS organisasi', 'tb_penerima.created_at AS waktu_pembuatan')
             ->join('users', 'users.id', '=', 'tb_penerima.users_id')
             ->orderBy('tb_penerima.created_at', 'desc');

@@ -29,29 +29,21 @@ $no = 1;
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($ar_history as $hd)
                         <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $hd->nama_donatur }}</td>
+                            <td>{{ $hd->tgl_mulai }}</td>
+                            <td>{{ $hd->tgl_akhir }}</td>
+                            <td>{{ $hd->nama_penerima }}</td>
+                            <td>{{ $hd->status }}</td>
                             <td>
-                                <form method="POST" action="{{ route('kelola_jenis.destroy', $jm->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a class="btn btn-warning btn-sm" href="{{ route('kelola_jenis.edit', $jm->id) }}" title="Ubah Jenis Makanan">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <button type="submit" class="btn btn-danger btn-sm show-alert-delete-box" title="Hapus Jenis Makanan">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                                <!--a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">
+                                <a class="btn btn-info btn-sm" href="#" title="Detail Donasi">
                                     <i class="far fa-file-alt" style="width:16px;height:16px"></i>
                                 </a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
