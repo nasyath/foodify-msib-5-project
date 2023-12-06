@@ -50,22 +50,22 @@
                         <span class="menu-item" data-key="t-dashboards">Admin</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li class="@if (Route::currentRouteName() == 'jenis_makanan') active @endif">
-                            <a href="{{ url('/jenis_makanan') }}" data-key="t-ecommerce">
+                        <li class="@if (Route::currentRouteName() == 'kelola_jenis_makanan') active @endif">
+                            <a href="{{ url('/kelola_jenis_makanan') }}" data-key="t-ecommerce">
                                 <i class="fas fa-utensils" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-ecommerce">Jenis Makanan</span>
                             </a>
                         </li>
 
                         <li class="@if (Route::currentRouteName() == 'kelola_users') active @endif">
-                            <a href="{{ route('admin.kelola_users') }}" data-key="t-ecommerce">
+                            <a href="{{ url('/kelola_users') }}" data-key="t-ecommerce">
                                 <i class="fas fa-users-cog" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-ecommerce">Kelola Users</span>
                             </a>
                         </li>
 
                         <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
-                            <a href="{{ route('admin.history_donasi') }}" data-key="t-ecommerce">
+                            <a href="#" data-key="t-ecommerce">
                                 <i class="fas fa-folder-open" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
                             </a>
@@ -80,7 +80,6 @@
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
-                @endif
 
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
                     <a href="javascript: void(0);">

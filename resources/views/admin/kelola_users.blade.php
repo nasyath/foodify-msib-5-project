@@ -1,7 +1,7 @@
 @extends('themes.template')
 @section('content')
 @php
-$ar_judul = ['No','Username','Email','Nama Organisasi','Aksi'];
+$ar_judul = ['No','Email','Role', 'Nama Organisasi','Aksi'];
 $no = 1;
 @endphp
 <div class="page-content" align="left">
@@ -14,9 +14,21 @@ $no = 1;
             </li>
             <li class="breadcrumb-item active">Kelola Users</li>
         </ol>
-        <button type="button" class="btn btn-primary mb-2 waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Tambah">
+        <div>
+            @if($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
+            @if($message = Session::get('error'))
+            <div class="alert alert-danger">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
+        </div>
+        <a href="{{ route('register') }}" type="button" class="btn btn-primary mb-2 waves-effect waves-light" title="Tambah User">
             Tambah
-        </button>
+        </a>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -32,45 +44,26 @@ $no = 1;
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($ar_donatur as $d)
                         <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $d->email }}</td>
+                            <td>{{ $d->role }}</td>
+                            <td>{{ $d->organisasi }}</td>
                             <td>
-                                <a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">
-                                    <i class="far fa-file-alt" style="width:16px;height:16px"></i>
-                                </a>
+                                <form method="POST" action="{{ route('kelola_users.destroy', $d->id) }}">
+                                    <a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">
+                                        <i class="far fa-file-alt" style="width:16px;height:16px"></i>
+                                    </a>
 
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editData" title="Edit">
-                                    <i class="fas fa-pen" style="width:16px;height:16px"></i>
-                                </button>
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus User">
+                                        <i class="fas fa-trash" style="width:16px;height:16px"></i>
+                                    </button>
+                                </form>
 
-                                <!-- Modal Tambah Data -->
-                                <div class="modal fade" id="editData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editDataLabel">Tambah Jenis Makanan</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                sdfghj
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus Jenis Makanan">
-                                    <i class="fas fa-trash" style="width:16px;height:16px"></i>
-                                </button>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

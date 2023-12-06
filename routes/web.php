@@ -8,8 +8,8 @@ use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\PenerimaController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\KelolaUsersController;
 
- 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,16 +39,6 @@ Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
-Route::get('/kelola_users', function () {
-    return view('admin.kelola_users');
-})->name('admin.kelola_users');
-
-Route::get('/history_donasi', function () {
-    return view('admin.history_donasi');
-})->name('admin.history_donasi');
-Route::get('/kelola-donatur', function () {
-    return view('admin.kelola_donatur');
-})->name('kelola_donatur');
 
 // ==========================================
 // DONATUR
@@ -81,7 +71,9 @@ Route::get('/detail-penerima/{id}', [PenerimaController::class, 'show'])->name('
 
 
 // ==========================================
-Route :: resource('/kelola_jenis',JMakananController::class)->middleware('auth');
+Route :: resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
+
+Route :: resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
 
 Route :: resource('/donasi',DonasiController::class)->middleware('auth');
 

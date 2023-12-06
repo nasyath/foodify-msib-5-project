@@ -14,12 +14,6 @@ $no = 1;
             </li>
             <li class="breadcrumb-item active">History Donasi</li>
         </ol>
-<<<<<<< HEAD:resources/views/admin/history_donasi.blade.php
-=======
-        <a href="{{ route('kelola_jenis.create') }}" class="btn btn-primary" title="Tambah Data" style="margin-bottom: 10px;">
-            Tambah
-        </a>
->>>>>>> edb886a2e41d6fc6f78a6de9d6e59a9f452c1872:resources/views/admin/kelola_jmakanan.blade.php
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -55,12 +49,7 @@ $no = 1;
                                 </form>
                                 <!--a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">
                                     <i class="far fa-file-alt" style="width:16px;height:16px"></i>
-<<<<<<< HEAD:resources/views/admin/history_donasi.blade.php
                                 </a>
-=======
-                                </a-->
-
->>>>>>> edb886a2e41d6fc6f78a6de9d6e59a9f452c1872:resources/views/admin/kelola_jmakanan.blade.php
                             </td>
                         </tr>
                     </tbody>

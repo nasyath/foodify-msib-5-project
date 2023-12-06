@@ -41,7 +41,7 @@ $no = 1;
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" >
-                        <form class="row g-3" method="POST" action="{{ route('jenis_makanan.store') }}">
+                        <form class="row g-3" method="POST" action="{{ route('kelola_jenis_makanan.store') }}">
                             @csrf
                             <div class="row mt-2">
                                 <div class="col">
@@ -80,7 +80,7 @@ $no = 1;
                             <td>{{ $no++ }}</td>
                             <td>{{ $jm->nama_jenis }}</td>
                             <!-- <td>
-                                <form method="POST" action="{{ route('jenis_makanan.destroy', $jm->id) }}">
+                                <form method="POST" action="{{ route('kelola_jenis_makanan.destroy', $jm->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn btn-info btn-sm" href="#" title="Detail Jenis Makanan">

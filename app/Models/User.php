@@ -21,8 +21,6 @@ class User extends Authenticatable
         'username',
         'password',
         'role',
-        'donatur_id', // tambahkan field untuk id donatur
-        'penerima_id', // tambahkan field untuk id penerima
     ];
 
     /**
@@ -48,12 +46,12 @@ class User extends Authenticatable
     // Definisikan relasi dengan Donatur
     public function donatur()
     {
-        return $this->belongsTo(Donatur::class, 'donatur_id');
+        return $this->hasOne(Donatur::class, 'donatur_id');
     }
 
     // Definisikan relasi dengan Penerima
     public function penerima()
     {
-        return $this->belongsTo(Penerima::class, 'penerima_id');
+        return $this->hasOne(Penerima::class, 'penerima_id');
     }
 }
