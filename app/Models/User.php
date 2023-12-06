@@ -46,12 +46,12 @@ class User extends Authenticatable
     // Definisikan relasi dengan Donatur
     public function donatur()
     {
-        return $this->belongsTo(Donatur::class);
+        return $this->hasOne(Donatur::class);
     }
 
     // Definisikan relasi dengan Penerima
     public function penerima()
     {
-        return $this->belongsTo(Penerima::class);
+        return $this->hasOne(Penerima::class);
     }
 }

@@ -95,16 +95,19 @@ public function register(Request $request)
     ]);
     if ($request->hasFile('foto')) {
         try {
+            $extension = $request->file('foto')->getClientOriginalExtension();
+            $filename = 'user_photo_' . time() . '.' . $extension;
+            
             // Store the file and get the path
-            $path = 'backend/assets/images/users/' . $request->file('foto')->getClientOriginalName();
-            $request->file('foto')->move(public_path('backend/assets/images/users'), $path);
+            $path = 'backend/assets/images/users/' . $filename;
+            $request->file('foto')->move(public_path('backend/assets/images/users'), $filename);
         } catch (\Exception $e) {
             return back()->withErrors(['foto' => $e->getMessage()])->withInput();
         }
     } else {
         // If no file is uploaded, set $path to null or any default value you want
         $path = null;
-    }
+    }    
 
     if ($data['role'] === 'donatur') {
         $donatur = Donatur::create([
