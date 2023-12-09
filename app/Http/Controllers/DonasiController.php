@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Donasi; //panggil model
-use App\Models\Donatur; //panggil model
 use App\Models\Penerima; //panggil model
 use App\Models\JMakanan; //panggil model
 use App\Models\User; //panggil model
