@@ -41,7 +41,7 @@
                 @if( Auth::user()->role == 'Admin')
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('admin.dashboard') }}" data-key="t-ecommerce">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
@@ -51,7 +51,7 @@
                 @if( Auth::user()->role == 'Donatur')
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('donatur.dashboard') }}" data-key="t-ecommerce">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
@@ -61,7 +61,7 @@
                 @if( Auth::user()->role == 'Penerima')
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('penerima.dashboard') }}" data-key="t-ecommerce">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
+                        <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
@@ -79,7 +79,7 @@
                     </ul>
                 </li>
                 @endif
-               
+
 
                 @if( Auth::user()->role == 'Penerima')
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
@@ -110,22 +110,22 @@
                 <!-- menu untuk admin  -->
 
                 <!-- <li class="@if (Route::currentRouteName() == '//') active @endif">
-                    
-                        <i class="fas fa-users-cog" data-eva="grid-outline"></i>    
+
+                        <i class="fas fa-users-cog" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-ecommerce">Kelola Data Donatur</span>
                     </a>
                 </li> -->
                 @if( Auth::user()->role == 'Admin')
                 <li class="@if (Route::currentRouteName() == 'kelola_user') active @endif">
                     <a href="#" data-key="t-ecommerce">
-                        <i class="fas fa-users-cog" data-eva="grid-outline"></i>    
+                        <i class="fas fa-users-cog" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-ecommerce">Kelola Users</span>
                     </a>
                 </li>
 
                 <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
                     <a href="#" data-key="t-ecommerce">
-                        <i class="fas fa-folder-open" data-eva="grid-outline"></i>    
+                        <i class="fas fa-folder-open" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
                     </a>
                 </li>
