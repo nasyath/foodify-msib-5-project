@@ -82,16 +82,6 @@
                 </li>
                 @endif
 
-                <!-- dashboard penerima  -->
-                @if( Auth::user()->role == 'Penerima')
-                <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
-                    <a href="{{ route('penerima.dashboard') }}" data-key="t-ecommerce">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>    
-                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
-                    </a>
-                </li>
-                @endif
-
                 @if( Auth::user()->role == 'Donatur')
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
                     <a href="javascript: void(0);">
@@ -105,7 +95,7 @@
                 </li>
                 @endif
                
-
+               <!-- Donatur  -->
                 @if( Auth::user()->role == 'Penerima')
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
                     <a href="javascript: void(0);">
@@ -156,9 +146,7 @@
                     </a>
                 </li>
                 @endif
-
             </ul>
-
         </div>
         <!-- Sidebar -->
 
