@@ -73,16 +73,23 @@
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
-
-                <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
-                    <a href="javascript: void(0);">
+                <li class="@if (Route::currentRouteName() == 'eksplor_penerima') active @endif">
+                    <a href="{{ route('eksplorasi_penerima') }}" data-key="t-ecommerce">
                         <i class="icon nav-icon" data-eva="people-outline"></i>
-                        <span class="menu-item" data-key="t-dashboards">Donatur</span>
+                        <span class="menu-item" data-key="t-ecommerce">Eksplor Penerima</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('eksplorasi_penerima') }}" data-key="t-ecommerce">Eksplor Penerima</a></li>
-                        <li><a href="{{ route('proses_donasi') }}" data-key="t-crypto">Proses Donasi</a></li>
-                    </ul>
+                </li>
+                <li class="@if (Route::currentRouteName() == 'donasi') active @endif">
+                    <a href="{{ route('proses_donasi') }}" data-key="t-ecommerce">
+                        <i class="fas fa-handshake" data-eva="grid-outline"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Donasi</span>
+                    </a>
+                </li>
+                <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
+                    <a href="{{ url('/history_donasi') }}" data-key="t-ecommerce">
+                        <i class="bx bx-server"></i>
+                        <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
+                    </a>
                 </li>
                 @endif
 
@@ -94,24 +101,20 @@
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+                <li class="@if (Route::currentRouteName() == 'donasi') active @endif">
+                    <a href="{{ route('proses_donasi_penerima') }}" data-key="t-ecommerce">
+                        <i class="fas fa-handshake" data-eva="grid-outline"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Donasi</span>
+                    </a>
+                </li>
                 <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
                     <a href="{{ url('/history_donasi') }}" data-key="t-ecommerce">
                         <i class="fas fa-folder-open" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
                     </a>
                 </li>
-                <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
-                    <a href="javascript: void(0);">
-                        <i class="icon nav-icon" data-eva="people-outline"></i>
-                        <span class="menu-item" data-key="t-dashboards">Penerima</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" data-key="t-ecommerce">Profile Organisasi</a></li>
-                        <li><a href="{{ route('proses_donasi_penerima') }}" data-key="t-crypto">Donasi</a></li>
-                        <li><a href="#" data-key="t-crypto">History</a></li>
-                    </ul>
-                </li>
                 @endif
+
                 @if( Auth::user()->role == 'Admin')
                 <li class="@if (Route::currentRouteName() == 'kelola_user') active @endif">
                     <a href="#" data-key="t-ecommerce">
