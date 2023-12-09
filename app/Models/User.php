@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -21,8 +22,6 @@ class User extends Authenticatable
         'username',
         'password',
         'role',
-        'donatur_id', // tambahkan field untuk id donatur
-        'penerima_id', // tambahkan field untuk id penerima
     ];
 
     /**
@@ -48,12 +47,12 @@ class User extends Authenticatable
     // Definisikan relasi dengan Donatur
     public function donatur()
     {
-        return $this->belongsTo(Donatur::class, 'donatur_id');
+        return $this->hasOne(Donatur::class, 'users_id', 'id');
     }
 
     // Definisikan relasi dengan Penerima
     public function penerima()
     {
-        return $this->belongsTo(Penerima::class, 'penerima_id');
+        return $this->hasOne(Penerima::class, 'users_id');
     }
 }

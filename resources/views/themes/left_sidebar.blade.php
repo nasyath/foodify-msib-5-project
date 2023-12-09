@@ -67,7 +67,7 @@
                 </li>
                 @endif
 
-
+                @if( Auth::user()->role == 'Donatur')
                 <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
                     <a href="javascript: void(0);">
                         <i class="icon nav-icon" data-eva="people-outline"></i>
@@ -78,7 +78,23 @@
                         <li><a href="{{ route('proses_donasi') }}" data-key="t-crypto">Proses Donasi</a></li>
                     </ul>
                 </li>
+                @endif
+               
 
+                @if( Auth::user()->role == 'Penerima')
+                <li class="@if (Route::currentRouteName() == 'eksplor') active @endif">
+                    <a href="javascript: void(0);">
+                        <i class="icon nav-icon" data-eva="people-outline"></i>
+                        <span class="menu-item" data-key="t-dashboards">Penerima</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#" data-key="t-ecommerce">Profile</a></li>
+                        <li><a href="{{ route('proses_donasi_penerima') }}" data-key="t-crypto">Undangan Donasi</a></li>
+                    </ul>
+                </li>
+                @endif
+
+                @if( Auth::user()->role == 'Admin')
                 <li class="@if (Route::currentRouteName() == 'kelola_jenis') active @endif">
                     <a href="javascript: void(0);">
                         <i class="icon nav-icon" data-eva="people-outline"></i>
@@ -89,6 +105,7 @@
                         <li><a href="{{ route('kelola_donatur') }}" data-key="t-ecommerce">Kelola Data Donatur</a></li>
                     </ul>
                 </li>
+                @endif
 
                 <!-- menu untuk admin  -->
 
@@ -98,7 +115,7 @@
                         <span class="menu-item" data-key="t-ecommerce">Kelola Data Donatur</span>
                     </a>
                 </li> -->
-
+                @if( Auth::user()->role == 'Admin')
                 <li class="@if (Route::currentRouteName() == 'kelola_user') active @endif">
                     <a href="#" data-key="t-ecommerce">
                         <i class="fas fa-users-cog" data-eva="grid-outline"></i>    
@@ -112,7 +129,7 @@
                         <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
                     </a>
                 </li>
-
+                @endif
 
             </ul>
 

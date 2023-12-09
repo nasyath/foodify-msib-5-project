@@ -50,28 +50,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                         @if ($donasi->status === 'Pending')
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item">
-                                                <a href="{{ route('edit_donasi', $donasi->id) }}" class="btn btn-link text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                                    <i class="bx bx-pen font-size-18"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <form action="{{ route('delete_donasi', $donasi->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus donasi ini?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-link text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                        <i class="bx bx-trash-alt font-size-18"></i>
-                                                    </button>
-                                                </form>
-                                            </li>
-                                        </ul>
-                                        @elseif ($donasi->status === 'Diterima')
-                                        <span class="badge bg-success-subtle text-success  mb-0">Diterima</span>
-                                        @elseif ($donasi->status === 'Ditolak')
-                                        <span class="badge bg-danger-subtle text-danger  mb-0">Ditolak</span>
-                                        @endif
+                                        <a href="{{ route('detail_donasi_penerima', $donasi->id) }}" class="btn btn-link text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail Donasi">
+                                            <span class="badge bg-primary-subtle text-primary  mb-0 " style="font-size: 15px;">Detail</span>
+                                        </a>
+
                                     </td>
                                 </tr>
                                 @endforeach

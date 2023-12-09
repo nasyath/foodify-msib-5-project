@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string'], // Sesuaikan dengan kebutuhan validasi role
+            'role' => ['required', 'string', 'in:donatur,penerima'], // Sesuaikan dengan kebutuhan validasi role
         ]);
     }
 
@@ -80,9 +80,9 @@ public function register(Request $request)
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:8|confirmed',
         'role' => 'required|string|in:donatur,penerima',
-        'alamat' => 'required_if:role,penerima|string|max:255',
+        'alamat' => 'required|string|max:255',
         'no_hp' => 'required|string|max:255',
-        'deskripsi' => 'required_if:role,donatur|string|max:255',
+        'deskripsi' => 'required|string|max:255',
         'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
     ]);
 
@@ -95,36 +95,38 @@ public function register(Request $request)
     ]);
     if ($request->hasFile('foto')) {
         try {
+            $extension = $request->file('foto')->getClientOriginalExtension();
+            $filename = 'user_photo_' . time() . '.' . $extension;
+            
             // Store the file and get the path
-            $path = $request->file('foto')->store('backend/assets/images/users', 'public');
+            $path = 'backend/assets/images/users/' . $filename;
+            $request->file('foto')->move(public_path('backend/assets/images/users'), $filename);
         } catch (\Exception $e) {
             return back()->withErrors(['foto' => $e->getMessage()])->withInput();
         }
     } else {
         // If no file is uploaded, set $path to null or any default value you want
         $path = null;
-    }
+    }    
 
     if ($data['role'] === 'donatur') {
         $donatur = Donatur::create([
-            'id' => $user->id,
             'nama_donatur' => $data['name'],
             'alamat' => $data['alamat'],
             'no_hp' => $data['no_hp'],
             'deskripsi' => $data['deskripsi'],
             'foto' => $path,
+            'users_id' => $user->id,
         ]);
-        $user->donatur_id = $donatur->id;
     } elseif ($data['role'] === 'penerima') {       
         $penerima = Penerima::create([
-            'id' => $user->id,
             'nama_penerima' => $data['name'],
             'alamat' => $data['alamat'],
             'no_hp' => $data['no_hp'],
             'deskripsi' => $data['deskripsi'],
             'foto' => $path,
+            'users_id' => $user->id,
         ]);
-        $user->penerima_id = $penerima->id;
     }
 
     $user->save();
