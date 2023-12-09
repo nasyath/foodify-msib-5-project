@@ -40,9 +40,6 @@ Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
-Route::get('/kelola-donatur', function () {
-    return view('admin.kelola_donatur');
-})->name('kelola_donatur');
 
 // ==========================================
 // DONATUR
@@ -94,7 +91,11 @@ Route::middleware(['auth', 'role:Penerima'])->group(function () {
 
 
 // ==========================================
-Route :: resource('/kelola_jenis',JMakananController::class)->middleware('auth');
+Route :: resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
+
+Route :: resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
+
+Route :: resource('/history_donasi',HistoryDonasiController::class)->middleware('auth');
 
 Route :: resource('/donasi',DonasiController::class)->middleware('auth');
 
