@@ -13,18 +13,18 @@ class Donatur extends Model
     use HasFactory;
     protected $table = 'tb_donatur';
     protected $fillable = [
-        'nama_donatur','alamat','no_hp','deskripsi','foto', 'users_id'
+        'nama_donatur','alamat','no_hp','deskripsi','foto', 'users_id',
     ];
 
     public $timestamps = false;
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
     public function tb_donasi(): HasMany
     {
-        return $this->hasMany(Donasi::class);
+        return $this->hasMany(Donasi::class, 'id_donatur');
     }
 }

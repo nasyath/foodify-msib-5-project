@@ -12,7 +12,7 @@ class Penerima extends Model
     use HasFactory;
     protected $table = 'tb_penerima';
     protected $fillable = [
-        'nama_penerima','alamat','no_hp','deskripsi','status','foto', 'users_id'
+        'nama_penerima','alamat','no_hp','deskripsi','status','foto', 'users_id',
     ];
 
     public $timestamps = false;
@@ -24,6 +24,6 @@ class Penerima extends Model
 
     public function tb_donasi(): HasMany
     {
-        return $this->hasMany(Donasi::class);
+        return $this->hasMany(Donasi::class, 'id_penerima');
      }
 }
