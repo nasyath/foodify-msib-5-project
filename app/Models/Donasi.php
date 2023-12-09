@@ -18,14 +18,14 @@ class Donasi extends Model
 
     public function jmakanan(): BelongsTo
     {
-        return $this->belongsTo(JMakanan::class);
+        return $this->belongsTo(JMakanan::class, 'id_makanan');
     }
     public function donatur(): BelongsTo
     {
-        return $this->belongsTo(Donatur::class);
+        return $this->belongsTo(Donatur::class, 'id_donatur');
     }
     public function penerima(): BelongsTo
     {
-        return $this->belongsTo(Penerima::class);
+        return $this->belongsTo(Penerima::class, 'id_penerima');
     }
 }

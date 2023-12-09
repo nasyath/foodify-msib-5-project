@@ -6,10 +6,12 @@ use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\JMakananController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\PenerimaController;
+use App\Http\Controllers\DonasiPenerimaController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HistoryDonasiController;
 use App\Http\Controllers\KelolaUsersController;
+use App\Models\Donasi;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +56,7 @@ Route::get('/donatur-eksplor', function () {
 
 Route::get('/donatur-form_donasi', function () {
     return view('donatur.form_donasi');
-})->name('form_donasi');
+})->name('form_donasi2');
 
 Route::get('/donatur-proses_donasi', function () {
     return view('donatur.proses_donasi');
@@ -66,9 +68,28 @@ Route::get('/penerima-dashboard', function () {
     return view('penerima.dashboard');
 })->name('penerima.dashboard');
 
-Route::get('/eksplorasi-penerima', [PenerimaController::class, 'eksplorasi'])->name('eksplorasi_penerima');
 
-Route::get('/detail-penerima/{id}', [PenerimaController::class, 'show'])->name('detail_penerima');
+
+// Contoh penggunaan middleware untuk donatur
+Route::middleware(['auth', 'role:Donatur'])->group(function () {
+    Route::get('/eksplorasi-penerima', [DonasiController::class, 'eksplorasi'])->name('eksplorasi_penerima');
+    Route::get('/detail-penerima/{id}', [DonasiController::class, 'show'])->name('detail_penerima');
+    Route::get('/form-donasi-makanan/{id}', [DonasiController::class, 'create'])->name('form_donasi');
+    Route::get('/donatur-proses-donasi', [DonasiController::class, 'index'])->name('proses_donasi');
+    Route::post('/submit-donasi', [DonasiController::class, 'store'])->name('submit_donasi');
+    Route::delete('/delete-donasi/{id}', [DonasiController::class, 'destroy'])->name('delete_donasi');
+    Route::get('/edit-donasi/{id}', [DonasiController::class, 'edit'])->name('edit_donasi');
+    Route::put('/update-donasi/{id}', [DonasiController::class, 'update'])->name('update_donasi');
+});
+
+// Contoh penggunaan middleware untuk penerima
+Route::middleware(['auth', 'role:Penerima'])->group(function () {
+    Route::get('/proses-donasi-penerima', [DonasiPenerimaController::class, 'index'])->name('proses_donasi_penerima');
+    Route::get('/detail-donasi/{id}', [DonasiPenerimaController::class, 'show'])->name('detail_donasi_penerima');
+    Route::get('/terima-donasi/{id}', [DonasiPenerimaController::class, 'terimaDonasi'])->name('terima_donasi');
+    Route::get('/tolak-donasi/{id}', [DonasiPenerimaController::class, 'tolakDonasi'])->name('tolak_donasi');
+});
+
 
 
 // ==========================================

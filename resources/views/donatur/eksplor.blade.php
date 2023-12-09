@@ -20,7 +20,7 @@
                         <div class="d-flex align-items-center">
                             <div>
                                 @if ($penerima->foto)
-                                <img src="{{ asset('backend/assets/images/users' . $penerima->foto) }}" alt="{{ $penerima->nama }}" class="avatar-md rounded-circle img-thumbnail">
+                                <img src="{{ asset($penerima->foto) }}" alt="{{ $penerima->nama }}" class="avatar-md rounded-circle img-thumbnail">
                                 @else
                                 <img src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="Default Image" class="avatar-md rounded-circle img-thumbnail">
                                 @endif
@@ -41,7 +41,7 @@
 
                         <div class="d-flex gap-2 pt-4">
                             <a href="{{ route('detail_penerima', $penerima->id) }}" type="button" class="btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i> Profile</a>
-                            <a href="{{ route('form_donasi') }}" type="button" class="btn btn-primary btn-sm w-50"><i class="bx bx-check-square me-1"></i> Bantu</a>
+                            <a href="{{ route('form_donasi', $penerima->id) }}" type="button" class="btn btn-primary btn-sm w-50"><i class="bx bx-check-square me-1"></i> Bantu</a>
                         </div>
                     </div>
                 </div>

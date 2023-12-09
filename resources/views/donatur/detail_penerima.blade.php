@@ -4,7 +4,7 @@
 <div class="page-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xxl-3">
+            <div class="col-12">
                 <div class="user-sidebar">
                     <div class="card">
                         <div class="card-body p-0">
@@ -27,7 +27,7 @@
                                             <a href="https://wa.me/{{ $penerimaDonasi->no_hp }}" target="_blank" class="btn btn-success waves-effect waves-light btn-sm">
                                                 <i class="bx bx-send me-1 align-middle"></i> Kirim Pesan
                                             </a>
-                                            <a href="{{ route('form_donasi') }}" class="btn btn-primary waves-effect waves-light btn-sm">
+                                            <a href="{{ route('form_donasi', $penerimaDonasi->id) }}" class="btn btn-primary waves-effect waves-light btn-sm">
                                                 <i class="bx bx-check-square me-1 align-middle"></i> Bantu
                                             </a>
                                         </div>
