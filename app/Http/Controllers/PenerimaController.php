@@ -36,9 +36,7 @@ class PenerimaController extends Controller
      */
     public function show(string $id)
     {
-        $penerimaDonasi = Penerima::findOrFail($id);
-    
-        return view('donatur.detail_penerima', compact('penerimaDonasi'));
+
     }
     
 
@@ -66,12 +64,4 @@ class PenerimaController extends Controller
         //
     }
 
-    public function eksplorasi()
-    {
-        $penerimaDonasi = Penerima::where('status', 'Open')->get();
-        $totalPenerima = count($penerimaDonasi);
-    
-        return view('donatur.eksplor', compact('penerimaDonasi', 'totalPenerima'));
-    
-    }
 }
