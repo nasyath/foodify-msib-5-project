@@ -71,28 +71,26 @@ Route::get('/penerima-dashboard', function () {
 
 
 
-//fitur khusus akun donatur
-Route::get('/eksplorasi-penerima', [DonasiController::class, 'eksplorasi'])->name('eksplorasi_penerima');
+// Contoh penggunaan middleware untuk donatur
+Route::middleware(['auth', 'role:Donatur'])->group(function () {
+    Route::get('/eksplorasi-penerima', [DonasiController::class, 'eksplorasi'])->name('eksplorasi_penerima');
+    Route::get('/detail-penerima/{id}', [DonasiController::class, 'show'])->name('detail_penerima');
+    Route::get('/form-donasi-makanan/{id}', [DonasiController::class, 'create'])->name('form_donasi');
+    Route::get('/donatur-proses-donasi', [DonasiController::class, 'index'])->name('proses_donasi');
+    Route::post('/submit-donasi', [DonasiController::class, 'store'])->name('submit_donasi');
+    Route::delete('/delete-donasi/{id}', [DonasiController::class, 'destroy'])->name('delete_donasi');
+    Route::get('/edit-donasi/{id}', [DonasiController::class, 'edit'])->name('edit_donasi');
+    Route::put('/update-donasi/{id}', [DonasiController::class, 'update'])->name('update_donasi');
+});
 
-Route::get('/detail-penerima/{id}', [DonasiController::class, 'show'])->name('detail_penerima');
+// Contoh penggunaan middleware untuk penerima
+Route::middleware(['auth', 'role:Penerima'])->group(function () {
+    Route::get('/proses-donasi-penerima', [DonasiPenerimaController::class, 'index'])->name('proses_donasi_penerima');
+    Route::get('/detail-donasi/{id}', [DonasiPenerimaController::class, 'show'])->name('detail_donasi_penerima');
+    Route::get('/terima-donasi/{id}', [DonasiPenerimaController::class, 'terimaDonasi'])->name('terima_donasi');
+    Route::get('/tolak-donasi/{id}', [DonasiPenerimaController::class, 'tolakDonasi'])->name('tolak_donasi');
+});
 
-Route::get('/form-donasi-makanan/{id}', [DonasiController::class, 'create'])->name('form_donasi');
-
-Route::get('/donatur-proses-donasi', [DonasiController::class, 'index'])->name('proses_donasi');
-
-Route::post('/submit-donasi', [DonasiController::class, 'store'])->name('submit_donasi');
-
-Route::delete('/delete-donasi/{id}', [DonasiController::class, 'destroy'])->name('delete_donasi');
-
-Route::get('/edit-donasi/{id}', [DonasiController::class, 'edit'])->name('edit_donasi');
-
-Route::put('/update-donasi/{id}', [DonasiController::class, 'update'])->name('update_donasi');
-
-// fitur khusus akun penerima
-Route::get('/proses-donasi-penerima', [DonasiPenerimaController::class, 'index'])->name('proses_donasi_penerima');
-Route::get('/detail-donasi/{id}', [DonasiPenerimaController::class, 'show'])->name('detail_donasi_penerima');
-Route::get('/terima-donasi/{id}', [DonasiPenerimaController::class, 'terimaDonasi'])->name('terima_donasi');
-Route::get('/tolak-donasi/{id}', [DonasiPenerimaController::class, 'tolakDonasi'])->name('tolak_donasi');
 
 
 // ==========================================
