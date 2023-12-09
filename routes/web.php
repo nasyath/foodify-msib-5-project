@@ -109,3 +109,9 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::post('/login', 'LoginController@login')->name('login');
+
+// Route::group(['middleware' => 'web'], function () {
+//     Route::post('/login', 'LoginController@login')->name('login');
+// });
