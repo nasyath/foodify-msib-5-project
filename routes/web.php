@@ -11,6 +11,7 @@ use App\Http\Controllers\HistoryDonasiController;
 use App\Http\Controllers\KelolaUsersController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Api\AuthController;
 use App\Models\Donasi;
 
@@ -39,11 +40,12 @@ Route::get('/profil', function () {
 
 // ==========================================
 // ADMIN
-Route::get('/admin-dashboard', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard');
+// Route::get('/admin-dashboard', function () {
+//     return view('admin.dashboard');
+// })->name('admin.dashboard');
 Route :: resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
 Route :: resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
+Route :: get('/admin-dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route :: get('/history_donasi', [HistoryDonasiController::class, 'index']);

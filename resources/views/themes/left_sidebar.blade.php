@@ -40,7 +40,7 @@
                 @if( Auth::user()->role == 'Admin')
                 <!-- Admin  -->
                 <li class="@if (Route::currentRouteName() == 'dashboard') active @endif">
-                    <a href="{{ route('admin.dashboard') }}" data-key="t-ecommerce">
+                    <a href="{{ url('/dashboard-admin') }}" data-key="t-ecommerce">
                         <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
