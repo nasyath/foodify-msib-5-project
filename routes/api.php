@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\JenisMakananController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,13 @@ use App\Http\Controllers\Api\JenisMakananController;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    return 'Hello';
+    // For API Jenis Makanan
+    Route::get('/jenis-makanan', [JenisMakananController::class, 'index']);
+    Route::get('/jenis-makanan/{id}', [JenisMakananController::class, 'show']);
+    Route::post('/jenis-makanan-store', [JenisMakananController::class, 'store']);
+    Route::put('/jenis-makanan/{id}', [JenisMakananController::class, 'update']);
+    Route::delete('/jenis-makanan/{id}', [JenisMakananController::class, 'destroy']);
+
 });
 
-// For API Jenis Makanan
-Route::get('/jenis-makanan', [JenisMakananController::class, 'index']);
-Route::get('/jenis-makanan/{id}', [JenisMakananController::class, 'show']);
-Route::post('/jenis-makanan-store', [JenisMakananController::class, 'store']);
-Route::put('/jenis-makanan/{id}', [JenisMakananController::class, 'update']);
-Route::delete('/jenis-makanan/{id}', [JenisMakananController::class, 'destroy']);
+Route::post('/register', [AuthController::class, 'register']);

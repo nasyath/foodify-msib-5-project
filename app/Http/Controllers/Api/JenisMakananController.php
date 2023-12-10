@@ -59,7 +59,7 @@ class JenisMakananController extends Controller
 
         // if validator is fails return to json error
         if ($validator->fails()) {
-            return response()->json($request->all(), 422);
+            return response()->json($validator->errors(), 422);
         }
 
         // update JMakanan by id
