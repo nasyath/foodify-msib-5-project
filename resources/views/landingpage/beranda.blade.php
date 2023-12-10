@@ -187,7 +187,7 @@
                             Donasikan makanan berlebihanmu, ketimbang dibuang dan merugikan
                             lingkungan sekitarmu.
                         </p>
-                        <a href="#">
+                        <a href="{{ route('login') }}">
                             <button class="btn btn-primary">Mulai</button>
                         </a>
                     </div>
@@ -201,7 +201,7 @@
                             Ayo ikut turun tangan langsung dan menjadi relawan Foodify,
                             apapun minat dan keahlian yang kamu miliki.
                         </p>
-                        <a href="#">
+                        <a href="{{ route('login') }}">
                             <button class="btn btn-primary">Mulai</button>
                         </a>
                     </div>
@@ -325,7 +325,7 @@
                             yang membutuhkan. Tanpa perlu repot, kami akan menjemput makanan
                             di lokasi Anda sesuai dengan kebutuhan. Jadilah mitra kami!
                         </p>
-                        <a href="mitra/index.html" class="btn btn-outline-primary">
+                        <a href="{{ route('register') }}" class="btn btn-outline-primary">
                             <span class="badge"><i class="fa fa-heart"></i></span> Daftar
                             Mitra
                         </a>
