@@ -12,7 +12,7 @@
                     </li>
                     <li>
                         <a
-                            href="https://api.whatsapp.com/send889d.html?phone=6288806923500&amp;text=halo,%20saya%20ingin%20donasi%20atau%20jadi%20relawan"><i
+                            href="https://api.whatsapp.com/send?phone=6288806923500&text=halo,%20saya%20ingin%20donasi%20atau%20jadi%20relawan"><i
                                 class="fa fa-whatsapp"></i></a>
                     </li>
                 </ul>
@@ -45,15 +45,11 @@
                             </li>
                             <li id="menu-item-78"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
-                                <a href="{{ route('landingpage') }}">Tentang Kami</a>
+                                <a href="{{ route('tentang') }}">Tentang Kami</a>
                             </li>
                             <li id="menu-item-184"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184">
-                                <a href="{{ route('landingpage') }}">Mitra</a>
-                            </li>
-                            <li id="menu-item-80"
-                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-80">
-                                <a href="{{ route('landingpage') }}">Penerima</a>
+                                <a href="{{ route('mitra') }}">Mitra</a>
                             </li>
                             <li id="menu-item-79"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">

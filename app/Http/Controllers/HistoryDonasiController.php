@@ -14,7 +14,10 @@ class HistoryDonasiController extends Controller
 
     public function index()
     {
-        $ar_history = Donasi::select(
+        $userId = Auth::id();
+        $userRole = Auth::user()->role;
+    
+        $query = Donasi::select(
             'tb_donasi.id',
             'tb_donasi.status',
             'tb_donasi.tgl_mulai',
@@ -26,14 +29,25 @@ class HistoryDonasiController extends Controller
             'tb_penerima.nama_penerima',
             'tb_jenis_makanan.nama_jenis'
         )
-            ->join('tb_jenis_makanan', 'tb_jenis_makanan.id', '=', 'tb_donasi.id_makanan')
-            ->join('tb_penerima', 'tb_penerima.id', '=', 'tb_donasi.id_penerima')
-            ->join('tb_donatur', 'tb_donatur.id', '=', 'tb_donasi.id_donatur')
-            ->orderBy('id', 'desc')
+            ->leftJoin('tb_donatur', 'tb_donatur.id', '=', 'tb_donasi.id_donatur')
+            ->leftJoin('tb_penerima', 'tb_penerima.id', '=', 'tb_donasi.id_penerima')
+            ->leftJoin('tb_jenis_makanan', 'tb_jenis_makanan.id', '=', 'tb_donasi.id_makanan');
+    
+        if ($userRole != 'Admin') {
+            $query->where(function ($query) use ($userId) {
+                $query->where('tb_donatur.users_id', $userId)
+                    ->orWhere('tb_penerima.users_id', $userId);
+            });
+        }
+    
+        $ar_history = $query
+            ->orderBy('tb_donasi.id', 'desc')
             ->get();
-
+    
         return view('admin.history_donasi', compact('ar_history'));
     }
+    
+    
 
     public function show(string $id)
     {

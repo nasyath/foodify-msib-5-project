@@ -31,7 +31,7 @@
             </button>
 
             <div class="d-none d-sm-block ms-3 align-self-center">
-                <h4 class="page-title">Var Title | {{ env('APP_NAME')}}</h4>
+                <h4 class="page-title">{{ env('APP_NAME')}}</h4>
             </div>
 
         </div>
@@ -61,15 +61,25 @@
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown-v" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
+                    @if (auth()->user()->role === 'Admin')
+                        <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="Header Avatar">
+                    @elseif (auth()->user()->role === 'Penerima' && isset($userinfo) && isset($userProfile) && $userinfo->role === 'Penerima' && $userProfile->penerima && $userProfile->penerima->foto)
+                        <img class="rounded-circle header-profile-user" src="{{ asset($userProfile->penerima->foto) }}" alt="Header Avatar">
+                    @elseif (auth()->user()->role === 'Donatur' && isset($userinfo) && isset($userProfile) && $userinfo->role === 'Donatur' && $userProfile->donatur && $userProfile->donatur->foto)
+                        <img class="rounded-circle header-profile-user" src="{{ asset($userProfile->donatur->foto) }}" alt="Header Avatar">
+                    @else
+                        <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="Header Avatar">
+                    @endif
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
+                    @if(isset($userinfo))
                     <div class="p-3 border-bottom">
-                        <h6 class="mb-0">Jennifer Bennett</h6>
-                        <p class="mb-0 font-size-11 text-muted">jennifer.bennett@email.com</p>
+                        <h6 class="mb-0">{{ $userinfo->username }}</h6>
+                        <p class="mb-0 font-size-11 text-muted">{{ $userinfo->email }}</p>
                     </div>
+                    @endif
 
-                    <a class="dropdown-item" href="{{ route('profil') }}">
+                    <a class="dropdown-item" href="{{ route('profil.index') }}">
                         <i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i>
                         <span class="align-middle">Profile</span>
                     </a>

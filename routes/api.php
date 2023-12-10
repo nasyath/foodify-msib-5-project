@@ -2,10 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\JMakananController;
+use App\Http\Controllers\Api\JenisMakananController;
 use App\Http\Controllers\Api\AuthController;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +16,15 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    // For API Jenis Makanan
+    Route::get('/jenis-makanan', [JenisMakananController::class, 'index']);
+    Route::get('/jenis-makanan/{id}', [JenisMakananController::class, 'show']);
+    Route::post('/jenis-makanan-store', [JenisMakananController::class, 'store']);
+    Route::put('/jenis-makanan/{id}', [JenisMakananController::class, 'update']);
+    Route::delete('/jenis-makanan/{id}', [JenisMakananController::class, 'destroy']);
+
 });
 
-// === Rest API ===
-Route::get('/api-jmakanan', [JMakananController::class, 'apiJMakanan']);
-
-// ---- Auth Api ----
-Route::post('/api-register', [AuthController::class, 'register']);
-Route::post('/api-login', [AuthController::class, 'login']);
-
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);

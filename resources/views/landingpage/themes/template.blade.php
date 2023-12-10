@@ -35,6 +35,14 @@
         })(document.documentElement);
     </script>
     <title>Foodify | MSIB 5</title>
+    <style>
+    /* Add this style to your CSS file or within a <style> tag in your HTML */
+    .form-control:focus {
+        border-color: #80bdff; /* Adjust the color as needed */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Optional: Add a subtle box shadow */
+    }
+    </style>
+
     <style id="classic-theme-styles-inline-css" type="text/css">
         /*! This file is auto-generated */
         .wp-block-button__link {
@@ -508,7 +516,7 @@
                             </li>
                             <li>
                                 <i class="fa fa-envelope-o bg-blue"></i><a
-                                    href="mailto:gardapanganid@gmail.com">foodify.project@gmail.com</a>
+                                    href="mailto:foodify.project@gmail.com">foodify.project@gmail.com</a>
                             </li>
                         </ul>
                         <!-- .xs-list-with-icon END -->

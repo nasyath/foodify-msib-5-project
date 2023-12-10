@@ -9,11 +9,14 @@ use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\DonasiPenerimaController;
 use App\Http\Controllers\HistoryDonasiController;
 use App\Http\Controllers\KelolaUsersController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Api\AuthController;
 use App\Models\Donasi;
+// Controller for API
+use App\Http\Controllers\Api\JenisMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,14 +32,12 @@ use App\Models\Donasi;
 
 // Route get '/' to LandingController@index
 Route::get('/', [LandingController::class, 'index'])->name('landingpage');
+Route::get('/tentang-kami', [LandingController::class, 'tentang'])->name('tentang');
+Route::get('/mitra', [LandingController::class, 'mitra'])->name('mitra');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
-
-Route::get('/profil', function () {
-    return view('themes.profil');
-})->name('profil');
 
 // ==========================================
 // ADMIN
@@ -89,10 +90,31 @@ Route::middleware(['auth', 'role:Penerima'])->group(function () {
     Route::get('/generate-pdf', [DonasiPenerimaController::class, 'generatePDF'])->middleware('auth');
 });
 
+// ==========================================
+Route::resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
+
+Route::resource('/history_donasi',HistoryDonasiController::class)->middleware('auth');
+Route::get('/history_donasi/{id}', [HistoryDonasiController::class, 'show'])->name('history_donasi.show')->middleware('auth');
+
+Route::resource('/donasi',DonasiController::class)->middleware('auth');
+
+Route::resource('/donatur',DonaturController::class)->middleware('auth');
+
+Route::resource('/penerima',PenerimaController::class)->middleware('auth');
+
 // web.php
+Route::resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
+
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/form-akun', [KelolaUsersController::class, 'form_akun'])->name('form_akun');
+
+Route::post('/tambah-akun', [KelolaUsersController::class, 'tambah_akun'])->name('tambah_akun');
+
+Route::get('/kelola_userss', [KelolaUsersController::class, 'index'])->name('admin.kelola_users');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');

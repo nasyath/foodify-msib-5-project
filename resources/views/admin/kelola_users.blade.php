@@ -26,7 +26,7 @@ $no = 1;
             </div>
             @endif
         </div>
-        <a href="{{ route('register') }}" type="button" class="btn btn-primary mb-2 waves-effect waves-light" title="Tambah User">
+        <a href="{{ route('form_akun') }}" type="button" class="btn btn-primary mb-2 waves-effect waves-light" title="Tambah User">
             Tambah
         </a>
         <div class="card mb-4">

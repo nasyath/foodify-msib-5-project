@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 03:54 AM
+-- Generation Time: Dec 10, 2023 at 08:02 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.2.4
 
@@ -94,6 +94,14 @@ CREATE TABLE `personal_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
+(1, 'App\\Models\\User', 33, 'auth_token', '202f537e0e3f6daf740f58cbc0d6caa256b606de4dda7600b7c5fe8e3d8d821c', '[\"*\"]', '2023-12-10 08:08:12', NULL, '2023-12-10 08:07:18', '2023-12-10 08:08:12'),
+(2, 'App\\Models\\User', 33, 'auth_token', '388c32b07f74704824a1e0f331570bd3d11b6cdbf2786ab6ac6bf14d05c4e7c8', '[\"*\"]', '2023-12-10 08:31:44', NULL, '2023-12-10 08:30:53', '2023-12-10 08:31:44');
+
 -- --------------------------------------------------------
 
 --
@@ -106,7 +114,7 @@ CREATE TABLE `tb_donasi` (
   `tgl_mulai` date NOT NULL,
   `tgl_akhir` date NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `foto` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `keterangan` varchar(255) NOT NULL,
   `id_donatur` bigint(20) UNSIGNED DEFAULT NULL,
   `id_penerima` bigint(20) UNSIGNED DEFAULT NULL,
@@ -120,7 +128,9 @@ CREATE TABLE `tb_donasi` (
 --
 
 INSERT INTO `tb_donasi` (`id`, `status`, `tgl_mulai`, `tgl_akhir`, `jumlah`, `foto`, `keterangan`, `id_donatur`, `id_penerima`, `id_makanan`, `created_at`, `updated_at`) VALUES
-(6, 'Pending', '2023-11-28', '2023-11-30', 5, '', '10', NULL, NULL, 1, NULL, NULL);
+(7, 'Pending', '2023-12-11', '2023-12-15', 2, NULL, 'Ambil jam 9 WIB', 14, 7, 1, NULL, NULL),
+(8, 'Diterima', '2023-12-11', '2023-12-16', 3, NULL, 'Ambil jam 9 WIB', 10, 8, 1, NULL, NULL),
+(9, 'Pending', '2023-12-12', '2023-12-23', 2, NULL, 'Ambil jam 10 WIB', 10, 9, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -149,7 +159,9 @@ INSERT INTO `tb_donatur` (`id`, `nama_donatur`, `alamat`, `no_hp`, `deskripsi`, 
 (12, 'kopi1', 'kopi', '0892839234', 'kopi', 'backend/assets/images/users/xkg4824bbRCp4NpliAYTKPHwqcn3Ohcp87AHBzce.jpg', 21, NULL, NULL),
 (13, 'kopi2', 'kopi 2', '0892839223', 'kopi 2', 'backend/assets/images/users/Pb72mmXy0xf3D0yGI3oqOyiVmshulL5Nw1lLwvbk.png', 22, NULL, NULL),
 (14, 'nail', 'Bogor', '0892839223', 'Jakarta', 'backend/assets/images/users/paper-background.jpg', 27, NULL, NULL),
-(15, 'Steven', 'Jakarta', '0892839223223', 'Memberikan makanan kepada anak yatim dan dhuafa', 'backend/assets/images/users/latihan sepatu.png', 29, NULL, NULL);
+(15, 'Steven', 'Jakarta', '0892839223223', 'Memberikan makanan kepada anak yatim dan dhuafa', 'backend/assets/images/users/latihan sepatu.png', 29, NULL, NULL),
+(17, 'Test1', 'test1', '80809809', 'test1', 'backend/assets/images/users/user_photo_1702208244.png', 31, NULL, NULL),
+(18, 'fay', 'Tirto', '08880786872', 'Nasyath Faykar From Tirto', 'backend/assets/images/users/user_photo_1702219894.jpg', 33, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -240,7 +252,9 @@ INSERT INTO `users` (`id`, `email`, `username`, `password`, `role`, `created_at`
 (26, 'huri@gmail.com', 'Huri', '$2y$12$O3HEXqBb1RYdH0KqifX6OuCPcvcnbmfxO0FcjXp37xRm2gzNKabSq', 'Penerima', '2023-12-04 02:35:46', '2023-12-04 02:35:46'),
 (27, 'nail@gmail.com', 'nail', '$2y$12$kpRHS9Huj5sxFAbm2NP9WOZsUbMY3TR0kkNe0nW0D/qiX/a1WFC2i', 'Donatur', '2023-12-04 02:54:46', '2023-12-04 02:54:46'),
 (28, 'guritno@gmail.com', 'Guritno', '$2y$12$zFZ5iWsy1i.6yhQ/eGtEz.KcBXNI6.r8ZE1mu.6Nj0L5lxNQQcDj.', 'Penerima', '2023-12-04 03:21:59', '2023-12-04 03:21:59'),
-(29, 'steven@gmail.com', 'Steven', '$2y$12$6rK8ywJFPFJ845nhAKANAe1q.uqVy86IcDSzA4nSnDYf0rlvEkj5O', 'Donatur', '2023-12-05 19:51:55', '2023-12-05 19:51:55');
+(29, 'steven@gmail.com', 'Steven', '$2y$12$6rK8ywJFPFJ845nhAKANAe1q.uqVy86IcDSzA4nSnDYf0rlvEkj5O', 'Donatur', '2023-12-05 19:51:55', '2023-12-05 19:51:55'),
+(31, 'test1@gmail.com', 'Test1', '$2y$12$qThwS2D7tzKeQ2KbiwzH0ebisAMbvSQLBfOgKx8hZivYkb4YxXzKS', 'Donatur', '2023-12-10 04:37:24', '2023-12-10 04:37:24'),
+(33, 'faykar@gmail.com', 'fay', '$2y$12$QwPeZHGmsEub2aIPM0emtOzHcoeGlCDoUwdEOk4V.bak4Y23.gN.e', 'Donatur', '2023-12-10 07:51:34', '2023-12-10 07:51:34');
 
 --
 -- Indexes for dumped tables
@@ -329,25 +343,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_donasi`
 --
 ALTER TABLE `tb_donasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_donatur`
 --
 ALTER TABLE `tb_donatur`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tb_jenis_makanan`
 --
 ALTER TABLE `tb_jenis_makanan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tb_penerima`
@@ -359,7 +373,7 @@ ALTER TABLE `tb_penerima`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables
@@ -377,13 +391,13 @@ ALTER TABLE `tb_donasi`
 -- Constraints for table `tb_donatur`
 --
 ALTER TABLE `tb_donatur`
-  ADD CONSTRAINT `tb_donatur_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `tb_donatur_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_penerima`
 --
 ALTER TABLE `tb_penerima`
-  ADD CONSTRAINT `tb_penerima_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `tb_penerima_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

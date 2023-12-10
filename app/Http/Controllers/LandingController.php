@@ -24,12 +24,6 @@ class LandingController extends Controller
         return view('landingpage.mitra');
     }
 
-    // Penerima
-    public function penerima()
-    {
-        return view('landingpage.penerima');
-    }
-
     // Register (redirect to register page)
     public function register()
     {
