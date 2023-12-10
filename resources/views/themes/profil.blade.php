@@ -6,12 +6,12 @@
                     <div class="container-fluid">
 
                         <div class="row">
-                            <div class="col-xxl-3">
+                            <div class="col-xxl-4">
                                 <div class="user-sidebar">
                                     <div class="card">
                                         <div class="card-body p-0">
                                             <div class="user-profile-img">
-                                                <img src="assets/images/pattern-bg.jpg"
+                                                <img src="{{('backend/assets/images/pattern-bg.jpg')}}"
                                                     class="profile-img profile-foreground-img rounded-top" style="height: 120px;"
                                                     alt="">
                                                 <div class="overlay-content rounded-top">
@@ -42,7 +42,7 @@
             
                                             <div class="mt-n5 position-relative">
                                                 <div class="text-center">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
+                                                    <img src="{{('backend/assets/images/users/avatar-1.jpg')}}" alt=""
                                                         class="avatar-xl rounded-circle img-thumbnail">
             
                                                     <div class="mt-3">
@@ -89,7 +89,7 @@
                                     <!-- end card -->
                                 </div>
                             </div>
-                            <div class="col-xxl-9">
+                            <div class="col-xxl-8">
                             <div class="card">
                                         <div class="card-header">
                                             <h4 class="card-title">Personal Information</h4>

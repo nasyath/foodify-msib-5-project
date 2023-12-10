@@ -2222,8 +2222,8 @@ body[data-layout="horizontal"][data-layout-size="boxed"] .navbar-header {
     width: 5rem;
 }
 .avatar-xl {
-    height: 6rem;
-    width: 6rem;
+    height: 13rem;
+    width: 13rem;
 }
 .avatar-title {
     -webkit-box-align: center;
