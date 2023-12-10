@@ -29,10 +29,6 @@ class JenisMakananController extends Controller
     // store function to store data to table tb_jenis_makanan
     public function store(Request $request)
     {
-        // validate request with validator
-        $request->validate([
-            'nama_jenis' => 'required'
-        ]);
 
         // Add error message to validator
         $validator = Validator::make($request->all(), [
@@ -56,16 +52,18 @@ class JenisMakananController extends Controller
     // update function to update data by id
     public function update(Request $request, $id)
     {
-        // validate request
-        $request->validate([
+        // Add error message to validator
+        $validator = Validator::make($request->all(), [
             'nama_jenis' => 'required'
         ]);
 
-        // find JMakanan by id
-        $data = JMakanan::find($id);
+        // if validator is fails return to json error
+        if ($validator->fails()) {
+            return response()->json($request->all(), 422);
+        }
 
-        // update JMakanan
-        $data->update([
+        // update JMakanan by id
+        $data = JMakanan::whereId($id)->update([
             'nama_jenis' => $request->nama_jenis
         ]);
 

@@ -15,11 +15,13 @@ use App\Http\Controllers\Api\JenisMakananController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    return 'Hello';
 });
 
 // For API Jenis Makanan
 Route::get('/jenis-makanan', [JenisMakananController::class, 'index']);
 Route::get('/jenis-makanan/{id}', [JenisMakananController::class, 'show']);
 Route::post('/jenis-makanan-store', [JenisMakananController::class, 'store']);
+Route::put('/jenis-makanan/{id}', [JenisMakananController::class, 'update']);
+Route::delete('/jenis-makanan/{id}', [JenisMakananController::class, 'destroy']);
