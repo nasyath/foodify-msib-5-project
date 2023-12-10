@@ -15,5 +15,5 @@ class JMakanan extends Model
     public function tb_donasi(): HasMany
     {
         return $this->hasMany(Donasi::class);
-     }
+    }
 }

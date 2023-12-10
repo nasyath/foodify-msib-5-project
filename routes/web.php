@@ -12,6 +12,8 @@ use App\Http\Controllers\KelolaUsersController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\Donasi;
+// Controller for API
+use App\Http\Controllers\Api\JenisMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,18 +97,18 @@ Route::middleware(['auth', 'role:Penerima'])->group(function () {
 
 
 // ==========================================
-Route :: resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
+Route::resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
 
-Route :: resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
+Route::resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
 
-Route :: resource('/history_donasi',HistoryDonasiController::class)->middleware('auth');
+Route::resource('/history_donasi',HistoryDonasiController::class)->middleware('auth');
 Route::get('/history_donasi/{id}', [HistoryDonasiController::class, 'show'])->name('history_donasi.show')->middleware('auth');
 
-Route :: resource('/donasi',DonasiController::class)->middleware('auth');
+Route::resource('/donasi',DonasiController::class)->middleware('auth');
 
-Route :: resource('/donatur',DonaturController::class)->middleware('auth');
+Route::resource('/donatur',DonaturController::class)->middleware('auth');
 
-Route :: resource('/penerima',PenerimaController::class)->middleware('auth');
+Route::resource('/penerima',PenerimaController::class)->middleware('auth');
 
 // web.php
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
