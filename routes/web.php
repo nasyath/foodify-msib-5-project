@@ -9,6 +9,7 @@ use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\DonasiPenerimaController;
 use App\Http\Controllers\HistoryDonasiController;
 use App\Http\Controllers\KelolaUsersController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\Donasi;
@@ -35,10 +36,6 @@ Route::get('/mitra', [LandingController::class, 'mitra'])->name('mitra');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
-
-Route::get('/profil', function () {
-    return view('themes.profil');
-})->name('profil');
 
 // ==========================================
 // ADMIN
@@ -122,3 +119,5 @@ Route::get('/kelola_userss', [KelolaUsersController::class, 'index'])->name('adm
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
