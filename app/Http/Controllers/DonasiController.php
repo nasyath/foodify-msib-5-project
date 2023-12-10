@@ -126,16 +126,16 @@ class DonasiController extends Controller
     {
         // Fetch the donation data from the database based on $id
         $donasi = Donasi::findOrFail($id);
-    
+
         $donatur = Auth::user();
         // Mengambil informasi Donatur yang sedang login
         $penerimaDonasi = Penerima::findOrFail($donasi->id_penerima);
         $jenisMakananOptions = JMakanan::pluck('nama_jenis', 'id');
-    
+
         // Tampilkan formulir donasi
         return view('donatur.edit_donasi', compact('donasi', 'penerimaDonasi', 'donatur', 'jenisMakananOptions'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -196,7 +196,7 @@ class DonasiController extends Controller
     {
         // Cari data donasi berdasarkan ID
         $donasi = Donasi::find($id);
-    
+
         // Hapus donasi jika ditemukan
         if ($donasi) {
             // Hapus file foto secara langsung
@@ -206,16 +206,16 @@ class DonasiController extends Controller
                     unlink($filePath);
                 }
             }
-    
+
             // Hapus data donasi dari database
             $donasi->delete();
-    
+
             return redirect()->back()->with('success', 'Donasi berhasil dihapus.');
         } else {
             return redirect()->back()->with('error', 'Donasi tidak ditemukan.');
         }
     }
-    
+
 
     public function eksplorasi()
     {
