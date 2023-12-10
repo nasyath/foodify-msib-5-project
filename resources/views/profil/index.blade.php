@@ -19,10 +19,12 @@
                                                 <div class="d-flex justify-content-end">
                                                 <!-- <a href="#" class="btn text-light btn-sm">
                                                 <i class="bx bx-pencil me-1 align-middle"></i> Edit Profil</a> -->
+                                                @if ($userinfo->role === 'Penerima')
                                                 <div class="btn-group btn-group-example mb-0" role="group">
                                                     <button type="button" class="btn btn-light w-xs">Open</button>
                                                     <button type="button" class="btn btn-light w-xs">Close</i></button>
                                                 </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
