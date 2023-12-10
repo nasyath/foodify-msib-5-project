@@ -31,7 +31,7 @@
             </button>
 
             <div class="d-none d-sm-block ms-3 align-self-center">
-                <h4 class="page-title">Var Title | {{ env('APP_NAME')}}</h4>
+                <h4 class="page-title">{{ env('APP_NAME')}}</h4>
             </div>
 
         </div>
