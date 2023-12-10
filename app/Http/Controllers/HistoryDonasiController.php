@@ -7,6 +7,7 @@ use PDF;
 use App\Exports\HistoryDonasiExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryDonasiController extends Controller
 {
@@ -16,7 +17,7 @@ class HistoryDonasiController extends Controller
     {
         $userId = Auth::id();
         $userRole = Auth::user()->role;
-    
+
         $query = Donasi::select(
             'tb_donasi.id',
             'tb_donasi.status',
@@ -32,22 +33,22 @@ class HistoryDonasiController extends Controller
             ->leftJoin('tb_donatur', 'tb_donatur.id', '=', 'tb_donasi.id_donatur')
             ->leftJoin('tb_penerima', 'tb_penerima.id', '=', 'tb_donasi.id_penerima')
             ->leftJoin('tb_jenis_makanan', 'tb_jenis_makanan.id', '=', 'tb_donasi.id_makanan');
-    
+
         if ($userRole != 'Admin') {
             $query->where(function ($query) use ($userId) {
                 $query->where('tb_donatur.users_id', $userId)
                     ->orWhere('tb_penerima.users_id', $userId);
             });
         }
-    
+
         $ar_history = $query
             ->orderBy('tb_donasi.id', 'desc')
             ->get();
-    
+
         return view('admin.history_donasi', compact('ar_history'));
     }
-    
-    
+
+
 
     public function show(string $id)
     {
@@ -77,9 +78,9 @@ class HistoryDonasiController extends Controller
             'title' => 'Welcome to Kampus Merdeka',
             'date' => date('d-m-Y H:i:s')
         ];
-          
+
         $pdf = PDF::loadView('admin.tesPDF', $data);
-    
+
         return $pdf->download('data_tespdf_'.date('d-m-Y_H:i:s').'.pdf');
     }
 
@@ -102,14 +103,14 @@ class HistoryDonasiController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        $pdf = PDF::loadView('admin.historyPDF', 
+        $pdf = PDF::loadView('admin.historyPDF',
                               ['ar_history'=>$ar_history]);
         return $pdf->download('data_donasi_'.date('d-m-Y_H:i:s').'.pdf');
     }
 
-    public function historyExcel() 
+    public function historyExcel()
     {
         return Excel::download(new HistoryDonasiExport, 'data_donasi_'.date('d-m-Y_H:i:s').'.xlsx');
     }
- 
+
 }

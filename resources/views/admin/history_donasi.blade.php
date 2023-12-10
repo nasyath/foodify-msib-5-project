@@ -55,7 +55,7 @@ $no = 1;
                                 @endif
                             </td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="{{ route('history_donasi.show', ['id' => $hd->id]) }}" title="Detail Donasi">
+                                <a class="btn btn-primary btn-sm" href="{{ route('history_donasi.show', $hd->id) }}" title="Detail Donasi">
                                     <i class="far fa-file-alt" style="width:16px;height:16px"></i>
                                 </a>
                             </td>
