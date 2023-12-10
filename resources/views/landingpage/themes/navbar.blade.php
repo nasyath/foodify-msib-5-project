@@ -45,7 +45,7 @@
                             </li>
                             <li id="menu-item-78"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
-                                <a href="{{ route('landingpage') }}">Tentang Kami</a>
+                                <a href="{{ route('tentang') }}">Tentang Kami</a>
                             </li>
                             <li id="menu-item-184"
                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184">

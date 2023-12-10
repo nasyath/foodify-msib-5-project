@@ -27,6 +27,7 @@ use App\Models\Donasi;
 
 // Route get '/' to LandingController@index
 Route::get('/', [LandingController::class, 'index'])->name('landingpage');
+Route::get('/tentang-kami', [LandingController::class, 'tentang'])->name('tentang');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
