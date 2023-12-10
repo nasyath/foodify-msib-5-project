@@ -5,14 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Donasi; //panggil model
 use App\Models\Penerima; //panggil model
-use App\Models\JMakanan; //panggil model
-use App\Models\User; //panggil model
-use Illuminate\Support\Facades\DB; // jika pakai query builder
-use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
-use Illuminate\Support\Facades\Validator;
+use App\Models\JMakanan;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class DonasiController extends Controller
 {
@@ -118,6 +112,18 @@ class DonasiController extends Controller
 
         return view('donatur.detail_penerima', compact('penerimaDonasi'));
     }
+
+    public function showDetail($id)
+    {
+        $donasi = Donasi::with(['penerima'])->findOrFail($id);
+        // Ambil data donasi berdasarkan ID
+        $donasi = Donasi::with(['donatur:id,nama_donatur', 'penerima:id,nama_penerima', 'jmakanan:id,nama_jenis'])
+            ->findOrFail($id);
+
+        // Tampilkan view untuk menampilkan detail donasi
+        return view('donatur.detail_donasi', compact('donasi'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.

@@ -2,6 +2,13 @@
 @section('content')
 <div class="page-content">
     <div class="container-fluid" style="padding: 0px 50px 0px 50px;">
+        <h3>Dashboard</h3>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">
+                <i class="fas fa-home"></i>
+                <a href="#">Dashboard</a>
+            </li>
+        </ol>
         <div class="row">
             <div class="col-lg-3">
                 <div class="card">
@@ -10,13 +17,13 @@
                             <div class="flex-shrink-0 me-3">
                                 <div class="avatar">
                                     <div class="avatar-title rounded bg-primary bg-gradient">
-                                        <i data-eva="pie-chart-2" class="fill-white"></i>
+                                        <i class="far fa-handshake"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex-grow-1">
                                 <p class="text-muted mb-1">Total Donasi</p>
-                                <h4 class="mb-0">$21,456</h4>
+                                <h4 class="mb-0">{{ $totalDonasi }}</h4>
                             </div>
                         </div>
                     </div>
@@ -32,13 +39,13 @@
                             <div class="flex-shrink-0 me-3">
                                 <div class="avatar">
                                     <div class="avatar-title rounded bg-primary bg-gradient">
-                                        <i data-eva="shopping-bag" class="fill-white"></i>
+                                        <i class="fas fa-spa"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex-grow-1">
                                 <p class="text-muted mb-1">Donatur</p>
-                                <h4 class="mb-0">5,643</h4>
+                                <h4 class="mb-0">{{ $totalDonatur }}</h4>
                             </div>
                         </div>
                     </div>
@@ -54,13 +61,13 @@
                             <div class="flex-shrink-0 me-3">
                                 <div class="avatar">
                                     <div class="avatar-title rounded bg-primary bg-gradient">
-                                        <i data-eva="people" class="fill-white"></i>
+                                        <i class="fas fa-leaf"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex-grow-1">
                                 <p class="text-muted mb-1">Penerima</p>
-                                <h4 class="mb-0">45,254</h4>
+                                <h4 class="mb-0">{{ $totalPenerima }}</h4>
                             </div>
                         </div>
                     </div>

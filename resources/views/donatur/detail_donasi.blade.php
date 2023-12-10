@@ -22,14 +22,14 @@
                     <div class="card-body p-3">
 
                         <div class="d-flex align-items-start border-bottom pb-3">
-                            <!-- Foto Donatur -->
+                            <!-- Foto penerima -->
                             <div class="me-4">
                                 <img src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="" class="avatar-lg rounded">
                             </div>
                             <div class="flex-grow-1 align-self-center overflow-hidden">
                                 <div>
                                     <h5 class="text-truncate font-size-18">
-                                        <a href="ecommerce-product-detail-2.html" class="text-body">{{ $donatur->nama_donatur }} </a>
+                                        <a href="ecommerce-product-detail-2.html" class="text-body">{{ $donasi->penerima->nama_penerima }} </a>
                                         @if ($donasi->status === 'Diterima')
                                         <span class="badge bg-success-subtle text-success  mb-0">Diterima</span>
                                         @elseif ($donasi->status === 'Ditolak')
@@ -38,9 +38,9 @@
                                         <span class="badge bg-secondary-subtle text-secondary  mb-0">Pending</span>
                                         @endif
                                     </h5>
-                                    <p class="mb-0 mt-1">Alamat : <span class="fw-medium">{{ $donatur->alamat }}</span></p>
-                                    <p class="mb-0 mt-1">No HP : <span class="fw-medium">{{ $donatur->no_hp }}</span></p>
-                                    <p class="mb-0 mt-1">Deskripsi : <span class="fw-medium">{{ $donatur->deskripsi }}</span></p>
+                                    <p class="mb-0 mt-1">Alamat : <span class="fw-medium">{{ $donasi->penerima->alamat }}</span></p>
+                                    <p class="mb-0 mt-1">No HP : <span class="fw-medium">{{ $donasi->penerima->no_hp }}</span></p>
+                                    <p class="mb-0 mt-1">Deskripsi : <span class="fw-medium">{{ $donasi->penerima->deskripsi }}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -81,13 +81,8 @@
                                 <div class="col-md-12">
                                     <hr>
                                     <div class="mt-3">
-                                        @if ($donasi->status == 'Pending')
-                                        <a href="{{ route('terima_donasi', $donasi->id) }}" class="btn btn-primary btn-md" type="button">Terima</a>
-                                        <a href="{{ route('tolak_donasi', $donasi->id) }}" class="btn btn-danger btn-md" type="button">Tolak</a>
-                                        @else
-                                        <button class="btn btn-secondary btn-md" type="button">Donasi Selesai Dilakukan</button>
-                                        <a href="{{ route('proses_donasi_penerima')}}" class="btn btn-success btn-md" type="button">Kembali</a>
-                                        @endif
+                                        <a href="{{ route('edit_donasi', $donasi->id) }}" class="btn btn-warning btn-md" type="button">Edit</a>
+                                        <a href="javascript:history.back()" class="btn btn-secondary">Kembali</a>
                                     </div>
 
                                 </div>

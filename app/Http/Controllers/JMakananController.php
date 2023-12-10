@@ -85,6 +85,18 @@ class JMakananController extends Controller
         return redirect()->route('jenis_makanan.index')
             ->with('success','Data Jenis Makanan Berhasil Dihapus');
     }
+
+    public function apiJMakanan(){
+        $jmakanan = JMakanan::all();
+        return response()->json(
+            [
+                'success'=>true,
+                'message'=>'Data Jenis Makanan',
+                'data'=>$jmakanan
+            ],
+            200
+        );
+    }
 }
 // Asset => JMakanan
 // ar_asset => ar_jmakanan
