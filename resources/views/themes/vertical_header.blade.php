@@ -31,7 +31,7 @@
             </button>
 
             <div class="d-none d-sm-block ms-3 align-self-center">
-                <h4 class="page-title">Var Title | {{ env('APP_NAME')}}</h4>
+                <h4 class="page-title">{{ env('APP_NAME')}}</h4>
             </div>
 
         </div>
@@ -69,24 +69,23 @@
                         <p class="mb-0 font-size-11 text-muted">jennifer.bennett@email.com</p>
                     </div>
 
-                    <a class="dropdown-item" href="{{ route('profil') }}"><i
-                            class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span
-                            class="align-middle">Profile</span></a>
-                    <a class="dropdown-item d-flex align-items-center" href="#"><i
-                            class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span
-                            class="align-middle">Settings</span></a>
-                    <a class="dropdown-item" href="auth-logout.html"><i
-                            class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span
-                            class="align-middle">Logout</span></a>
+                    <a class="dropdown-item" href="{{ route('profil') }}">
+                        <i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i>
+                        <span class="align-middle">Profile</span>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i>
+                        <span class="align-middle">Settings</span>
+                    </a>
+                    <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i>
+                        <span class="align-middle">Logout</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
 
-                <button class="btn btn-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
-                </button>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-                
             </div>
         </div>
     </div>

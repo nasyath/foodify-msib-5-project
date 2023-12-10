@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -40,14 +41,27 @@ class LoginController extends Controller
     }
 
     // Override the redirectTo method to customize based on user role
-    protected function redirectTo()
+    // protected function redirectTo()
+    // {
+    //     if (Auth::user()->role == 'Admin') {
+    //         return 'admin.dashboard';
+    //     } elseif (Auth::user()->role == 'Donatur') {
+    //         return 'donatur.dashboard';
+    //     } elseif (Auth::user()->role == 'Penerima') {
+    //         return 'penerima.dashboard';
+    //     }
+    // }
+
+    protected function authenticated(Request $request, $user)
     {
-        if (Auth::user()->role == 'Admin') {
-            return '/admin-dashboard';
-        } elseif (Auth::user()->role == 'Donatur') {
-            return '/donatur-dashboard';
-        } elseif (Auth::user()->role == 'Penerima') {
-            return '/penerima-dashboard';
+        if ($user->role === 'Admin') {
+            return redirect('/admin-dashboard');
+        } elseif ($user->role === 'Donatur') {
+            return redirect('/donatur-dashboard');
+        } elseif ($user->role === 'Penerima') {
+            return redirect('/penerima-dashboard');
+        } else {
+            return redirect('/home'); // Redirect default jika peran tidak dikenali
         }
     }
 }

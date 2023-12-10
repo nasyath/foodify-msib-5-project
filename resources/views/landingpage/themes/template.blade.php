@@ -516,7 +516,7 @@
                             </li>
                             <li>
                                 <i class="fa fa-envelope-o bg-blue"></i><a
-                                    href="mailto:gardapanganid@gmail.com">foodify.project@gmail.com</a>
+                                    href="mailto:foodify.project@gmail.com">foodify.project@gmail.com</a>
                             </li>
                         </ul>
                         <!-- .xs-list-with-icon END -->

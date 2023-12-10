@@ -7,9 +7,13 @@ use App\Http\Controllers\JMakananController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\DonasiPenerimaController;
+use App\Http\Controllers\HistoryDonasiController;
+use App\Http\Controllers\KelolaUsersController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\Donasi;
+// Controller for API
+use App\Http\Controllers\Api\JenisMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +29,8 @@ use App\Models\Donasi;
 
 // Route get '/' to LandingController@index
 Route::get('/', [LandingController::class, 'index'])->name('landingpage');
+Route::get('/tentang-kami', [LandingController::class, 'tentang'])->name('tentang');
+Route::get('/mitra', [LandingController::class, 'mitra'])->name('mitra');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -40,9 +46,6 @@ Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
-Route::get('/kelola-donatur', function () {
-    return view('admin.kelola_donatur');
-})->name('kelola_donatur');
 
 // ==========================================
 // DONATUR
@@ -94,13 +97,18 @@ Route::middleware(['auth', 'role:Penerima'])->group(function () {
 
 
 // ==========================================
-Route :: resource('/kelola_jenis',JMakananController::class)->middleware('auth');
+Route::resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
 
-Route :: resource('/donasi',DonasiController::class)->middleware('auth');
+Route::resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
 
-Route :: resource('/donatur',DonaturController::class)->middleware('auth');
+Route::resource('/history_donasi',HistoryDonasiController::class)->middleware('auth');
+Route::get('/history_donasi/{id}', [HistoryDonasiController::class, 'show'])->name('history_donasi.show')->middleware('auth');
 
-Route :: resource('/penerima',PenerimaController::class)->middleware('auth');
+Route::resource('/donasi',DonasiController::class)->middleware('auth');
+
+Route::resource('/donatur',DonaturController::class)->middleware('auth');
+
+Route::resource('/penerima',PenerimaController::class)->middleware('auth');
 
 // web.php
 Route::post('/register', [RegisterController::class, 'register'])->name('register');

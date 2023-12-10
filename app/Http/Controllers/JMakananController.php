@@ -17,7 +17,7 @@ class JMakananController extends Controller
     {
         //$ar_jmakanan = JMakanan::all();//eloquent
         $ar_jmakanan = JMakanan::orderBy('id', 'desc')->get();
-        return view('admin.kelola_jmakanan', compact('ar_jmakanan'));
+        return view('admin.jenis_makanan.index', compact('ar_jmakanan'));
     }
 
     /**
@@ -25,8 +25,8 @@ class JMakananController extends Controller
      */
     public function create()
     {
-        $ar_jmakanan = JMakanan::all();
-        return view('admin.form_tambahjenis', compact('ar_jmakanan'));
+        // $ar_kondisi = ['Baik','Sedang','Rusak'];
+        // return view('admin.form_tambahJM', compact('ar_kategori','ar_kondisi'));
     }
 
     /**
@@ -34,25 +34,13 @@ class JMakananController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama_jenis' => 'required|max:45',
-        ], [
-            'nama_jenis.required' => 'Nama Jenis Makanan Wajib Diisi',
-            'nama_jenis.max' => 'Nama Jenis Makanan Maksimal 45 karakter',
-        ]);
-
-        try {
-            // Insert data menggunakan Eloquent
-            JMakanan::create([
-                'nama_jenis' => $request->nama_jenis,
-            ]);
-
-            return redirect()->route('kelola_jenis.index')
-                             ->with('success', 'Data Jenis Makanan Baru Berhasil Disimpan');
-        } catch (\Exception $e) {
-            return redirect()->route('kelola_jenis.index')
-                             ->with('error', 'Terjadi Kesalahan Saat Input Data!');
-        }
+        //
+        // JMakanan::create($request->all());
+        // return redirect()->route('jenis_makanan.index')
+        //     ->with('success','Data Jenis Makanan Berhasil Ditambahkan');
+        DB::table('tb_jenis_makanan')->insert(['nama_jenis' => $request->nama_jenis]);
+        return redirect()->route('jenis_makanan.index')
+            ->with('success','Data Jenis Makanan Berhasil Ditambahkan');
     }
 
     /**
@@ -92,15 +80,11 @@ class JMakananController extends Controller
      */
     public function destroy(string $id)
     {
-        try {
-            // Hapus data dari tabel
-            JMakanan::where('id', $id)->delete();
-
-            return redirect()->route('kelola_jenis.index')
-                             ->with('success', 'Data Jenis Makanan Berhasil Dihapus');
-        } catch (\Exception $e) {
-            return redirect()->route('kelola_jenis.index')
-                             ->with('error', 'Terjadi Kesalahan Saat Menghapus Data!');
-        }
+        //elequent
+        JMakanan::find($id)->delete();
+        return redirect()->route('jenis_makanan.index')
+            ->with('success','Data Jenis Makanan Berhasil Dihapus');
     }
 }
+// Asset => JMakanan
+// ar_asset => ar_jmakanan
