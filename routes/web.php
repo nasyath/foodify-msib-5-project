@@ -96,8 +96,6 @@ Route::middleware(['auth', 'role:Penerima'])->group(function () {
 // ==========================================
 Route::resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
 
-Route::resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
-
 Route::resource('/history_donasi',HistoryDonasiController::class)->middleware('auth');
 Route::get('/history_donasi/{id}', [HistoryDonasiController::class, 'show'])->name('history_donasi.show')->middleware('auth');
 
@@ -108,7 +106,15 @@ Route::resource('/donatur',DonaturController::class)->middleware('auth');
 Route::resource('/penerima',PenerimaController::class)->middleware('auth');
 
 // web.php
+Route::resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
+
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/form-akun', [KelolaUsersController::class, 'form_akun'])->name('form_akun');
+
+Route::post('/tambah-akun', [KelolaUsersController::class, 'tambah_akun'])->name('tambah_akun');
+
+Route::get('/kelola_userss', [KelolaUsersController::class, 'index'])->name('admin.kelola_users');
 
 Auth::routes();
 
