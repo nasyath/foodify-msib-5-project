@@ -129,13 +129,13 @@
                                 .getElementById("bootstrap-style")
                                 .setAttribute(
                                     "href",
-                                    "/backend/assets/css/bootstrap.min.css"
+                                    "http://localhost/foodify-msib-5-project/public/backend/assets/css/bootstrap.min.css"
                                 ),
                             document
                                 .getElementById("app-style")
                                 .setAttribute(
                                     "href",
-                                    "/backend/assets/css/app.min.css"
+                                    "http://localhost/foodify-msib-5-project/public/backend/assets/css/app.min.css"
                                 ),
                             sessionStorage.setItem(
                                 "is_visited",
@@ -152,13 +152,13 @@
                                 .getElementById("bootstrap-style")
                                 .setAttribute(
                                     "href",
-                                    "backend/assets/css/bootstrap-rtl.min.css"
+                                    "http://localhost/foodify-msib-5-project/public/backend/assets/css/bootstrap-rtl.min.css"
                                 ),
                             document
                                 .getElementById("app-style")
                                 .setAttribute(
                                     "href",
-                                    "backend/assets/css/app-rtl.min.css"
+                                    "http://localhost/foodify-msib-5-project/public/backend/assets/css/app-rtl.min.css"
                                 ),
                             document
                                 .getElementsByTagName("html")[0]
