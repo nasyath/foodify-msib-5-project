@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Donasi;
+use PDF;
 
 class DonasiPenerimaController extends Controller
 {
@@ -48,4 +49,30 @@ class DonasiPenerimaController extends Controller
 
         return redirect()->route('proses_donasi_penerima')->with('success', 'Donasi ditolak.');
     }
+
+    public function history()
+    {
+        $historyDonasi = Donasi::where('id_penerima', auth()->user()->penerima->id)->get();
+        return view('penerima.history_donasi', compact('historyDonasi'));
+    }
+
+    public function generatePDF()
+    {
+        $data = [
+            'title' => 'Welcome to Kampus Merdeka',
+            'date' => date('d-m-Y H:i:s')
+        ];
+          
+        $pdf = PDF::loadView('penerima.tesPDF', $data);
+    
+        return $pdf->download('data_tespdf_'.date('d-m-Y_H:i:s').'.pdf');
+    }
+
+    public function assetPDF(){
+        $history = Donasi::all();
+        $pdf = PDF::loadView('backend.asset.assetPDF', 
+                              ['history'=>$history]);
+        return $pdf->download('data_asset_'.date('d-m-Y_H:i:s').'.pdf');
+    }
+
 }

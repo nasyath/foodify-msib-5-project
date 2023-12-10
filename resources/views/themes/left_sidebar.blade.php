@@ -104,11 +104,11 @@
                 <li class="@if (Route::currentRouteName() == 'donasi') active @endif">
                     <a href="{{ route('proses_donasi_penerima') }}" data-key="t-ecommerce">
                         <i class="fas fa-handshake" data-eva="grid-outline"></i>
-                        <span class="menu-item" data-key="t-ecommerce">Donasi</span>
+                        <span class="menu-item" data-key="t-ecommerce">Proses Donasi</span>
                     </a>
                 </li>
                 <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
-                    <a href="{{ url('/history_donasi') }}" data-key="t-ecommerce">
+                    <a href="{{ route('history_donasi_penerima') }}" data-key="t-ecommerce">
                         <i class="fas fa-folder-open" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
                     </a>
