@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 04:34 PM
--- Server version: 10.4.28-MariaDB
+-- Generation Time: Dec 10, 2023 at 06:18 PM
+-- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -35,7 +35,7 @@ CREATE TABLE `failed_jobs` (
   `payload` longtext NOT NULL,
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `migrations`
@@ -73,7 +73,7 @@ CREATE TABLE `password_reset_tokens` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,7 @@ CREATE TABLE `personal_access_tokens` (
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `personal_access_tokens`
@@ -114,21 +114,22 @@ CREATE TABLE `tb_donasi` (
   `tgl_mulai` date NOT NULL,
   `tgl_akhir` date NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `foto` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `keterangan` varchar(255) NOT NULL,
   `id_donatur` bigint(20) UNSIGNED DEFAULT NULL,
   `id_penerima` bigint(20) UNSIGNED DEFAULT NULL,
   `id_makanan` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_donasi`
 --
 
 INSERT INTO `tb_donasi` (`id`, `status`, `tgl_mulai`, `tgl_akhir`, `jumlah`, `foto`, `keterangan`, `id_donatur`, `id_penerima`, `id_makanan`, `created_at`, `updated_at`) VALUES
-(6, 'Pending', '2023-11-28', '2023-11-30', 5, '', '10', NULL, NULL, 1, NULL, NULL);
+(6, 'Pending', '2023-11-28', '2023-11-30', 5, '', '10', NULL, NULL, 1, NULL, NULL),
+(7, 'Pending', '2023-12-11', '2023-12-15', 2, NULL, 'Ambil jam 9 WIB', 14, 7, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,7 @@ CREATE TABLE `tb_donatur` (
   `users_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_donatur`
@@ -172,7 +173,7 @@ CREATE TABLE `tb_jenis_makanan` (
   `nama_jenis` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_jenis_makanan`
@@ -200,7 +201,7 @@ CREATE TABLE `tb_penerima` (
   `users_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_penerima`
@@ -230,7 +231,7 @@ CREATE TABLE `users` (
   `role` enum('Admin','Donatur','Penerima') NOT NULL DEFAULT 'Donatur',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -347,7 +348,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `tb_donasi`
 --
 ALTER TABLE `tb_donasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_donatur`
