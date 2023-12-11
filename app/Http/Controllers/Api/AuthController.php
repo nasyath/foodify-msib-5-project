@@ -30,7 +30,6 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
             'role' => $data['role']
         ]);
-
         if ($request->hasFile('foto')) {
             try {
                 $extension = $request->file('foto')->getClientOriginalExtension();
@@ -46,7 +45,7 @@ class AuthController extends Controller
             // If no file is uploaded, set $path to null or any default value you want
             $path = null;
         }
-
+      
         // Logic if user role is donatur
         if ($data['role'] == 'Donatur') {
             Donatur::create([

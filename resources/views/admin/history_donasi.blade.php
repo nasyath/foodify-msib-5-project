@@ -16,6 +16,12 @@ $no = 1;
         </ol>
 
         <!-- main -->
+        <a class="btn btn-danger m-2" href="{{ url('/admin-history-pdf') }}" title="Ekspor PDF">
+            <i class="far fa-file-pdf" style="width:20px;height:20px"></i>
+        </a>
+        <a class="btn btn-success m-2" href="{{ url('/admin-history-excel') }}" title="Ekspor Excel">
+            <i class="far fa-file-excel" style="width:20px;height:20px"></i>
+        </a>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -49,7 +55,7 @@ $no = 1;
                                 @endif
                             </td>
                             <td>
-                                <a class="btn btn-info btn-sm" href="{{ route('history_donasi.show', ['id' => $hd->id]) }}" title="Detail Donasi">
+                                <a class="btn btn-primary btn-sm" href="{{ route('history_donasi.show', $hd->id) }}" title="Detail Donasi">
                                     <i class="far fa-file-alt" style="width:16px;height:16px"></i>
                                 </a>
                             </td>

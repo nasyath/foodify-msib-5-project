@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 06:18 PM
--- Server version: 10.4.17-MariaDB
+-- Generation Time: Dec 10, 2023 at 04:34 PM
+-- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -128,8 +128,7 @@ CREATE TABLE `tb_donasi` (
 --
 
 INSERT INTO `tb_donasi` (`id`, `status`, `tgl_mulai`, `tgl_akhir`, `jumlah`, `foto`, `keterangan`, `id_donatur`, `id_penerima`, `id_makanan`, `created_at`, `updated_at`) VALUES
-(6, 'Pending', '2023-11-28', '2023-11-30', 5, '', '10', NULL, NULL, 1, NULL, NULL),
-(7, 'Pending', '2023-12-11', '2023-12-15', 2, NULL, 'Ambil jam 9 WIB', 14, 7, 1, NULL, NULL);
+(6, 'Pending', '2023-11-28', '2023-11-30', 5, '', '10', NULL, NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -348,13 +347,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `tb_donasi`
 --
 ALTER TABLE `tb_donasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_donatur`
 --
 ALTER TABLE `tb_donatur`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tb_jenis_makanan`
@@ -372,7 +371,7 @@ ALTER TABLE `tb_penerima`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables
