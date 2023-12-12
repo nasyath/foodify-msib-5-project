@@ -1,12 +1,19 @@
 @extends('themes.template')
 @section('content')
 <div class="page-content">
-    <div class="container-fluid">
-
+    <div class="container-fluid" style="padding:0px 50px 0px 50px">
+        <h3>Eksplor Penerima</h3>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">
+                <i class="fas fa-home"></i>
+                <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Eksplor Penerima</li>
+        </ol>
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="mb-3">
-                <h5 class="card-title">List Penerima<span class="text-muted fw-normal ms-2">({{ $totalPenerima }})</span></h5>
+                    <h5 class="card-title">List Penerima<span class="text-muted fw-normal ms-2">({{ $totalPenerima }})</span></h5>
                 </div>
             </div>
         </div>

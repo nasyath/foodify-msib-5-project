@@ -2,15 +2,12 @@
 @section('content')
 <div class="page-content" align="left">
     <div class="container-fluid" style="padding:0px 50px 0px 50px">
-        <h3>Proses Donasi</h3>
+        <h3>Detail History Donasi</h3>
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">
                 <i class="fas fa-home"></i>
                 <a href="{{ route('penerima.dashboard') }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="{{ route('proses_donasi_penerima') }}">Proses Donasi</a>
             </li>
             <li class="breadcrumb-item active">Detail Proses Donasi</li>
         </ol>

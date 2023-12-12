@@ -55,4 +55,19 @@ class User extends Authenticatable
     {
         return $this->hasOne(Penerima::class, 'users_id');
     }
+
+    public function isAdmin()
+    {
+        return $this->role === 'Admin';
+    }
+
+    public function isDonatur()
+    {
+        return $this->role === 'Donatur';
+    }
+
+    public function isPenerima()
+    {
+        return $this->role === 'Penerima';
+    }
 }

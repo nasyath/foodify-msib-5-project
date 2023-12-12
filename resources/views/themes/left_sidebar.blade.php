@@ -86,7 +86,7 @@
                     </a>
                 </li>
                 <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
-                    <a href="{{ url('/history_donasi') }}" data-key="t-ecommerce">
+                    <a href="{{ route('history_donasi_donatur') }}" data-key="t-ecommerce">
                         <i class="icon nav-icon" data-eva="layers-outline"></i>
                         <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
                     </a>
