@@ -6,13 +6,13 @@ $no = 1;
 @endphp
 <div class="page-content" align="left">
     <div class="container-fluid" style="padding:0px 50px 0px 50px">
-        <h3>Donasi</h3>
+        <h3>Proses Donasi</h3>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">
                 <i class="fas fa-home"></i>
                 <a href="{{ route('admin.dashboard') }}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Donasi</li>
+            <li class="breadcrumb-item active">Proses Donasi</li>
         </ol>
 
 
@@ -20,7 +20,7 @@ $no = 1;
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                <b>Proses Donasi</b>
+                <b>Donasi</b>
                 ({{ $donasiList->count() }})
             </div>
             <div class="card-body">

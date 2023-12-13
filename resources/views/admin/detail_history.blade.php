@@ -16,18 +16,30 @@
         </ol>
 
         <!-- main -->
-        <div class="card">
+        <div class="card" style="width: 80%;">
             <div class="row no-gutters align-items-center">
-                <div class="col-md-4">
-                    @empty($detail_history->foto)
-                    <br /><img src="{{ asset('backend/assets/images/no_foto.jpg') }}" class="img-fluid rounded-start" />
-                    @else
-                    <img src="{{ asset('backend/assets/images/donasi') }}/{{ $detail_history->foto }}" />
-                    @endempty
-                </div>
-                <div class="col-md-8">
+                <div class="col-md-4 centered-item">
                     <div class="card-body">
-                        <h2>Detail Donasi {{ $detail_history->id }}</h2><hr>
+                        @empty($detail_history->foto)
+                        <br /><img src="{{ asset('backend/assets/images/no_foto.jpg') }}" class="img-fluid rounded-start" />
+                        @else
+                        <!-- <img src="{{ asset('backend/assets/images/donasi') }}/{{ $detail_history->foto }}" /> -->
+                        <img src="{{ asset($detail_history->foto) }}" alt="" class="img-thumbnail me-2">
+                        @endempty
+                    </div>
+                </div>
+                <div class="col-md-8 centered-item">
+                    <div class="card-body">
+                        <h2>Detail Donasi {{ $detail_history->id }} || 
+                            @if ($detail_history->status === 'Diterima')
+                            <span class="badge bg-success-subtle text-success  mb-0">Diterima</span>
+                            @elseif ($detail_history->status === 'Ditolak')
+                            <span class="badge bg-danger-subtle text-danger  mb-0">Ditolak</span>
+                            @elseif ($detail_history->status === 'Pending')
+                            <span class="badge bg-secondary-subtle text-secondary  mb-0">Pending</span>
+                            @endif
+                        </h2>
+                        <hr>
                         <table class="table-responsive">
                             <tbody>
                                 <tr>
@@ -63,8 +75,7 @@
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
-@endsection
+    @endsection

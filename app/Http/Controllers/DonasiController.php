@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Donasi; //panggil model
 use App\Models\Penerima; //panggil model
 use App\Models\JMakanan;
+use PDF;
+use App\Exports\HistoryDonasiExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
 class DonasiController extends Controller
@@ -117,11 +120,21 @@ class DonasiController extends Controller
     {
         $donasi = Donasi::with(['penerima'])->findOrFail($id);
         // Ambil data donasi berdasarkan ID
-        $donasi = Donasi::with(['donatur:id,nama_donatur', 'penerima:id,nama_penerima', 'jmakanan:id,nama_jenis'])
-            ->findOrFail($id);
+        $penerima = $donasi->penerima;
+        
 
         // Tampilkan view untuk menampilkan detail donasi
-        return view('donatur.detail_donasi', compact('donasi'));
+        return view('donatur.detail_donasi', compact('donasi','penerima'));
+    }
+
+    public function historyDetail($id)
+    {
+        $donasi = Donasi::with(['penerima'])->findOrFail($id);
+        // Ambil data donasi berdasarkan ID
+        $penerima = $donasi->penerima;
+
+        // Tampilkan view untuk menampilkan detail donasi
+        return view('donatur.detail_history', compact('donasi','penerima'));
     }
 
 
@@ -229,5 +242,58 @@ class DonasiController extends Controller
         $totalPenerima = count($penerimaDonasi);
         $donatur = auth()->user();
         return view('donatur.eksplor', compact('penerimaDonasi', 'totalPenerima', 'donatur'));
+    }
+
+    public function history()
+    {
+        $historyDonasi = Donasi::with(['donatur:id,nama_donatur', 'penerima:id,nama_penerima', 'jmakanan:id,nama_jenis'])
+            ->where('id_donatur', auth()->user()->donatur->id)
+            ->select(
+                'id',
+                'jumlah',
+                'tgl_mulai',
+                'tgl_akhir',
+                'foto',
+                'keterangan',
+                'status',
+                'id_donatur', // tambahkan id_donatur
+                'id_penerima', // tambahkan id_penerima
+                'id_makanan' // tambahkan id_makanan
+            )->get();
+
+        // Kirim data donasi ke view
+        return view('donatur.history_donasi', compact('historyDonasi'));
+    }
+
+    public function historyPDF()
+    {
+        $userId = Auth::id();
+
+        $ar_history = Donasi::select(
+            'tb_donasi.id',
+            'tb_donasi.status',
+            'tb_donasi.tgl_mulai',
+            'tb_donasi.tgl_akhir',
+            'tb_donasi.jumlah',
+            'tb_donasi.foto',
+            'tb_donasi.keterangan',
+            'tb_donatur.nama_donatur',
+            'tb_penerima.nama_penerima',
+            'tb_jenis_makanan.nama_jenis'
+        )
+            ->join('tb_jenis_makanan', 'tb_jenis_makanan.id', '=', 'tb_donasi.id_makanan')
+            ->join('tb_penerima', 'tb_penerima.id', '=', 'tb_donasi.id_penerima')
+            ->join('tb_donatur', 'tb_donatur.id', '=', 'tb_donasi.id_donatur')
+            ->where('tb_donatur.users_id', $userId) // Menggunakan users_id pada tabel penerima
+            ->orderBy('tb_donasi.id', 'desc')
+            ->get();
+
+        $pdf = PDF::loadView('donatur.historyPDF', ['ar_history' => $ar_history]);
+        return $pdf->download('data_donasi_' . date('d-m-Y_H:i:s') . '.pdf');
+    }
+
+    public function historyExcel()
+    {
+        return Excel::download(new HistoryDonasiExport, 'data_donasi_'.date('d-m-Y_H:i:s').'.xlsx');
     }
 }

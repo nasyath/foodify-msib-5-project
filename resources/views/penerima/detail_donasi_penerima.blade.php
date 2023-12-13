@@ -2,15 +2,12 @@
 @section('content')
 <div class="page-content" align="left">
     <div class="container-fluid" style="padding:0px 50px 0px 50px">
-        <h3>Proses Donasi</h3>
+        <h3>Detail History Donasi</h3>
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">
                 <i class="fas fa-home"></i>
                 <a href="{{ route('penerima.dashboard') }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="{{ route('proses_donasi_penerima') }}">Proses Donasi</a>
             </li>
             <li class="breadcrumb-item active">Detail Proses Donasi</li>
         </ol>
@@ -24,7 +21,7 @@
                         <div class="d-flex align-items-start border-bottom pb-3">
                             <!-- Foto Donatur -->
                             <div class="me-4">
-                                <img src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="" class="avatar-lg rounded">
+                                <img src="{{ asset($donatur->foto) }}" alt="" class="avatar-lg rounded">
                             </div>
                             <div class="flex-grow-1 align-self-center overflow-hidden">
                                 <div>
@@ -71,7 +68,7 @@
                                         <h7 style="text-align: justify;">{{ $donasi->keterangan }}</h7>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="mt-4">
                                         <p class="text-muted mb-2">Foto</p>
                                         <img src="{{ asset($donasi->foto) }}" alt="" class="img-thumbnail me-2">

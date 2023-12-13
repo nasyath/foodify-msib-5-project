@@ -7,23 +7,46 @@ use App\Models\User;
 use App\Models\Donatur;
 use App\Models\Penerima;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class ProfilController extends Controller
 {
 
     public function index()
     {
-        $current_userid = auth()->user()->id;
-        $userinfo = User::find($current_userid);
+        $currentUserId = auth()->user()->id;
+        $userinfo = User::find($currentUserId);
+
+        // Logging informasi user
+        Log::info('User Info:', $userinfo->toArray());
+
+        // Jika user adalah Admin, gunakan langsung $userinfo sebagai $userProfile
         $userProfile = $userinfo->role === 'Admin' ? $userinfo : $userinfo->load('Donatur', 'Penerima');
 
-        \Log::info('User Info:', $userinfo->toArray());
-
-        // Gunakan View::share untuk berbagi data ke view
-        view()->share('userProfile', $userProfile);
-        view()->share('userinfo', $userinfo);
-
+        // Gunakan compact untuk mengirimkan data ke view
         return view('profil.index', compact('userProfile', 'userinfo'));
     }
-    
+
+    public function openStatus()
+    {
+        // Implementasi untuk membuka status
+        // Misalnya, update status pada tabel Penerima
+        DB::table('tb_penerima')
+            ->where('users_id', auth()->user()->id)
+            ->update(['status' => 'Open']);
+
+        return redirect()->route('profil.index')->with('success', 'Status berhasil diubah menjadi Open.');
+    }
+
+    public function closeStatus()
+    {
+        // Implementasi untuk menutup status
+        // Misalnya, update status pada tabel Penerima
+        DB::table('tb_penerima')
+            ->where('users_id', auth()->user()->id)
+            ->update(['status' => 'Close']);
+
+        return redirect()->route('profil.index')->with('success', 'Status berhasil diubah menjadi Close.');
+    }
 }
