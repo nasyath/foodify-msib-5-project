@@ -129,13 +129,13 @@
                                 .getElementById("bootstrap-style")
                                 .setAttribute(
                                     "href",
-                                    "backend/assets/css/bootstrap.min.css"
+                                    "/backend/assets/css/bootstrap.min.css"
                                 ),
                             document
                                 .getElementById("app-style")
                                 .setAttribute(
                                     "href",
-                                    "backend/assets/css/app.min.css"
+                                    "/backend/assets/css/app.min.css"
                                 ),
                             sessionStorage.setItem(
                                 "is_visited",
