@@ -34,13 +34,20 @@ class JMakananController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // JMakanan::create($request->all());
-        // return redirect()->route('jenis_makanan.index')
-        //     ->with('success','Data Jenis Makanan Berhasil Ditambahkan');
-        DB::table('tb_jenis_makanan')->insert(['nama_jenis' => $request->nama_jenis]);
-        return redirect()->route('jenis_makanan.index')
-            ->with('success','Data Jenis Makanan Berhasil Ditambahkan');
+        $existingJenis = JMakanan::where('nama_jenis', $request->nama_jenis)->first();
+
+        if ($existingJenis) {
+            // Tampilkan alert jika nama jenis sudah ada
+            return redirect()->route('kelola_jenis_makanan.index')
+                ->with('error', 'Jenis Makanan Sudah Tersedia.');
+        }
+
+        // Lakukan penyimpanan jika tidak ada duplikat
+        JMakanan::create($request->all());
+
+        // Redirect atau tindakan lain setelah penyimpanan berhasil
+        return redirect()->route('kelola_jenis_makanan.index')
+            ->with('success', 'Jenis Makanan Baru Berhasil Ditambahkan');
     }
 
     /**
@@ -53,25 +60,23 @@ class JMakananController extends Controller
 
     public function edit($id)
     {
-        $ar_jmakanan = JMakanan::find($id);
+        $jenis_makanan = JMakanan::find($id);
 
-        return view('admin.edit_tambahjenis', compact('ar_jmakanan'));
+        return view('admin.edit_jenis_makanan', compact('jenis_makanan'));
     }
 
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
-            'nama_jenis' => 'required|max:255',
-            // Sesuaikan validasi lainnya sesuai kebutuhan
+        $request->validate([
+            'nama_jenis' => 'required|unique:tb_jenis_makanan,nama_jenis,' . $id . '|max:255',
+        ], [
+            'nama_jenis.unique' => 'Jenis makanan sudah ada.',
         ]);
 
-        JMakanan::where('id', $id)->update([
-            'nama_jenis' => $request->nama_jenis,
-            // Sesuaikan kolom lainnya sesuai kebutuhan
-        ]);
+        JMakanan::where('id', $id)->update(['nama_jenis' => $request->nama_jenis]);
 
-        return redirect()->route('kelola_jenis.index')
-                        ->with('success', 'Data Jenis Makanan Berhasil Diubah');
+        return redirect()->route('kelola_jenis_makanan.index')
+            ->with('success', 'Data Jenis Makanan Berhasil Diubah');
     }
 
 
@@ -82,17 +87,18 @@ class JMakananController extends Controller
     {
         //elequent
         JMakanan::find($id)->delete();
-        return redirect()->route('jenis_makanan.index')
-            ->with('success','Data Jenis Makanan Berhasil Dihapus');
+        return redirect()->route('kelola_jenis_makanan.index')
+            ->with('success', 'Data Jenis Makanan Berhasil Dihapus');
     }
 
-    public function apiJMakanan(){
+    public function apiJMakanan()
+    {
         $jmakanan = JMakanan::all();
         return response()->json(
             [
-                'success'=>true,
-                'message'=>'Data Jenis Makanan',
-                'data'=>$jmakanan
+                'success' => true,
+                'message' => 'Data Jenis Makanan',
+                'data' => $jmakanan
             ],
             200
         );
