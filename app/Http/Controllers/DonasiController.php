@@ -121,6 +121,7 @@ class DonasiController extends Controller
         $donasi = Donasi::with(['penerima'])->findOrFail($id);
         // Ambil data donasi berdasarkan ID
         $penerima = $donasi->penerima;
+        
 
         // Tampilkan view untuk menampilkan detail donasi
         return view('donatur.detail_donasi', compact('donasi','penerima'));

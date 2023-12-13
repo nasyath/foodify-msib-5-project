@@ -93,7 +93,6 @@ Route::resource('/donatur',DonaturController::class)->middleware('auth');
 Route::resource('/penerima',PenerimaController::class)->middleware('auth');
 
 // web.php
-Route::resource('/kelola_users',KelolaUsersController::class)->middleware('auth');
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
@@ -101,10 +100,13 @@ Route::get('/form-akun', [KelolaUsersController::class, 'form_akun'])->name('for
 
 Route::post('/tambah-akun', [KelolaUsersController::class, 'tambah_akun'])->name('tambah_akun');
 
-Route::get('/kelola_userss', [KelolaUsersController::class, 'index'])->name('admin.kelola_users');
+Route::get('/kelola_users', [KelolaUsersController::class, 'index'])->name('admin.kelola_users');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+
+Route::get('/open-status', [ProfilController::class, 'openStatus'])->name('open.status');
+Route::get('/close-status', [ProfilController::class, 'closeStatus'])->name('close.status');

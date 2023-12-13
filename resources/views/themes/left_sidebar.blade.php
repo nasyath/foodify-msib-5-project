@@ -101,6 +101,12 @@
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li>
+                <li class="@if (Route::currentRouteName() == 'profil') active @endif">
+                    <a href="{{ route('profil.index') }}" data-key="t-ecommerce">
+                        <i class="fas fa-user-cog" data-eva="grid-outline"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Profile/Action</span>
+                    </a>
+                </li>
                 <li class="@if (Route::currentRouteName() == 'donasi') active @endif">
                     <a href="{{ route('proses_donasi_penerima') }}" data-key="t-ecommerce">
                         <i class="fas fa-handshake" data-eva="grid-outline"></i>
