@@ -48,8 +48,6 @@ class HistoryDonasiController extends Controller
         return view('admin.history_donasi', compact('ar_history'));
     }
 
-
-
     public function show(string $id)
     {
         $detail_history = Donasi::select(

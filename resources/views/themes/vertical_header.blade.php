@@ -61,23 +61,21 @@
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown-v" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @if (auth()->user()->role === 'Admin')
-                        <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="Header Avatar">
-                    @elseif (auth()->user()->role === 'Penerima' && isset($userinfo) && isset($userProfile) && $userinfo->role === 'Penerima' && $userProfile->penerima && $userProfile->penerima->foto)
-                        <img class="rounded-circle header-profile-user" src="{{ asset($userProfile->penerima->foto) }}" alt="Header Avatar">
-                    @elseif (auth()->user()->role === 'Donatur' && isset($userinfo) && isset($userProfile) && $userinfo->role === 'Donatur' && $userProfile->donatur && $userProfile->donatur->foto)
-                        <img class="rounded-circle header-profile-user" src="{{ asset($userProfile->donatur->foto) }}" alt="Header Avatar">
+                    @if ($user->role === 'Admin')
+                    <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="Header Avatar">
+                    @elseif ($user->role === 'Penerima' && $user->penerima && $user->penerima->foto)
+                    <img class="rounded-circle header-profile-user" src="{{ asset($user->penerima->foto) }}" alt="Header Avatar">
+                    @elseif ($user->role === 'Donatur' && $user->donatur && $user->donatur->foto)
+                    <img class="rounded-circle header-profile-user" src="{{ asset($user->donatur->foto) }}" alt="Header Avatar">
                     @else
-                        <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="Header Avatar">
+                    <img class="rounded-circle header-profile-user" src="{{ asset('backend/assets/images/users/nofoto.png') }}" alt="Header Avatar">
                     @endif
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
-                    @if(isset($userinfo))
                     <div class="p-3 border-bottom">
-                        <h6 class="mb-0">{{ $userinfo->username }}</h6>
-                        <p class="mb-0 font-size-11 text-muted">{{ $userinfo->email }}</p>
+                        <h6 class="mb-0">{{ $user->username }}</h6>
+                        <p class="mb-0 font-size-11 text-muted">{{ $user->email }}</p>
                     </div>
-                    @endif
 
                     <a class="dropdown-item" href="{{ route('profil.index') }}">
                         <i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i>

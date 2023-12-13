@@ -10,17 +10,17 @@ $no = 1;
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">
                 <i class="fas fa-home"></i>
-                <a href="{{ route('penerima.dashboard') }}">Dashboard</a>
+                <a href="{{ route('donatur.dashboard') }}">Dashboard</a>
             </li>
             <li class="breadcrumb-item active">History Donasi</li>
         </ol>
 
 
         <!-- main -->
-        <a class="btn btn-danger m-2" href="{{ url('/penerima-history-pdf') }}" title="Ekspor PDF">
+        <a class="btn btn-danger m-2" href="{{ url('/donatur-history-pdf') }}" title="Ekspor PDF">
             <i class="far fa-file-pdf" style="width:20px;height:20px"></i>
         </a>
-        <a class="btn btn-success m-2" href="{{ url('/penerima-history-excel') }}" title="Ekspor Excel">
+        <a class="btn btn-success m-2" href="{{ url('/donatur-history-excel') }}" title="Ekspor Excel">
             <i class="far fa-file-excel" style="width:20px;height:20px"></i>
         </a>
         <div class="card mb-4">
@@ -59,7 +59,7 @@ $no = 1;
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('detail_donasi_penerima', $donasi->id) }}" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail Donasi">
+                                <a href="{{ route('detail_donasi_donatur', $donasi->id) }}" class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail Donasi">
                                     <i class="far fa-file-alt" style="width:16px;height:16px"></i>
                                 </a>
 

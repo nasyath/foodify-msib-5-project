@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 08:02 PM
--- Server version: 10.4.17-MariaDB
+-- Generation Time: Dec 10, 2023 at 04:34 PM
+-- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -128,9 +128,7 @@ CREATE TABLE `tb_donasi` (
 --
 
 INSERT INTO `tb_donasi` (`id`, `status`, `tgl_mulai`, `tgl_akhir`, `jumlah`, `foto`, `keterangan`, `id_donatur`, `id_penerima`, `id_makanan`, `created_at`, `updated_at`) VALUES
-(7, 'Pending', '2023-12-11', '2023-12-15', 2, NULL, 'Ambil jam 9 WIB', 14, 7, 1, NULL, NULL),
-(8, 'Diterima', '2023-12-11', '2023-12-16', 3, NULL, 'Ambil jam 9 WIB', 10, 8, 1, NULL, NULL),
-(9, 'Pending', '2023-12-12', '2023-12-23', 2, NULL, 'Ambil jam 10 WIB', 10, 9, 1, NULL, NULL);
+(6, 'Pending', '2023-11-28', '2023-11-30', 5, '', '10', NULL, NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -349,7 +347,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `tb_donasi`
 --
 ALTER TABLE `tb_donasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_donatur`

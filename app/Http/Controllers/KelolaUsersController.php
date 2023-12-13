@@ -29,6 +29,27 @@ class KelolaUsersController extends Controller
         return view('admin.kelola_users', compact('ar_donatur'));
     }
 
+    public function show($id)
+{
+    $userakun = User::findOrFail($id);
+
+    // Check the role of the user
+    switch ($userakun->role) {
+        case 'Donatur':
+            $detail = Donatur::where('users_id', $userakun->id)->first();
+            break;
+        case 'Penerima':
+            $detail = Penerima::where('users_id', $userakun->id)->first();
+            break;
+        // Add other roles as needed
+        default:
+            $detail = null;
+            break;
+    }
+
+    return view('admin.detail_akun', compact('userakun', 'detail'));
+}
+
     public function destroy($id)
     {
         // Hapus data berdasarkan $id dari tabel Penerima

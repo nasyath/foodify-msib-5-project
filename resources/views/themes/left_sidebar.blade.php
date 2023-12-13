@@ -86,7 +86,7 @@
                     </a>
                 </li>
                 <li class="@if (Route::currentRouteName() == 'history_donasi') active @endif">
-                    <a href="{{ url('/history_donasi') }}" data-key="t-ecommerce">
+                    <a href="{{ route('history_donasi_donatur') }}" data-key="t-ecommerce">
                         <i class="icon nav-icon" data-eva="layers-outline"></i>
                         <span class="menu-item" data-key="t-ecommerce">History Donasi</span>
                     </a>
@@ -99,6 +99,12 @@
                     <a href="{{ route('penerima.dashboard') }}" data-key="t-ecommerce">
                         <i class="icon nav-icon" data-eva="grid-outline"></i>
                         <span class="menu-item" data-key="t-dashboards">Dashboard</span>
+                    </a>
+                </li>
+                <li class="@if (Route::currentRouteName() == 'profil') active @endif">
+                    <a href="{{ route('profil.index') }}" data-key="t-ecommerce">
+                        <i class="fas fa-user-cog" data-eva="grid-outline"></i>
+                        <span class="menu-item" data-key="t-ecommerce">Profile/Action</span>
                     </a>
                 </li>
                 <li class="@if (Route::currentRouteName() == 'donasi') active @endif">

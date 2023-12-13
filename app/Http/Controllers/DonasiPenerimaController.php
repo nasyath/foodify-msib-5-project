@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\HistoryDonasiExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Donasi;
 use PDF;
+use Illuminate\Support\Facades\Auth;
 
 class DonasiPenerimaController extends Controller
 {
@@ -18,12 +21,12 @@ class DonasiPenerimaController extends Controller
     {
         // Fetch the donation data from the database based on $id
         $donasi = Donasi::findOrFail($id);
-    
+
         // Fetch the related Donatur data
         $donatur = $donasi->donatur;
-    
+
         // You may also need to retrieve additional information, such as penerima details, etc.
-    
+
         // Return the view with the donation and donatur data
         return view('penerima.detail_donasi_penerima', compact('donasi', 'donatur'));
     }
@@ -62,17 +65,41 @@ class DonasiPenerimaController extends Controller
             'title' => 'Welcome to Kampus Merdeka',
             'date' => date('d-m-Y H:i:s')
         ];
-          
+
         $pdf = PDF::loadView('penerima.tesPDF', $data);
-    
-        return $pdf->download('data_tespdf_'.date('d-m-Y_H:i:s').'.pdf');
+
+        return $pdf->download('data_tespdf_' . date('d-m-Y_H:i:s') . '.pdf');
     }
 
-    public function assetPDF(){
-        $history = Donasi::all();
-        $pdf = PDF::loadView('backend.asset.assetPDF', 
-                              ['history'=>$history]);
-        return $pdf->download('data_asset_'.date('d-m-Y_H:i:s').'.pdf');
+    public function historyPDF()
+    {
+        $userId = Auth::id();
+
+        $ar_history = Donasi::select(
+            'tb_donasi.id',
+            'tb_donasi.status',
+            'tb_donasi.tgl_mulai',
+            'tb_donasi.tgl_akhir',
+            'tb_donasi.jumlah',
+            'tb_donasi.foto',
+            'tb_donasi.keterangan',
+            'tb_donatur.nama_donatur',
+            'tb_penerima.nama_penerima',
+            'tb_jenis_makanan.nama_jenis'
+        )
+            ->join('tb_jenis_makanan', 'tb_jenis_makanan.id', '=', 'tb_donasi.id_makanan')
+            ->join('tb_penerima', 'tb_penerima.id', '=', 'tb_donasi.id_penerima')
+            ->join('tb_donatur', 'tb_donatur.id', '=', 'tb_donasi.id_donatur')
+            ->where('tb_penerima.users_id', $userId) // Menggunakan users_id pada tabel penerima
+            ->orderBy('tb_donasi.id', 'desc')
+            ->get();
+
+        $pdf = PDF::loadView('penerima.historyPDF', ['ar_history' => $ar_history]);
+        return $pdf->download('data_donasi_' . date('d-m-Y_H:i:s') . '.pdf');
     }
 
+    public function historyExcel()
+    {
+        return Excel::download(new HistoryDonasiExport, 'data_donasi_'.date('d-m-Y_H:i:s').'.xlsx');
+    }
 }
