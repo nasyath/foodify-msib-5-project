@@ -129,13 +129,13 @@
                                 .getElementById("bootstrap-style")
                                 .setAttribute(
                                     "href",
-                                    "http://localhost/foodify-msib-5-project/public/backend/assets/css/bootstrap.min.css"
+                                    "/backend/assets/css/bootstrap.min.css"
                                 ),
                             document
                                 .getElementById("app-style")
                                 .setAttribute(
                                     "href",
-                                    "http://localhost/foodify-msib-5-project/public/backend/assets/css/app.min.css"
+                                    "/backend/assets/css/app.min.css"
                                 ),
                             sessionStorage.setItem(
                                 "is_visited",
