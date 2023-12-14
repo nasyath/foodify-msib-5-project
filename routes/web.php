@@ -62,7 +62,6 @@ Route::middleware(['auth', 'role:Donatur'])->group(function () {
     Route::get('/donatur-proses-donasi', [DonasiController::class, 'index'])->name('proses_donasi');
     Route::get('/donatur-detail-donasi/{id}', [DonasiController::class, 'showDetail'])->name('detail_donasi_donatur');
     Route::get('/history-donasi-donatur', [DonasiController::class, 'history'])->name('history_donasi_donatur');
-    // Route :: get('/history-donasi-donatur/{id}', [DonasiController::class, 'historyDetail'])->name('detail_history_donatur');
     Route::post('/submit-donasi', [DonasiController::class, 'store'])->name('submit_donasi');
     Route::delete('/delete-donasi/{id}', [DonasiController::class, 'destroy'])->name('delete_donasi');
     Route::get('/edit-donasi/{id}', [DonasiController::class, 'edit'])->name('edit_donasi');
@@ -86,10 +85,6 @@ Route::middleware(['auth', 'role:Penerima'])->group(function () {
 });
 
 // ==========================================
-Route::resource('/kelola_jenis_makanan',JMakananController::class)->middleware('auth');
-
-Route::resource('/history_donasi',HistoryDonasiController::class)->middleware('auth');
-Route::get('/history_donasi/{id}', [HistoryDonasiController::class, 'show'])->name('history_donasi.show')->middleware('auth');
 
 Route::resource('/donasi',DonasiController::class)->middleware('auth');
 
