@@ -55,7 +55,10 @@ $no = 1;
                                     <a class="btn btn-info btn-sm" href="{{ route('kelola_users.show', $d->id) }}" title="Detail Akun">
                                         <i class="far fa-file-alt" style="width:16px;height:16px"></i>
                                     </a>
-                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus User">
+                                    <a class="btn btn-warning btn-sm" href="{{ route('form_edit_akun', $d->id) }}" title="Edit Akun">
+                                        <i class="fas fa-pen" style="width:16px;height:16px"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus User" onclick="return confirm('Anda yakin ingin menghapus akun?')">
                                         <i class="fas fa-trash" style="width:16px;height:16px"></i>
                                     </button>
                                 </form>

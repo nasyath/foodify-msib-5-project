@@ -64,6 +64,7 @@
 
                             <div>
                                 <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                <a href="{{ route('eksplorasi_penerima')}}" class="btn btn-secondary w-md">Kembali</a>
                             </div>
                         </form>
                     </div>

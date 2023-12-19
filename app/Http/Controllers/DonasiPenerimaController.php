@@ -13,7 +13,7 @@ class DonasiPenerimaController extends Controller
 {
     public function index()
     {
-        $donasiList = Donasi::where('id_penerima', auth()->user()->penerima->id)->get();
+        $donasiList = Donasi::where('id_penerima', auth()->user()->penerima->id)->orderBy('id', 'desc') ->get();
         return view('penerima.proses_donasi_penerima', compact('donasiList'));
     }
 
@@ -55,7 +55,7 @@ class DonasiPenerimaController extends Controller
 
     public function history()
     {
-        $historyDonasi = Donasi::where('id_penerima', auth()->user()->penerima->id)->get();
+        $historyDonasi = Donasi::where('id_penerima', auth()->user()->penerima->id)->orderBy('id', 'desc')->get();
         return view('penerima.history_donasi', compact('historyDonasi'));
     }
 
