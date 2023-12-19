@@ -35,6 +35,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
 
+Route::get('/access-denied', function () {
+    return view('access_denied');
+})->middleware('auth');
+
 // ==========================================
 // ADMIN
 // Route::get('/admin-dashboard', function () {
