@@ -79,16 +79,18 @@ $no = 1;
                             <td>{{ $jm->nama_jenis }}</td>
                             <td>
 
-                                <form method="POST" action="{{ route('kelola_jenis_makanan.destroy', $jm->id) }}">
+
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editData" title="Edit">
+                                    <i class="fas fa-pen" style="width:16px;height:16px"></i>
+                                </button>
+
+                                <!--form method="POST" action="{{ route('kelola_jenis_makanan.destroy', $jm->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editData" title="Edit">
-                                        <i class="fas fa-pen" style="width:16px;height:16px"></i>
-                                    </button>
                                     <button type="submit" class="btn btn-danger btn-sm" title="Hapus Jenis Makanan" onclick="return confirm('Anda yakin ingin menghapus data ini?')">
                                         <i class="fas fa-trash" style="width:16px;height:16px"></i>
                                     </button>
-                                </form>
+                                </form-->
 
 
                                 <!-- Modal Edit Data -->
