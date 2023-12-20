@@ -30,6 +30,43 @@ class DashboardController extends Controller
             ->where('status', 'Ditolak')
             ->count();
 
+        // Data untuk Pie Chart (distribusi status donasi)
+        $pieChartData = [
+            'labels' => ['Diterima', 'Ditolak', 'Pending'],
+            'data' => [$totalDiterima, $totalDitolak, $totalPending],
+            'backgroundColor' => [
+                'rgba(99, 173, 111, 0.5)',
+                'rgba(245, 110, 110, 0.5)',
+                'rgba(162, 162, 162, 0.5)',
+            ],
+            'borderColor' => [
+                'rgba(99, 173, 111, 1)',
+                'rgba(245, 110, 110, 1)',
+                'rgba(162, 162, 162, 1)',
+            ],
+        ];
+
+        $labels = ['Penerima', 'Donatur'];
+        $data = [
+            $totalPenerima,
+            $totalDonatur,
+        ];
+        $backgroundColor = [
+            'rgba(249, 194, 86, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+        ];
+        $borderColor = [
+            'rgba(249, 194, 86, 1)',
+            'rgba(54, 162, 235, 1)',
+        ];
+    
+        $barChartData = [
+            'labels' => $labels,
+            'data' => $data,
+            'backgroundColor' => $backgroundColor,
+            'borderColor' => $borderColor,
+        ];
+
         return view(
             'admin.dashboard',
             compact(
@@ -38,7 +75,9 @@ class DashboardController extends Controller
                 'totalDonatur',
                 'totalPending',
                 'totalDiterima',
-                'totalDitolak'
+                'totalDitolak',
+                'pieChartData',
+                'barChartData'
             )
         );
     }
@@ -70,9 +109,25 @@ class DashboardController extends Controller
             ->where('tb_donasi.status', 'Pending')
             ->count();
 
+        // Data untuk Pie Chart (distribusi status donasi)
+        $pieChartData = [
+            'labels' => ['Diterima', 'Ditolak', 'Pending'],
+            'data' => [$totalDiterima, $totalDitolak, $totalPending],
+            'backgroundColor' => [
+                'rgba(99, 173, 111, 0.5)',
+                'rgba(245, 110, 110, 0.5)',
+                'rgba(162, 162, 162, 0.5)',
+            ],
+            'borderColor' => [
+                'rgba(99, 173, 111, 1)',
+                'rgba(245, 110, 110, 1)',
+                'rgba(162, 162, 162, 1)',
+            ],
+        ];
+
         return view(
             'donatur.dashboard',
-            compact('totalDonasi', 'totalDitolak', 'totalDiterima', 'totalPending')
+            compact('totalDonasi', 'totalDitolak', 'totalDiterima', 'totalPending','pieChartData',)
         );
     }
 
@@ -102,10 +157,28 @@ class DashboardController extends Controller
             ->where('tb_penerima.users_id', $userId)
             ->where('tb_donasi.status', 'Pending')
             ->count();
+        
+        
+        // Data untuk Pie Chart (distribusi status donasi)
+        $pieChartData = [
+            'labels' => ['Diterima', 'Ditolak', 'Pending'],
+            'data' => [$totalDiterima, $totalDitolak, $totalPending],
+            'backgroundColor' => [
+                'rgba(99, 173, 111, 0.5)',
+                'rgba(245, 110, 110, 0.5)',
+                'rgba(162, 162, 162, 0.5)',
+            ],
+            'borderColor' => [
+                'rgba(99, 173, 111, 1)',
+                'rgba(245, 110, 110, 1)',
+                'rgba(162, 162, 162, 1)',
+            ],
+        ];
+
 
         return view(
             'penerima.dashboard',
-            compact('totalDonasi', 'totalDitolak', 'totalDiterima', 'totalPending')
+            compact('totalDonasi', 'totalDitolak', 'totalDiterima', 'totalPending','pieChartData',)
         );
     }
 }

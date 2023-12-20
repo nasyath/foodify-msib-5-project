@@ -38,7 +38,7 @@
                                 <div class="d-flex align-items-center overflow-hidden">
                                     <div class="flex-shrink-0 me-3">
                                         <div class="avatar">
-                                            <div class="avatar-title rounded bg-success bg-gradient">
+                                            <div class="avatar-title rounded bg-primary bg-gradient">
                                                 <i class="fas fa-spa"></i>
                                             </div>
                                         </div>
@@ -79,14 +79,14 @@
                                 <div class="d-flex align-items-center overflow-hidden">
                                     <div class="flex-shrink-0 me-3">
                                         <div class="avatar">
-                                            <div class="avatar-title rounded bg-primary bg-gradient">
+                                            <div class="avatar-title rounded bg-success bg-gradient">
                                                 <i class="fas fa-check"></i>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="flex-grow-1">
                                         <h5 class="font-size-15 mb-2">Diterima</h5>
-                                        <h3 class="text-muted mb-0">{{ $totalDonasi }}</h3>
+                                        <h3 class="text-muted mb-0">{{ $totalDiterima }}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <h5 class="font-size-15 mb-2">Ditolak</h5>
-                                        <h3 class="text-muted mb-0">{{ $totalDonatur }}</h3>
+                                        <h3 class="text-muted mb-0">{{ $totalDitolak }}</h3>
                                     </div>
                                 </div>
 
@@ -125,7 +125,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <h5 class="font-size-15 mb-2">Pending</h5>
-                                        <h3 class="text-muted mb-0">{{ $totalDonatur }}</h3>
+                                        <h3 class="text-muted mb-0">{{ $totalPending }}</h3>
                                     </div>
                                 </div>
 
@@ -138,21 +138,28 @@
             </div>
             <!-- container-fluid -->
         </div>
-        <div class="row">
-            <div class="col-md-5">
-                <canvas id="donasiChart" width="100" height="100"></canvas>
-            </div>
-
-        </div>
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Line with Data Labels</h4>
-                    </div><!-- end card header -->
                     <div class="card-body">
-                        <div id="line_chart_datalabel" data-colors='["#57c9eb","#f56e6e","yellow"]' class="apex-charts" dir="ltr"></div>
+                        <h5><b>Data Donasi</b></h5>
+                        <hr>
+                        <div>
+                            <canvas id="myPieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5><b>Data Users</b></h5>
+                        <hr>
+                        <div>
+                            <canvas id="myBarChart" height="300px" width="272px"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -162,26 +169,58 @@
 </div>
 
 <script>
-    // Data untuk pie chart
-    var donasiData = {
-      labels: ['Diterima', 'Ditolak', 'Pending'],
-      datasets: [{
-        data: [40, 20, 30], // Ganti data dengan jumlah donasi yang sesuai
-        backgroundColor: ['#36a2eb', '#ff6384', '#ffce56']
-      }]
+    // Data untuk Pie Chart (distribusi status donasi)
+    var pieChartData = {
+        labels: @json($pieChartData['labels']),
+        datasets: [{
+            label: 'Status Donasi',
+            data: @json($pieChartData['data']),
+            backgroundColor: @json($pieChartData['backgroundColor']),
+            borderColor: @json($pieChartData['borderColor']),
+            borderWidth: 1
+        }]
     };
 
-    // Konfigurasi pie chart
-    var donasiOptions = {
-      responsive: true
+    // Data untuk Bar Chart (jumlah pengguna berdasarkan peran)
+    var barChartData = {
+        labels: @json($barChartData['labels']),
+        datasets: [{
+            label: 'Jumlah Pengguna',
+            data: @json($barChartData['data']),
+            backgroundColor: @json($barChartData['backgroundColor']),
+            borderColor: @json($barChartData['borderColor']),
+            borderWidth: 1
+        }]
     };
 
-    // Inisialisasi pie chart
-    var ctx = document.getElementById('donasiChart').getContext('2d');
-    var myPieChart = new Chart(ctx, {
-      type: 'pie',
-      data: donasiData,
-      options: donasiOptions
+    // Code untuk membuat chart dengan Chart.js
+    var ctxPie = document.getElementById('myPieChart').getContext('2d');
+    var ctxBar = document.getElementById('myBarChart').getContext('2d');
+
+    var myPieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: pieChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
     });
-  </script>
+
+    var myBarChart = new Chart(ctxBar, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>
+
 @endsection
