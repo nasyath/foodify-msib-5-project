@@ -120,6 +120,7 @@
                             title: '{{ session('success-login') }}'
                         })
                     })
+                    @endif
     </script>
 
 </body>
