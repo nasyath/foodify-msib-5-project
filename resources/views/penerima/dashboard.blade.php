@@ -100,4 +100,44 @@
             </div>
             <!-- container-fluid -->
         </div>
-        @endsection
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5><b>Data Donasi</b></h5>
+                        <hr>
+                        <div>
+                            <canvas id="myPieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Data untuk Pie Chart (distribusi status donasi)
+    var pieChartData = {
+        labels: @json($pieChartData['labels']),
+        datasets: [{
+            label: 'Status Donasi',
+            data: @json($pieChartData['data']),
+            backgroundColor: @json($pieChartData['backgroundColor']),
+            borderColor: @json($pieChartData['borderColor']),
+            borderWidth: 1
+        }]
+    };
+
+    // Code untuk membuat chart dengan Chart.js
+    var ctxPie = document.getElementById('myPieChart').getContext('2d');
+
+    var myPieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: pieChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>
+@endsection
