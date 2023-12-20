@@ -55,11 +55,11 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->role === 'Admin') {
-            return redirect('/admin-dashboard');
+            return redirect('/admin-dashboard')->with('success-login', 'Selamat datang di dashboard admin');
         } elseif ($user->role === 'Donatur') {
-            return redirect('/donatur-dashboard');
+            return redirect('/donatur-dashboard')->with('success-login', 'Selamat datang di dashboard donatur');
         } elseif ($user->role === 'Penerima') {
-            return redirect('/penerima-dashboard');
+            return redirect('/penerima-dashboard')->with('success-login', 'Selamat datang di dashboard penerima');
         } else {
             return redirect('/home'); // Redirect default jika peran tidak dikenali
         }

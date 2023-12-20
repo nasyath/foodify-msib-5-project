@@ -18,16 +18,14 @@
     <link rel="stylesheet" href="{{ asset('frontend/wp-content/themes/foodify/assets/css/isotope.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/wp-content/themes/foodify/assets/css/magnific-popup.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/wp-content/themes/foodify/assets/css/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/wp-content/themes/foodify/assets/css/owl.theme.default.min.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('frontend/wp-content/themes/foodify/assets/css/owl.theme.default.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/wp-content/themes/foodify/assets/css/animate.css') }}" />
-
     <link rel="stylesheet" href="{{ asset('frontend/wp-content/themes/foodify/assets/css/plugins.css') }}" />
-
     <link rel="stylesheet" href="{{ asset('frontend/wp-content/themes/foodify/assets/css/style.css') }}" />
-
     <link rel="stylesheet" href="{{ asset('frontend/wp-content/themes/foodify/assets/css/responsive.css') }}" />
-
     <link rel="icon" href="{{ asset('frontend/wp-content/uploads/2018/10/favicon.ico') }}" />
+    <link href="{{ asset('backend/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
     <script>
         (function(html) {
@@ -36,11 +34,13 @@
     </script>
     <title>Foodify | MSIB 5</title>
     <style>
-    /* Add this style to your CSS file or within a <style> tag in your HTML */
-    .form-control:focus {
-        border-color: #80bdff; /* Adjust the color as needed */
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Optional: Add a subtle box shadow */
-    }
+        /* Add this style to your CSS file or within a <style> tag in your HTML */
+        .form-control:focus {
+            border-color: #80bdff;
+            /* Adjust the color as needed */
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            /* Optional: Add a subtle box shadow */
+        }
     </style>
 
     <style id="classic-theme-styles-inline-css" type="text/css">
@@ -551,6 +551,22 @@
     <script src="{{ asset('frontend/wp-content/themes/foodify/assets/js/spectragram.min.js') }}"></script>
     <script src="{{ asset('frontend/wp-content/themes/foodify/assets/js/main.js') }}"></script>
     <script src="{{ asset('frontend/wp-content/themes/foodify/assets/js/custom.js') }}"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('backend/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/sweetalert.init.js') }}"></script>
+
+    <script>
+        // Show toast when login failed
+        $(function () {
+            @if ($errors->has('email'))
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Login error, please check your email and password again.'
+                })
+            @endif
+        })
+    </script>
 </body>
 
 </html>
