@@ -97,7 +97,7 @@ public function register(Request $request)
         try {
             $extension = $request->file('foto')->getClientOriginalExtension();
             $filename = 'user_photo_' . time() . '.' . $extension;
-            
+
             // Store the file and get the path
             $path = 'backend/assets/images/users/' . $filename;
             $request->file('foto')->move(public_path('backend/assets/images/users'), $filename);
@@ -107,7 +107,7 @@ public function register(Request $request)
     } else {
         // If no file is uploaded, set $path to null or any default value you want
         $path = null;
-    }    
+    }
 
     if ($data['role'] === 'donatur') {
         $donatur = Donatur::create([
@@ -118,7 +118,7 @@ public function register(Request $request)
             'foto' => $path,
             'users_id' => $user->id,
         ]);
-    } elseif ($data['role'] === 'penerima') {       
+    } elseif ($data['role'] === 'penerima') {
         $penerima = Penerima::create([
             'nama_penerima' => $data['name'],
             'alamat' => $data['alamat'],
@@ -132,9 +132,9 @@ public function register(Request $request)
     $user->save();
 
     // Redirect to the home page or any other desired page
-    return redirect()->route('login');
+    return redirect()->route('login')->with('success-register', 'Account successfully registered, you can login now');
 }
 
-    
-    
+
+
 }

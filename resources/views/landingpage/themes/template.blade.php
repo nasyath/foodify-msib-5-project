@@ -565,6 +565,14 @@
                     title: 'Login error, please check your email and password again.'
                 })
             @endif
+            // Show toast when register in built in laravel
+            @if (session('success-register'))
+                Toast.fire({
+                    icon: 'success',
+                    title: '{{ session('success-register')}}'
+                })
+            @endif
+
         })
     </script>
 </body>
