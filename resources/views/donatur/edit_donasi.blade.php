@@ -78,6 +78,7 @@
 
                             <div>
                                 <button type="submit" class="btn btn-primary w-md">Update</button>
+                                <a href="{{ route('proses_donasi')}}" class="btn btn-secondary w-md">Kembali</a>
                             </div>
                         </form>
                     </div>

@@ -15,11 +15,11 @@ class Penerima extends Model
         'nama_penerima','alamat','no_hp','deskripsi','status','foto', 'users_id',
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
     public function tb_donasi(): HasMany

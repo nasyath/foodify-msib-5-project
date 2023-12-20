@@ -93,15 +93,16 @@
                                                 </form>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a href="{{ route('proses_donasi')}}" class="btn btn-secondary btn-md" type="button">Kembali</a>
+                                                <button class="btn btn-secondary btn-md" type="button" onclick="history.back()">Kembali</button>
                                             </li>
                                             @else
                                             <li class="list-inline-item">
                                                 <button class="btn btn-secondary btn-md" type="button">Donasi Selesai Dilakukan</button>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a href="{{ route('proses_donasi')}}" class="btn btn-success btn-md" type="button">Kembali</a>
+                                                <button class="btn btn-success btn-md" type="button" onclick="history.back()">Kembali</button>
                                             </li>
+
                                             @endif
                                         </ul>
                                     </div>

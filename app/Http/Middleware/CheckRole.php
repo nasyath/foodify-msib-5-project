@@ -17,7 +17,8 @@ class CheckRole
 
         // Check if the user has the required role
         if (!in_array(auth()->user()->role, $roles)) {
-            abort(403, 'Unauthorized action.');
+            //abort(403, 'Unauthorized action.');
+            return redirect('/access-denied');
         }
 
         return $next($request);

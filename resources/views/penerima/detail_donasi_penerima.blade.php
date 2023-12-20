@@ -81,9 +81,10 @@
                                         @if ($donasi->status == 'Pending')
                                         <a href="{{ route('terima_donasi', $donasi->id) }}" class="btn btn-primary btn-md" type="button">Terima</a>
                                         <a href="{{ route('tolak_donasi', $donasi->id) }}" class="btn btn-danger btn-md" type="button">Tolak</a>
+                                        <button class="btn btn-secondary btn-md" type="button" onclick="history.back()">Kembali</button>
                                         @else
                                         <button class="btn btn-secondary btn-md" type="button">Donasi Selesai Dilakukan</button>
-                                        <a href="{{ route('proses_donasi_penerima')}}" class="btn btn-success btn-md" type="button">Kembali</a>
+                                        <button class="btn btn-success btn-md" type="button" onclick="history.back()">Kembali</button>
                                         @endif
                                     </div>
 

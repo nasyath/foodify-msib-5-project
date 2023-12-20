@@ -18,7 +18,7 @@ class KelolaUsersController extends Controller
     {
         $ar_penerima = Penerima::select('users.id', 'users.email', 'users.role', 'tb_penerima.nama_penerima AS organisasi', 'tb_penerima.created_at AS waktu_pembuatan')
             ->join('users', 'users.id', '=', 'tb_penerima.users_id')
-            ->orderBy('tb_penerima.created_at', 'desc');
+            ->orderBy('waktu_pembuatan', 'desc');
 
         $ar_donatur = Donatur::select('users.id', 'users.email', 'users.role', 'tb_donatur.nama_donatur AS organisasi', 'tb_donatur.created_at AS waktu_pembuatan')
             ->join('users', 'users.id', '=', 'tb_donatur.users_id')
@@ -30,25 +30,25 @@ class KelolaUsersController extends Controller
     }
 
     public function show($id)
-{
-    $userakun = User::findOrFail($id);
+    {
+        $userakun = User::findOrFail($id);
 
-    // Check the role of the user
-    switch ($userakun->role) {
-        case 'Donatur':
-            $detail = Donatur::where('users_id', $userakun->id)->first();
-            break;
-        case 'Penerima':
-            $detail = Penerima::where('users_id', $userakun->id)->first();
-            break;
-        // Add other roles as needed
-        default:
-            $detail = null;
-            break;
+        // Check the role of the user
+        switch ($userakun->role) {
+            case 'Donatur':
+                $detail = Donatur::where('users_id', $userakun->id)->first();
+                break;
+            case 'Penerima':
+                $detail = Penerima::where('users_id', $userakun->id)->first();
+                break;
+                // Add other roles as needed
+            default:
+                $detail = null;
+                break;
+        }
+
+        return view('admin.detail_akun', compact('userakun', 'detail'));
     }
-
-    return view('admin.detail_akun', compact('userakun', 'detail'));
-}
 
     public function destroy($id)
     {
@@ -73,8 +73,31 @@ class KelolaUsersController extends Controller
     public function form_akun()
     {
         return view('admin.tambah_akun');
-        
     }
+
+    public function form_edit_akun($id)
+    {
+        // Ambil data user sesuai ID
+        $userakun = User::findOrFail($id);
+
+        // Sesuaikan dengan model dan relasinya
+        switch ($userakun->role) {
+            case 'Donatur':
+                $detail = Donatur::where('users_id', $userakun->id)->first();
+                break;
+            case 'Penerima':
+                $detail = Penerima::where('users_id', $userakun->id)->first();
+                break;
+                // Add other roles as needed
+            default:
+                $detail = null;
+                break;
+        }
+
+        return view('admin.edit_akun', compact('userakun', 'detail'));
+    }
+
+
 
     public function tambah_akun(Request $request)
     {
@@ -137,5 +160,65 @@ class KelolaUsersController extends Controller
 
         // Redirect to the home page or any other desired page
         return redirect()->route('admin.kelola_users');
+    }
+
+    public function edit_akun(Request $request, $id)
+    {
+        // Validate the form data
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:255',
+            'deskripsi' => 'required|string|max:255',
+            'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+        ]);
+
+        // Find the user based on ID
+        $userakuns = User::findOrFail($id);
+
+        // Update basic user information
+        $userakuns->update([
+            'username' => $data['name'],
+        ]);
+
+        // Update role-specific details
+        if ($userakuns->role === 'Donatur') {
+            $userakuns->donatur->update([
+                'nama_donatur' => $data['name'],
+                'alamat' => $data['alamat'],
+                'no_hp' => $data['no_hp'],
+                'deskripsi' => $data['deskripsi'],
+            ]);
+        } elseif ($userakuns->role === 'Penerima') {
+            $userakuns->penerima->update([
+                'nama_penerima' => $data['name'],
+                'alamat' => $data['alamat'],
+                'no_hp' => $data['no_hp'],
+                'deskripsi' => $data['deskripsi'],
+            ]);
+        }
+
+        // Handle photo upload if provided
+        if ($request->hasFile('foto')) {
+            try {
+                $extension = $request->file('foto')->getClientOriginalExtension();
+                $filename = 'user_photo_' . time() . '.' . $extension;
+
+                // Store the file and get the path
+                $path = 'backend/assets/images/users/' . $filename;
+                $request->file('foto')->move(public_path('backend/assets/images/users'), $filename);
+
+                // Update the photo path in the user's role-specific table
+                if ($userakuns->role === 'Donatur') {
+                    $userakuns->donatur->update(['foto' => $path]);
+                } elseif ($userakuns->role === 'Penerima') {
+                    $userakuns->penerima->update(['foto' => $path]);
+                }
+            } catch (\Exception $e) {
+                return back()->withErrors(['foto' => $e->getMessage()])->withInput();
+            }
+        }
+
+        return redirect()->route('admin.kelola_users')->with('success', 'User berhasil diubah');
     }
 }

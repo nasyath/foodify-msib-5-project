@@ -34,7 +34,9 @@ class DonasiController extends Controller
                 'id_donatur', // tambahkan id_donatur
                 'id_penerima', // tambahkan id_penerima
                 'id_makanan' // tambahkan id_makanan
-            )->get();
+            )
+            ->orderBy('id', 'desc')
+            ->get();
 
 
         // Kirim data donasi ke view
@@ -238,7 +240,7 @@ class DonasiController extends Controller
 
     public function eksplorasi()
     {
-        $penerimaDonasi = Penerima::where('status', 'Open')->get();
+        $penerimaDonasi = Penerima::where('status', 'Open')->paginate(5); // Misalnya, menampilkan 10 data per halaman
         $totalPenerima = count($penerimaDonasi);
         $donatur = auth()->user();
         return view('donatur.eksplor', compact('penerimaDonasi', 'totalPenerima', 'donatur'));
@@ -248,6 +250,7 @@ class DonasiController extends Controller
     {
         $historyDonasi = Donasi::with(['donatur:id,nama_donatur', 'penerima:id,nama_penerima', 'jmakanan:id,nama_jenis'])
             ->where('id_donatur', auth()->user()->donatur->id)
+            ->orderBy('id', 'desc')
             ->select(
                 'id',
                 'jumlah',

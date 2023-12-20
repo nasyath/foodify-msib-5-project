@@ -15,7 +15,7 @@ class Donatur extends Model
         'nama_donatur','alamat','no_hp','deskripsi','foto', 'users_id',
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function user(): BelongsTo
     {
