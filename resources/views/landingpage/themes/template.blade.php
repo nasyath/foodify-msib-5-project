@@ -488,19 +488,15 @@
                             <ul id="menu-footer-menu" class="xs-footer-list">
                                 <li id="menu-item-75"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75">
-                                    <a href="#">Tentang Kami</a>
+                                    <a href="{{ route('landingpage') }}">Beranda</a>
                                 </li>
-                                <li id="menu-item-210"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-210">
-                                    <a href="#">Program</a>
+                                <li id="menu-item-75"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75">
+                                    <a href="{{ route('tentang') }}">Tentang Kami</a>
                                 </li>
                                 <li id="menu-item-196"
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-196">
-                                    <a href="#">Mitra</a>
-                                </li>
-                                <li id="menu-item-77"
-                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-77">
-                                    <a href="#">Penerima</a>
+                                    <a href="{{ route('mitra') }}">Mitra</a>
                                 </li>
                             </ul>
                         </div>

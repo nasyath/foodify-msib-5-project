@@ -114,13 +114,32 @@
 
     <script>
         $(function() {
-                    @if (session('success-login'))
-                        Toast.fire({
-                            icon: 'success',
-                            title: '{{ session('success-login') }}'
-                        })
-                    })
-                    @endif
+            @if (session('success-login'))
+                Toast.fire({
+                    icon: 'success',
+                    title: '{{ session('success-login') }}'
+                })
+            @endif
+
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: {{ session('success') }},
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            @endif
+
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: {{ session('error') }},
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            @endif
+
+        });
     </script>
 
 </body>

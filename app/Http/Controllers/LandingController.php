@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Donatur;
 
 class LandingController extends Controller
 {
@@ -21,7 +22,9 @@ class LandingController extends Controller
     // Mitra
     public function mitra()
     {
-        return view('landingpage.mitra');
+        // Get all data from model donatur with limit 6 data
+        $donatur = Donatur::limit(6)->get();
+        return view('landingpage.mitra', compact('donatur'));
     }
 
     // Register (redirect to register page)
