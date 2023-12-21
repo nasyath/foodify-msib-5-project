@@ -13,7 +13,7 @@
                             sekitar 300 kilogram sampah makanan per tahunnya!
                         </p>
                         <div class="xs-btn-wraper">
-                            <a href="#" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
+                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                             dibanding gas karbondioksida.
                         </p>
                         <div class="xs-btn-wraper">
-                            <a href="#" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
+                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                             biasa besar!
                         </p>
                         <div class="xs-btn-wraper">
-                            <a href="#" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
+                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                             berjuang untuk mendapatkan makanan setiap harinya.
                         </p>
                         <div class="xs-btn-wraper">
-                            <a href="#" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
+                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                             individu, dengan melewati serangkaian uji kelayakan makanan,
                             untuk disalurkan pada masyarakat pra-sejahtera di Surabaya.
                         </p>
-                        <a href="program/index.html" class="btn btn-primary">Pelajari Lebih</a>
+                        <a href="{{ route('tentang') }}" class="btn btn-primary">Pelajari Lebih</a>
                     </div>
                     <!-- .xs-text-content END -->
                 </div>

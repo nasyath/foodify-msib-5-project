@@ -54,6 +54,37 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-12">
+                    <div class="xs-text-content xs-pr-20">
+                        <h2 class="color-navy-blue">Current Partners</h2>
+                        <div class="fmkb-content">
+                            <div class="row justify-content-center">
+                                @foreach ($donatur as $item)
+                                <div class="col-md-3 mb-3 mr-3">
+                                    {{-- Card --}}
+                                    <div class="card border-secondary shadow" style="height: 500px">
+                                        <img src="{{ asset($item->foto) }}" class="card-img-top" alt="Partner Photos" style="height: 250px; object-fit: cover;">
+                                        <div class="card-body ">
+                                            <h5 class="card-title">{{ $item->nama_donatur }}</h5>
+                                            <p class="card-text">{{ $item->deskripsi }}</p>
+                                            <a href="{{ route('login') }}" class="btn btn-primary">
+                                                Show Profile
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .row end -->
+            <div class="row">
+                <div class="col-12 mt-5 mb-5">
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12 col-lg-6">
                     <div class="xs-text-content xs-pr-20">
                         <h2 class="color-navy-blue">Food Safety</h2>
@@ -70,8 +101,7 @@
                 <div class="col-md-12 col-lg-6 row xs-archive-image">
                     <div class="owl-carousel owl-theme owl-photos">
                         <div class="item">
-                            <img width="100%"
-                                src="{{ asset('frontend/wp-content/uploads/2018/10/food-donate.jpg') }}"
+                            <img width="100%" src="{{ asset('frontend/wp-content/uploads/2018/10/food-donate.jpg') }}"
                                 alt="">
                         </div>
                     </div>
