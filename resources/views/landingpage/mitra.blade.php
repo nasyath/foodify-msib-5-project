@@ -75,12 +75,17 @@
                                 </div>
                                 @endforeach
                             </div>
+                            <div class="row justify-content-center mt-3 p-0">
+                                <a href="{{ route('login') }}" class="btn btn-primary">
+                                    Show More >>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div><!-- .row end -->
             <div class="row">
-                <div class="col-12 mt-5 mb-5">
+                <div class="col-12 mt-4 mb-5">
                     <hr>
                 </div>
             </div>
