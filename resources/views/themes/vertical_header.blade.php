@@ -37,7 +37,7 @@
         </div>
 
         <div class="d-flex">
-            <div class="dropdown">
+            <!-- <div class="dropdown">
                 <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="icon-sm" data-eva="search-outline"></i>
                 </button>
@@ -57,7 +57,7 @@
                 <button type="button" class="btn header-item noti-icon right-bar-toggle" id="right-bar-toggle-v">
                     <i class="icon-sm" data-eva="settings-outline"></i>
                 </button>
-            </div>
+            </div> -->
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown-v" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,9 +81,9 @@
                         <i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i>
                         <span class="align-middle">Profile</span>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('form_edit_profil') }}">
                         <i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i>
-                        <span class="align-middle">Settings</span>
+                        <span class="align-middle">Edit Profil</span>
                     </a>
                     <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i>
