@@ -240,7 +240,7 @@ class DonasiController extends Controller
 
     public function eksplorasi()
     {
-        $penerimaDonasi = Penerima::where('status', 'Open')->paginate(5); // Misalnya, menampilkan 10 data per halaman
+        $penerimaDonasi = Penerima::where('status', 'Open')->paginate(8); // Misalnya, menampilkan 10 data per halaman
         $totalPenerima = count($penerimaDonasi);
         $donatur = auth()->user();
         return view('donatur.eksplor', compact('penerimaDonasi', 'totalPenerima', 'donatur'));

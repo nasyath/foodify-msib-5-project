@@ -52,22 +52,31 @@ class KelolaUsersController extends Controller
 
     public function destroy($id)
     {
-        // Hapus data berdasarkan $id dari tabel Penerima
-        $ar_penerima = Penerima::find($id);
-        if ($ar_penerima) {
-            $ar_penerima->delete();
-            return redirect()->route('admin.kelola_users')->with('success', 'Data User (penerima) berhasil dihapus.');
+        // Find the user based on the given ID
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->route('admin.kelola_users')->with('error', 'User not found.');
         }
 
-        // Jika data tidak ditemukan di tabel Penerima, coba hapus dari tabel Donatur
-        $ar_donatur = Donatur::find($id);
-        if ($ar_donatur) {
-            $ar_donatur->delete();
-            return redirect()->route('admin.kelola_users')->with('success', 'Data User (donatur) berhasil dihapus.');
-        }
+        // Determine the role of the user
+        $role = $user->role;
 
-        // Jika tidak ada data dengan ID yang diberikan di kedua tabel
-        return redirect()->route('admin.kelola_users')->with('error', 'Data tidak ditemukan.');
+        // Try to delete based on the role
+        try {
+            if ($role === 'donatur') {
+                $user->donatur->delete();
+            } elseif ($role === 'penerima') {
+                $user->penerima->delete();
+            }
+
+            // Delete the user
+            $user->delete();
+
+            return redirect()->route('admin.kelola_users')->with('success', 'Akun berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.kelola_users')->with('error', 'Failed to delete user and related data.');
+        }
     }
 
     public function form_akun()
