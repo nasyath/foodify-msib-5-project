@@ -105,6 +105,14 @@ class ProfilController extends Controller
             $userData['password'] = Hash::make($request->input('password'));
         }
 
+        // Update the name in the donatur table
+        if ($request->filled('name') && $userakun->role === 'Donatur') {
+            $userakun->donatur->update(['nama_donatur' => $request->input('name')]);
+        } elseif ($request->filled('name') && $userakun->role === 'Penerima') {
+            $userakun->penerima->update(['nama_penerima' => $request->input('name')]);
+        }
+
+
         // Update alamat, no_hp, dan deskripsi dari model Donatur atau Penerima
         if ($request->filled('alamat') && $userakun->role === 'Donatur') {
             $userakun->donatur->update(['alamat' => $request->input('alamat')]);
