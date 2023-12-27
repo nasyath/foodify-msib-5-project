@@ -12,7 +12,8 @@
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
     <!-- Icons Css -->
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
@@ -113,44 +114,34 @@
     @include('sweetalert::alert')
     <script>
         $(function() {
-            @if(session('success-login'))
+        @if (session('success-login'))
             Toast.fire({
                 icon: 'success',
-                title: '{{ session('
-                success - login ') }}'
+                title: '{{ session('success-login') }}'
             })
-            @endif
-            /*
-            @if (session('success'))
-                Swal.fire({
-                    icon: 'success',
-                    title: {{ session('success') }},
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-            @endif
-
-            @if (session('error'))
-                Swal.fire({
-                    icon: 'error',
-                    title: {{ session('error') }},
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-            @endif*/
-            $('.delete-confirm').on('click', function(event) {
-                event.preventDefault();
-                const url = $(this).attr('href');
-                swal({
-                    title: 'Anda Yakin Data DiHapus?',
-                    text: 'Perhatian yang akan dihapus, akan dihapus secara permanen!',
-                    icon: 'warning',
-                    buttons: ["Batal", "Hapus"],
-                }).then(function(value) {
-                    if (value) {
-                        window.location.href = url;
-                    }
-                });
+        @endif
+        });
+        /*
+        @if (session('success'))
+            Swal.fire({
+                icon: 'error',
+                title: {{ session('error') }},
+                showConfirmButton: false,
+                timer: 2000
+            })
+        @endif */
+        $('.delete-confirm').on('click', function(event) {
+            event.preventDefault();
+            const url = $(this).attr('href');
+            swal({
+                title: 'Anda Yakin Data DiHapus?',
+                text: 'Perhatian yang akan dihapus, akan dihapus secara permanen!',
+                icon: 'warning',
+                buttons: ["Batal", "Hapus"],
+            }).then(function(value) {
+                if (value) {
+                    window.location.href = url;
+                }
             });
         });
     </script>
