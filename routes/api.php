@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/jenis-makanan', [JenisMakananController::class, 'index']);
     Route::get('/jenis-makanan/{id}', [JenisMakananController::class, 'show']);
     Route::post('/jenis-makanan-store', [JenisMakananController::class, 'store']);
-    Route::put('/jenis-makanan/{id}', [JenisMakananController::class, 'update']);
+    Route::post('/jenis-makanan/{id}', [JenisMakananController::class, 'update']);
     Route::delete('/jenis-makanan/{id}', [JenisMakananController::class, 'destroy']);
 
 });
