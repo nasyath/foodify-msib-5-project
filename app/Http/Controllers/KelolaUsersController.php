@@ -168,7 +168,7 @@ class KelolaUsersController extends Controller
         $user->save();
 
         // Redirect to the home page or any other desired page
-        return redirect()->route('admin.kelola_users');
+        return redirect()->route('admin.kelola_users')->with('success', 'Akun berhasil dibuat');
     }
 
     public function edit_akun(Request $request, $id)

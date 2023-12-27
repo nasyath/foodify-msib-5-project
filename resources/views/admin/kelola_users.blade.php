@@ -63,6 +63,10 @@ $no = 1;
                                     <button type="submit" class="btn btn-danger btn-sm" title="Hapus User" onclick="return confirm('Anda yakin ingin menghapus akun?')">
                                         <i class="fas fa-trash" style="width:16px;height:16px"></i>
                                     </button>
+                                    
+                                    <!--button type="submit" class="btn btn-danger btn-sm delete-confirm" title="Hapus User">
+                                        <i class="fas fa-trash" style="width:16px;height:16px"></i>
+                                    </button-->
                                 </form>
 
                             </td>
