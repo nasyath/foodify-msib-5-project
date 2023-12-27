@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="user-profile-img">
-                                <img src="{{ asset('backend/assets/images/pattern-bg.jpg') }}" class="profile-img profile-foreground-img rounded-top" style="height: 120px;" alt="">
+                                <img src="{{ asset('backend/assets/images/bg.jpg') }}" class="profile-img profile-foreground-img rounded-top" style="height: 220px;" alt="">
                                 <div class="overlay-content rounded-top"></div>
 
                             </div>

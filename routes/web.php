@@ -30,6 +30,7 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [LandingController::class, 'index'])->name('landingpage');
 Route::get('/tentang-kami', [LandingController::class, 'tentang'])->name('tentang');
 Route::get('/mitra', [LandingController::class, 'mitra'])->name('mitra');
+Route::get('/mitra', [LandingController::class, 'mitra'])->name('mitra');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -108,6 +109,13 @@ Route::resource('/donatur', DonaturController::class)->middleware('auth');
 
 Route::resource('/penerima', PenerimaController::class)->middleware('auth');
 
+Route::get('/form-edit-profil', [ProfilController::class, 'form_edit_profil'])->name('form_edit_profil')->middleware('auth');
+
+Route::put('/edit_profil', [ProfilController::class, 'edit_profil'])->name('profil.edit_profil')->middleware('auth');
+
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index')->middleware('auth');
+
+
 // web.php
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
@@ -115,5 +123,3 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
