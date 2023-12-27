@@ -32,7 +32,8 @@
                             dibanding gas karbondioksida.
                         </p>
                         <div class="xs-btn-wraper">
-                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
+                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari
+                                Lebih</a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +50,8 @@
                             biasa besar!
                         </p>
                         <div class="xs-btn-wraper">
-                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
+                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari
+                                Lebih</a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +70,8 @@
                             berjuang untuk mendapatkan makanan setiap harinya.
                         </p>
                         <div class="xs-btn-wraper">
-                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari Lebih</a>
+                            <a href="{{ route('tentang') }}" class="btn btn-outline-primary" target="_blank">Pelajari
+                                Lebih</a>
                         </div>
                     </div>
                 </div>
@@ -214,102 +217,6 @@
     </section>
     <!-- End what we do section -->
 
-    <!-- what we do section -->
-    <section class="xs-content-section-padding bg-gray">
-        <div class="container">
-            <div class="xs-text-content row xs-mb-70">
-                <h2 class="color-navy-blue" style="width: 100%; text-align: center">
-                    Temui Sahabat Kami
-                </h2>
-            </div>
-            <!-- .xs-text-content END -->
-            <div class="row">
-                <div class="owl-carousel owl-theme owl-testimonial">
-                    <div class="item">
-                        <div class="xs-service-promo text-center" style="padding: 15px">
-                            <img src="{{ asset('frontend/wp-content/uploads/2018/10/IMG_20170608_172440-Copy.jpg') }}"
-                                style="
-                      position: relative;
-                      margin: 0 auto;
-                      width: 100px;
-                      border-radius: 50%;
-                      margin-bottom: 15px;
-                    "
-                                alt="" />
-                            <h5>Rokhmah Aliyah Hidayat</h5>
-                            <div style="text-align: justify">
-                                <p>
-                                    Foodify memberi saya ruang untuk berbagi, bersyukur,
-                                    dan berkembang. Tidak hanya bergerilya membagi makanan
-                                    setiap hari, keluarga besar Foodify selalu mendorong
-                                    kami para volunteer untuk bisa bergerak dan berekspresi
-                                    sesuai skill dan sumber daya yang kami punya.
-                                </p>
-                            </div>
-                            <h6 class="mt-4">&mdash; Relawan</h6>
-                        </div>
-                        <!-- .xs-service-promo END -->
-                    </div>
-                    <div class="item">
-                        <div class="xs-service-promo text-center" style="padding: 15px">
-                            <img src="{{ asset('frontend/wp-content/uploads/2018/10/8.-A-e1540393270761.png') }}"
-                                style="
-                      position: relative;
-                      margin: 0 auto;
-                      width: 100px;
-                      border-radius: 50%;
-                      margin-bottom: 15px;
-                    "
-                                alt="" />
-                            <h5>Riyan Kaizir</h5>
-                            <div style="text-align: justify">
-                                <p>
-                                    Kami bekerjasama dengan Foodify karena kami di Tanak
-                                    Melayu sebenarnya juga berharap dapat meminimalisir limbah
-                                    makanan. Jadi kalau ada surplus makanan, akan kami bagikan
-                                    selama itu masih layak konsumsi. Tentu kami senang sekali
-                                    dengan kegiatan positif seperti ini. Apalagi teman-teman di
-                                    Foodify ini sangat konsisten dan peduli dengan
-                                    permasalahan food waste di Indonesia.
-                                </p>
-                            </div>
-                            <h6 class="mt-4">&mdash; Owner Resto</h6>
-                        </div>
-                        <!-- .xs-service-promo END -->
-                    </div>
-                    <div class="item">
-                        <div class="xs-service-promo text-center" style="padding: 15px">
-                            <img src="{{ asset('frontend/wp-content/uploads/2018/10/penerima.png') }}"
-                                style="
-                      position: relative;
-                      margin: 0 auto;
-                      width: 100px;
-                      border-radius: 50%;
-                      margin-bottom: 15px;
-                    "
-                                alt="" />
-                            <h5>Bu Mira</h5>
-                            <div style="text-align: justify">
-                                <p>
-                                    Kalau kami di sini kebetulan banyak keluarga yang tidak
-                                    mampu, jadi memang banyak yang membutuhkan makanan seperti
-                                    yang diantarkan Foodify. Jadi kalau diantarkan makanan,
-                                    kami senang sekali. Senang, karena kami bisa ikut merasakan
-                                    makanan yang enak, terjamin sehat, dan bergizi.
-                                </p>
-                            </div>
-                            <h6 class="mt-4">&mdash; Penerima Manfaat</h6>
-                        </div>
-                        <!-- .xs-service-promo END -->
-                    </div>
-                </div>
-            </div>
-            <!-- .row end -->
-        </div>
-        <!-- .container end -->
-    </section>
-    <!-- End what we do section -->
-
     <!-- archive section -->
     <section class="waypoint-tigger xs-section-padding" style="background: #040622">
         <div class="container">
@@ -427,4 +334,130 @@
         </div>
         <!-- .container end -->
     </section>
+
+    <!-- what we do section -->
+    <section class="xs-content-section-padding bg-gray">
+        <div class="container">
+            <div class="xs-text-content row xs-mb-70">
+                <h2 class="color-navy-blue" style="width: 100%; text-align: center">
+                    Temui Tim Pengembang Kami
+                </h2>
+            </div>
+            <!-- .xs-text-content END -->
+            <div class="row">
+                <div class="owl-carousel owl-theme owl-testimonial">
+                    <div class="item">
+                        <div class="xs-service-promo text-center" style="padding: 15px">
+                            <img src="{{ asset('frontend/wp-content/uploads/2018/10/irgi.png') }}"
+                                style="
+                          position: relative;
+                          margin: 0 auto;
+                          width: 100px;
+                          border-radius: 50%;
+                          margin-bottom: 15px;
+                        "
+                                alt="" />
+                            <h5>Irgi Rama Sulistio</h5>
+                            <div style="text-align: justify">
+                                <p>
+                                    {{-- Backend Developer Said --}}
+                                    Sebagai backend developer di Foodify, saya belajar banyak hal. Saya belajar bagaimana cara mengatur sistem backend yang berjalan di Foodify, Bagaimana jalannya sebuah sistem di bagian backend, serta integrasi dengan tampilannya.
+                                </p>
+                            </div>
+                            <h6 class="mt-4">&mdash; Backend Developer</h6>
+                        </div>
+                        <!-- .xs-service-promo END -->
+                    </div>
+                    <div class="item">
+                        <div class="xs-service-promo text-center" style="padding: 15px">
+                            <img src="{{ asset('frontend/wp-content/uploads/2018/10/nita.png') }}"
+                                style="
+                          position: relative;
+                          margin: 0 auto;
+                          width: 100px;
+                          border-radius: 50%;
+                          margin-bottom: 15px;
+                        "
+                                alt="" />
+                            <h5>Carmennita Soleman</h5>
+                            <div style="text-align: justify">
+                                <p>
+                                    {{-- Product Manager Said --}}
+                                    Sistem Informasi ini atau Foodify memberi saya kemampuan untuk me-manajemen sebuah project dengan baik. Saya juga belajar bagaimana cara mengatur sebuah tim, bagaimana cara mengatur sebuah project, dan bagaimana cara mengatur sebuah sistem. Saya juga belajar bagaimana cara mengatur sebuah tim, bagaimana cara mengatur sebuah project, dan bagaimana cara mengatur sebuah sistem.
+                                </p>
+                            </div>
+                            <h6 class="mt-4">&mdash; Product Manager</h6>
+                        </div>
+                        <!-- .xs-service-promo END -->
+                    </div>
+                    <div class="item">
+                        <div class="xs-service-promo text-center" style="padding: 15px">
+                            <img src="{{ asset('frontend/wp-content/uploads/2018/10/winanda.png') }}"
+                                style="
+                          position: relative;
+                          margin: 0 auto;
+                          width: 100px;
+                          border-radius: 50%;
+                          margin-bottom: 15px;
+                        "
+                                alt="" />
+                            <h5>Winanda Afrilia Harisya</h5>
+                            <div style="text-align: justify">
+                                <p>
+                                    Frontend Developer di Foodify memberi saya pengalaman yang sangat berharga. Saya belajar bagaimana cara mengatur tampilan sebuah website, bagaimana cara mengatur sebuah sistem, dan bagaimana cara mengatur sebuah tim.
+                                </p>
+                            </div>
+                            <h6 class="mt-4">&mdash; Frontend Developer</h6>
+                        </div>
+                        <!-- .xs-service-promo END -->
+                    </div>
+                    <div class="item">
+                        <div class="xs-service-promo text-center" style="padding: 15px">
+                            <img src="{{ asset('frontend/wp-content/uploads/2018/10/faykar.png') }}"
+                                style="
+                          position: relative;
+                          margin: 0 auto;
+                          width: 100px;
+                          border-radius: 50%;
+                          margin-bottom: 15px;
+                        "
+                                alt="" />
+                            <h5>Nasyath Faykar</h5>
+                            <div style="text-align: justify">
+                                <p>
+                                    Sebagai Database Analyst membuat saya belajar bagaimana menganalisa apa yang dibutuhkan oleh sistem dan merancangnya ke dalam sebuah database. Saya juga belajar bagaimana cara mengatur sebuah tim, bagaimana cara mengatur sebuah project, dan bagaimana cara mengatur jalannya sebuah sistem.
+                                </p>
+                            </div>
+                            <h6 class="mt-4">&mdash; Database Analyst & Administrator</h6>
+                        </div>
+                        <!-- .xs-service-promo END -->
+                    </div>
+                    <div class="item">
+                        <div class="xs-service-promo text-center" style="padding: 15px">
+                            <img src="{{ asset('frontend/wp-content/uploads/2018/10/septia.png') }}"
+                                style="
+                          position: relative;
+                          margin: 0 auto;
+                          width: 100px;
+                          border-radius: 50%;
+                          margin-bottom: 15px;
+                        "
+                                alt="" />
+                            <h5>Septia Dwi Kurniasih</h5>
+                            <div style="text-align: justify">
+                                <p>
+                                    Laporan & Dokumentasi juga tidak kalah penting, saya belajar bagaimana cara membuat laporan yang baik dan benar, serta bagaimana cara membuat dokumentasi yang baik dan benar agar bisa diterapkan dengan profesional ketika di perusahaan.
+                                </p>
+                            </div>
+                            <h6 class="mt-4">&mdash; Report & Documentation</h6>
+                        </div>
+                        <!-- .xs-service-promo END -->
+                    </div>
+                </div>
+            </div>
+            <!-- .row end -->
+        </div>
+        <!-- .container end -->
+    </section>
+    <!-- End what we do section -->
 @endsection
