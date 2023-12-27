@@ -52,6 +52,8 @@ $no = 1;
                             <td>{{ $d->organisasi }}</td>
                             <td>
                                 <form method="POST" action="{{ route('kelola_users.destroy', $d->id) }}">
+                                    @csrf
+                                    @method('DELETE')
                                     <a class="btn btn-info btn-sm" href="{{ route('kelola_users.show', $d->id) }}" title="Detail Akun">
                                         <i class="far fa-file-alt" style="width:16px;height:16px"></i>
                                     </a>
@@ -61,6 +63,10 @@ $no = 1;
                                     <button type="submit" class="btn btn-danger btn-sm" title="Hapus User" onclick="return confirm('Anda yakin ingin menghapus akun?')">
                                         <i class="fas fa-trash" style="width:16px;height:16px"></i>
                                     </button>
+                                    
+                                    <!--button type="submit" class="btn btn-danger btn-sm delete-confirm" title="Hapus User">
+                                        <i class="fas fa-trash" style="width:16px;height:16px"></i>
+                                    </button-->
                                 </form>
 
                             </td>
