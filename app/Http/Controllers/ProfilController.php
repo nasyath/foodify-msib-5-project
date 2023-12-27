@@ -105,21 +105,24 @@ class ProfilController extends Controller
             $userData['password'] = Hash::make($request->input('password'));
         }
 
-        // Update alamat
-        if ($request->filled('alamat')) {
-            $userData['alamat'] = $request->input('alamat');
+        // Update alamat, no_hp, dan deskripsi dari model Donatur atau Penerima
+        if ($request->filled('alamat') && $userakun->role === 'Donatur') {
+            $userakun->donatur->update(['alamat' => $request->input('alamat')]);
+        } elseif ($request->filled('alamat') && $userakun->role === 'Penerima') {
+            $userakun->penerima->update(['alamat' => $request->input('alamat')]);
         }
 
-        // Update nomor HP
-        if ($request->filled('no_hp')) {
-            $userData['no_hp'] = $request->input('no_hp');
+        if ($request->filled('no_hp') && $userakun->role === 'Donatur') {
+            $userakun->donatur->update(['no_hp' => $request->input('no_hp')]);
+        } elseif ($request->filled('no_hp') && $userakun->role === 'Penerima') {
+            $userakun->penerima->update(['no_hp' => $request->input('no_hp')]);
         }
 
-        // Update deskripsi
-        if ($request->filled('deskripsi')) {
-            $userData['deskripsi'] = $request->input('deskripsi');
+        if ($request->filled('deskripsi') && $userakun->role === 'Donatur') {
+            $userakun->donatur->update(['deskripsi' => $request->input('deskripsi')]);
+        } elseif ($request->filled('deskripsi') && $userakun->role === 'Penerima') {
+            $userakun->penerima->update(['deskripsi' => $request->input('deskripsi')]);
         }
-
         // Upload dan simpan foto profil jika ada
         if ($request->hasFile('foto')) {
             try{
