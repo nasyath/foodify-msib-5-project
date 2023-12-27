@@ -80,7 +80,7 @@ $no = 1;
                             <td>
 
 
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editData" title="Edit">
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editData{{ $jm->id }}" title="Edit">
                                     <i class="fas fa-pen" style="width:16px;height:16px"></i>
                                 </button>
 
@@ -95,7 +95,7 @@ $no = 1;
 
                                 <!-- Modal Edit Data -->
 
-                                <div class="modal fade" id="editData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
+                                <div class="modal fade" id="editData{{ $jm->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="editDataLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
