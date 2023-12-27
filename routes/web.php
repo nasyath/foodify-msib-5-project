@@ -113,7 +113,7 @@ Route::get('/form-edit-profil', [ProfilController::class, 'form_edit_profil'])->
 
 Route::put('/edit_profil', [ProfilController::class, 'edit_profil'])->name('profil.edit_profil')->middleware('auth');
 
-Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index')->middleware('auth');
 
 
 // web.php
