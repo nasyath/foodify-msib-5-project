@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 04:34 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 27 Des 2023 pada 10.29
+-- Versi server: 10.4.17-MariaDB
+-- Versi PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Struktur dari tabel `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -40,7 +40,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -50,7 +50,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_reset_tokens`
+-- Struktur dari tabel `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
@@ -78,7 +78,7 @@ CREATE TABLE `password_reset_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- Struktur dari tabel `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -95,7 +95,7 @@ CREATE TABLE `personal_access_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `personal_access_tokens`
+-- Dumping data untuk tabel `personal_access_tokens`
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
@@ -105,7 +105,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_donasi`
+-- Struktur dari tabel `tb_donasi`
 --
 
 CREATE TABLE `tb_donasi` (
@@ -124,16 +124,20 @@ CREATE TABLE `tb_donasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_donasi`
+-- Dumping data untuk tabel `tb_donasi`
 --
 
 INSERT INTO `tb_donasi` (`id`, `status`, `tgl_mulai`, `tgl_akhir`, `jumlah`, `foto`, `keterangan`, `id_donatur`, `id_penerima`, `id_makanan`, `created_at`, `updated_at`) VALUES
-(6, 'Pending', '2023-11-28', '2023-11-30', 5, '', '10', NULL, NULL, 1, NULL, NULL);
+(7, 'Pending', '2023-12-11', '2023-12-15', 2, NULL, 'Ambil jam 9 WIB', 14, 7, 1, NULL, NULL),
+(8, 'Diterima', '2023-12-11', '2023-12-16', 3, NULL, 'Ambil jam 9 WIB', 10, 8, 1, NULL, NULL),
+(9, 'Diterima', '2023-12-12', '2023-12-23', 2, 'backend/assets/images/donasi/nabatienak.jpg', 'Ambil jam 10 WIB', 10, 9, 1, NULL, NULL),
+(10, 'Pending', '2023-12-18', '2023-12-21', 3, 'backend/assets/images/donasi/1702868222_pngtree-wooden-hanging-board-wood-empty-signboard-on-rope-png-image_7556053-transformed.png', 'Ambil jam 9 WIB', 10, 9, 1, NULL, NULL),
+(12, 'Ditolak', '2023-12-27', '2023-12-28', 9, NULL, 'Ambil jam 9 WIB', 10, 9, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_donatur`
+-- Struktur dari tabel `tb_donatur`
 --
 
 CREATE TABLE `tb_donatur` (
@@ -149,22 +153,19 @@ CREATE TABLE `tb_donatur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_donatur`
+-- Dumping data untuk tabel `tb_donatur`
 --
 
 INSERT INTO `tb_donatur` (`id`, `nama_donatur`, `alamat`, `no_hp`, `deskripsi`, `foto`, `users_id`, `created_at`, `updated_at`) VALUES
-(10, 'tio', 'Perumahan Grand Kahuripan Cluster Merapi no:IA38 Kec.Klapanunggal', '08928392342', 'Memberikan uang dan makanan', NULL, 14, NULL, NULL),
-(12, 'kopi1', 'kopi', '0892839234', 'kopi', 'backend/assets/images/users/xkg4824bbRCp4NpliAYTKPHwqcn3Ohcp87AHBzce.jpg', 21, NULL, NULL),
-(13, 'kopi2', 'kopi 2', '0892839223', 'kopi 2', 'backend/assets/images/users/Pb72mmXy0xf3D0yGI3oqOyiVmshulL5Nw1lLwvbk.png', 22, NULL, NULL),
-(14, 'nail', 'Bogor', '0892839223', 'Jakarta', 'backend/assets/images/users/paper-background.jpg', 27, NULL, NULL),
-(15, 'Steven', 'Jakarta', '0892839223223', 'Memberikan makanan kepada anak yatim dan dhuafa', 'backend/assets/images/users/latihan sepatu.png', 29, NULL, NULL),
-(17, 'Test1', 'test1', '80809809', 'test1', 'backend/assets/images/users/user_photo_1702208244.png', 31, NULL, NULL),
-(18, 'fay', 'Tirto', '08880786872', 'Nasyath Faykar From Tirto', 'backend/assets/images/users/user_photo_1702219894.jpg', 33, NULL, NULL);
+(10, 'tio', 'Perumahan Grand Kahuripan Cluster Merapi no:IA38 Kec.Klapanunggal', '08928392342', 'Memberikan uang dan makanan', 'backend/assets/images/users/berpikir-png-242.png', 14, '2023-12-01 06:24:14', '2023-12-01 06:24:14'),
+(12, 'kopi1', 'kopi', '0892839234', 'kopi', 'backend/assets/images/users/xkg4824bbRCp4NpliAYTKPHwqcn3Ohcp87AHBzce.jpg', 21, '2023-12-04 00:59:33', '2023-12-04 00:59:33'),
+(13, 'kopi2', 'kopi 2', '0892839223', 'kopi 2', 'backend/assets/images/users/Pb72mmXy0xf3D0yGI3oqOyiVmshulL5Nw1lLwvbk.png', 22, '2023-12-04 01:23:22', '2023-12-04 01:23:22'),
+(14, 'nail', 'Bogor', '0892839223', 'Jakarta', 'backend/assets/images/users/paper-background.jpg', 27, '2023-12-04 02:54:46', '2023-12-04 02:54:46');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_jenis_makanan`
+-- Struktur dari tabel `tb_jenis_makanan`
 --
 
 CREATE TABLE `tb_jenis_makanan` (
@@ -175,18 +176,19 @@ CREATE TABLE `tb_jenis_makanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_jenis_makanan`
+-- Dumping data untuk tabel `tb_jenis_makanan`
 --
 
 INSERT INTO `tb_jenis_makanan` (`id`, `nama_jenis`, `created_at`, `updated_at`) VALUES
 (1, 'Makanan berat', NULL, NULL),
 (2, 'Minuman', NULL, NULL),
-(12, 'Kopi Panas', '2023-11-27 23:50:44', '2023-11-27 23:50:52');
+(12, 'Kopi Panask', '2023-11-27 23:50:44', '2023-12-27 07:45:22'),
+(19, 'njbj', '2023-12-27 07:45:29', '2023-12-27 07:45:29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_penerima`
+-- Struktur dari tabel `tb_penerima`
 --
 
 CREATE TABLE `tb_penerima` (
@@ -203,23 +205,21 @@ CREATE TABLE `tb_penerima` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_penerima`
+-- Dumping data untuk tabel `tb_penerima`
 --
 
 INSERT INTO `tb_penerima` (`id`, `nama_penerima`, `alamat`, `no_hp`, `deskripsi`, `status`, `foto`, `users_id`, `created_at`, `updated_at`) VALUES
-(7, 'arap', 'Bekasi', '08928392342', 'Menerima santunan', 'Open', NULL, 9, NULL, NULL),
-(8, 'rama', 'Jakarta', '08928392231', 'Menerima makanan', 'Open', 'backend/assets/images/users/o7uxn5PHpRCrqioqIpeYRwuaDcPMLJwJuKdyGQJU.png', 15, NULL, NULL),
-(9, 'amar', 'Jakarta', '08928392232', 'Menerima santunan', 'Open', 'backend/assets/images/users/aIUHb6GlzOWTwI7Bb2u7a7pGnV0eyzY45Bec9tf8.jpg', 16, NULL, NULL),
-(10, 'juli', 'Bogor', '0892234223', 'Penerima yang membutuhkan', 'Open', 'backend/assets/images/users/gMSuKlTFWkK7KYXg5yB2MKWExTTY8Gbza8gKqFf7.png', 17, NULL, NULL),
-(11, 'Sucipto', 'Bogor', '08928392342', 'Menerima donasi', 'Open', 'backend/assets/images/users/UOPMQ5u4DwNn3caC5Z0EdWs2fU796C9DB5fuJC8S.jpg', 23, NULL, NULL),
-(12, 'sulis', 'Bogor', '08928392342', 'Menerima makanan', 'Open', NULL, 24, NULL, NULL),
-(14, 'Huri', 'Bogor', '08928392231', 'Menerima makanan', 'Open', NULL, 26, NULL, NULL),
-(15, 'Guritno', 'Bekasi', '089283923422', 'Menerima makanan sehat', 'Open', 'backend/assets/images/users/29e522e01dbcedeaf93a820681f653df.png', 28, NULL, NULL);
+(7, 'arap', 'Bekasi', '08928392342', 'Menerima santunan', 'Open', NULL, 9, '2023-12-01 06:19:37', '2023-12-01 06:19:37'),
+(8, 'rama', 'Jakarta', '08928392231', 'Menerima makanan', 'Open', 'backend/assets/images/users/o7uxn5PHpRCrqioqIpeYRwuaDcPMLJwJuKdyGQJU.png', 15, '2023-12-01 07:02:11', '2023-12-01 07:02:11'),
+(9, 'amar', 'Jakarta', '08928392232', 'Menerima santunan', 'Open', 'backend/assets/images/users/aIUHb6GlzOWTwI7Bb2u7a7pGnV0eyzY45Bec9tf8.jpg', 16, '2023-12-01 07:05:42', '2023-12-01 07:05:42'),
+(10, 'juli', 'Bogor', '0892234223', 'Penerima yang membutuhkan', 'Open', 'backend/assets/images/users/gMSuKlTFWkK7KYXg5yB2MKWExTTY8Gbza8gKqFf7.png', 17, '2023-12-03 09:12:57', '2023-12-03 09:12:57'),
+(11, 'Sucipto', 'Bogor', '08928392342', 'Menerima donasi', 'Open', 'backend/assets/images/users/UOPMQ5u4DwNn3caC5Z0EdWs2fU796C9DB5fuJC8S.jpg', 23, '2023-12-04 01:28:56', '2023-12-04 01:28:56'),
+(12, 'sulis', 'Bogor', '08928392342', 'Menerima makanan', 'Open', NULL, 24, '2023-12-04 02:17:59', '2023-12-04 02:17:59');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -233,13 +233,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
-(1, 'admin@gmail.com', 'admin', '$2y$12$lZoJtCouwek5tOmjWRKEkOGopIAxKmdVhDEFxFWihn3xESZcztfdK', 'Admin', '2023-12-01 06:24:14', '2023-12-01 06:24:14'),
+(1, 'admin@gmail.com', 'admin', '$2y$12$lZoJtCouwek5tOmjWRKEkOGopIAxKmdVhDEFxFWihn3xESZcztfdK', 'Admin', '2023-12-01 06:24:14', '2023-12-19 07:08:11'),
 (9, 'arap@gmail.com', 'arap', '$2y$12$.9qJI9cfiWOwyaoBL1Rp.uCCuWpyqtDSwsX65V.ok3PEumn7qpude', 'Penerima', '2023-12-01 06:19:37', '2023-12-01 06:19:37'),
-(14, 'tio@gmail.com', 'tio', '$2y$12$VtmZa5DqLT49okectYyxJuH4aFI9dxORaHs4JAakrXV7G8Vm/dVui', 'Donatur', '2023-12-01 06:55:59', '2023-12-01 06:55:59'),
+(14, 'tio@gmail.com', 'tio', '$2y$12$VtmZa5DqLT49okectYyxJuH4aFI9dxORaHs4JAakrXV7G8Vm/dVui', 'Donatur', '2023-12-01 06:55:59', '2023-12-27 04:39:00'),
 (15, 'rama@gmail.com', 'rama', '$2y$12$WhpEqwlTOsRMTTP1NdVxAes7FI5zP7x8VJ0c8AZ9RBtJH2TXa3IxK', 'Penerima', '2023-12-01 07:02:11', '2023-12-01 07:02:11'),
 (16, 'amar@gmail.com', 'amar', '$2y$12$drgmotpgVMVsE99khIwBBOO/30IdE7aAAA/Kmb9Sr.RfoIy1UAuwy', 'Penerima', '2023-12-01 07:05:42', '2023-12-01 07:05:42'),
 (17, 'juli@gmail.com', 'juli', '$2y$12$8HARzOipbFh0th4Gpu66qe4ZrxiXm26LzYeUwnXp0HxeCnsBa3.cO', 'Penerima', '2023-12-03 09:12:57', '2023-12-03 09:12:57'),
@@ -247,38 +247,33 @@ INSERT INTO `users` (`id`, `email`, `username`, `password`, `role`, `created_at`
 (22, 'kopi2@gmail.com', 'kopi2', '$2y$12$oOfEp8he8jSv4ldzZhE4EO91328touGpPCxe8M29ZX4ozhTptv0hq', 'Donatur', '2023-12-04 01:23:22', '2023-12-04 01:23:23'),
 (23, 'sucipto@gmail.com', 'Sucipto', '$2y$12$yCaBAh0YXK7.URGTVGBD3uPOV3VqWWzMxKG01IEa/wBbBVFVWjS3a', 'Penerima', '2023-12-04 01:28:56', '2023-12-04 01:28:56'),
 (24, 'sulis@gmail.com', 'sulis', '$2y$12$Q33IynFFkJciH/Ort7yqKuExRTdNnijefDmqEolzNoyULWsXY3l2S', 'Penerima', '2023-12-04 02:17:59', '2023-12-04 02:17:59'),
-(26, 'huri@gmail.com', 'Huri', '$2y$12$O3HEXqBb1RYdH0KqifX6OuCPcvcnbmfxO0FcjXp37xRm2gzNKabSq', 'Penerima', '2023-12-04 02:35:46', '2023-12-04 02:35:46'),
-(27, 'nail@gmail.com', 'nail', '$2y$12$kpRHS9Huj5sxFAbm2NP9WOZsUbMY3TR0kkNe0nW0D/qiX/a1WFC2i', 'Donatur', '2023-12-04 02:54:46', '2023-12-04 02:54:46'),
-(28, 'guritno@gmail.com', 'Guritno', '$2y$12$zFZ5iWsy1i.6yhQ/eGtEz.KcBXNI6.r8ZE1mu.6Nj0L5lxNQQcDj.', 'Penerima', '2023-12-04 03:21:59', '2023-12-04 03:21:59'),
-(29, 'steven@gmail.com', 'Steven', '$2y$12$6rK8ywJFPFJ845nhAKANAe1q.uqVy86IcDSzA4nSnDYf0rlvEkj5O', 'Donatur', '2023-12-05 19:51:55', '2023-12-05 19:51:55'),
-(31, 'test1@gmail.com', 'Test1', '$2y$12$qThwS2D7tzKeQ2KbiwzH0ebisAMbvSQLBfOgKx8hZivYkb4YxXzKS', 'Donatur', '2023-12-10 04:37:24', '2023-12-10 04:37:24'),
-(33, 'faykar@gmail.com', 'fay', '$2y$12$QwPeZHGmsEub2aIPM0emtOzHcoeGlCDoUwdEOk4V.bak4Y23.gN.e', 'Donatur', '2023-12-10 07:51:34', '2023-12-10 07:51:34');
+(27, 'nail@gmail.com', 'nail', '$2y$12$kpRHS9Huj5sxFAbm2NP9WOZsUbMY3TR0kkNe0nW0D/qiX/a1WFC2i', 'Donatur', '2023-12-04 02:54:46', '2023-12-04 02:54:46');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `failed_jobs`
+-- Indeks untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_reset_tokens`
+-- Indeks untuk tabel `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `personal_access_tokens`
+-- Indeks untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -286,7 +281,7 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `tb_donasi`
+-- Indeks untuk tabel `tb_donasi`
 --
 ALTER TABLE `tb_donasi`
   ADD PRIMARY KEY (`id`),
@@ -295,104 +290,104 @@ ALTER TABLE `tb_donasi`
   ADD KEY `tb_donasi_id_makanan_foreign` (`id_makanan`);
 
 --
--- Indexes for table `tb_donatur`
+-- Indeks untuk tabel `tb_donatur`
 --
 ALTER TABLE `tb_donatur`
   ADD PRIMARY KEY (`id`),
   ADD KEY `users_id` (`users_id`);
 
 --
--- Indexes for table `tb_jenis_makanan`
+-- Indeks untuk tabel `tb_jenis_makanan`
 --
 ALTER TABLE `tb_jenis_makanan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_penerima`
+-- Indeks untuk tabel `tb_penerima`
 --
 ALTER TABLE `tb_penerima`
   ADD PRIMARY KEY (`id`),
   ADD KEY `users_id` (`users_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_donasi`
+-- AUTO_INCREMENT untuk tabel `tb_donasi`
 --
 ALTER TABLE `tb_donasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `tb_donatur`
+-- AUTO_INCREMENT untuk tabel `tb_donatur`
 --
 ALTER TABLE `tb_donatur`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `tb_jenis_makanan`
+-- AUTO_INCREMENT untuk tabel `tb_jenis_makanan`
 --
 ALTER TABLE `tb_jenis_makanan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `tb_penerima`
+-- AUTO_INCREMENT untuk tabel `tb_penerima`
 --
 ALTER TABLE `tb_penerima`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tb_donasi`
+-- Ketidakleluasaan untuk tabel `tb_donasi`
 --
 ALTER TABLE `tb_donasi`
-  ADD CONSTRAINT `tb_donasi_id_donatur_foreign` FOREIGN KEY (`id_donatur`) REFERENCES `tb_donatur` (`id`),
-  ADD CONSTRAINT `tb_donasi_id_makanan_foreign` FOREIGN KEY (`id_makanan`) REFERENCES `tb_jenis_makanan` (`id`),
+  ADD CONSTRAINT `tb_donasi_id_donatur_foreign` FOREIGN KEY (`id_donatur`) REFERENCES `tb_donatur` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tb_donasi_id_makanan_foreign` FOREIGN KEY (`id_makanan`) REFERENCES `tb_jenis_makanan` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `tb_donasi_id_penerima_foreign` FOREIGN KEY (`id_penerima`) REFERENCES `tb_penerima` (`id`);
 
 --
--- Constraints for table `tb_donatur`
+-- Ketidakleluasaan untuk tabel `tb_donatur`
 --
 ALTER TABLE `tb_donatur`
   ADD CONSTRAINT `tb_donatur_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tb_penerima`
+-- Ketidakleluasaan untuk tabel `tb_penerima`
 --
 ALTER TABLE `tb_penerima`
   ADD CONSTRAINT `tb_penerima_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
